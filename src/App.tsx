@@ -8,6 +8,7 @@ import Organizations from './pages/Organizations';
 import TimeAndAttendance from './pages/TimeAndAttendance';
 import OrganizationDetails from './pages/OrganizationDetails';
 import Payroll from './pages/Payroll';
+import Performance from './pages/Performance';
 import LoadingSpinner from './components/ui/LoadingSpinner';
 import Team from './pages/Team';
 import EmployeeProfile from './pages/EmployeeProfile'; 
