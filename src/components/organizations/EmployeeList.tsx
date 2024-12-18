@@ -19,10 +19,22 @@ const roleColors = {
 };
 
 export default function EmployeeList({ employees }: EmployeeListProps) {
+  const canAddEmployee = ['SUPER_ADMIN', 'ORG_ADMIN', 'HR_MANAGER', 'DEPT_MANAGER'].includes(user?.role || '');
+
   return (
     <div className="bg-white shadow-sm rounded-lg">
       <div className="px-4 py-5 sm:p-6">
-        <h3 className="text-lg font-medium text-gray-900 mb-4">Employees</h3>
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-lg font-medium text-gray-900">Employees</h3>
+          {canAddEmployee && (
+            <Link
+              to="/employees/create"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700"
+            >
+              Add Employee
+            </Link>
+          )}
+        </div>
         <div className="flow-root">
           <ul role="list" className="-my-5 divide-y divide-gray-200">
             {employees.map((employee) => (
