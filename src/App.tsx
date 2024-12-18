@@ -17,11 +17,12 @@ import Reports from './pages/Reports';
 export default function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/" element={<DashboardLayout />}>
-        <Route index element={<Dashboard />} />
+      <Route path="login" element={<Login />} />
+      <Route element={<DashboardLayout />}>
+        <Route path="/" element={<Dashboard />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="organizations" element={<Organizations />} />
+        <Route path="organizations/:id" element={<OrganizationDetails />} />
         <Route path="users" element={<Users />} />
         <Route path="attendance" element={<TimeAndAttendance />} />
         <Route path="leave" element={<LeaveManagement />} />
