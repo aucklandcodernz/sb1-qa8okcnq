@@ -214,3 +214,15 @@ export const updateEmployeeProfile = (
     };
   }
 };
+import { atom } from 'jotai';
+
+export interface EmployeeProfile {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  department: string;
+}
+
+export const employeeProfilesAtom = atom<EmployeeProfile[]>([]);
