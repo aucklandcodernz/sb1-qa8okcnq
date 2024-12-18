@@ -7,7 +7,15 @@ import { cn } from '../../lib/utils';
 interface LeaveHistoryProps {
   requests: LeaveRequest[];
   className?: string;
+  showSearch?: boolean;
 }
+
+const LeaveHistory = ({ requests, className, showSearch = false }: LeaveHistoryProps) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const filteredRequests = requests.filter(request => 
+    !searchTerm || 
+    request.employeeName?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
 const statusConfig = {
   PENDING: {
@@ -39,7 +47,18 @@ export default function LeaveHistory({ requests, className }: LeaveHistoryProps)
           Leave History
         </h3>
 
-        <div className="space-y-4">
+        {showSearch && (
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Search by employee name..."
+            className="w-full px-3 py-2 border rounded-md"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      )}
+      <div className="space-y-4">
           {requests.map((request) => {
             const status = statusConfig[request.status];
             const StatusIcon = status.icon;
@@ -65,7 +84,7 @@ export default function LeaveHistory({ requests, className }: LeaveHistoryProps)
                     <div className="ml-4">
                       <div className="flex items-center">
                         <span className="text-sm font-medium text-gray-900">
-                          {request.type} Leave
+                          {request.employeeName || 'Unknown Employee'} - {request.type} Leave
                         </span>
                         <span className={cn(
                           'ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium',

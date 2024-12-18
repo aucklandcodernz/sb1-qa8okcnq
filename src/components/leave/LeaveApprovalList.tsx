@@ -64,7 +64,7 @@ export default function LeaveApprovalList({ organizationId }: LeaveApprovalListP
                     </div>
                     <div className="ml-4">
                       <p className="text-sm font-medium text-gray-900">
-                        {request.type} Leave Request
+                        {request.employeeName || 'Unknown Employee'} - {request.type} Leave Request
                       </p>
                       <div className="mt-1 flex items-center text-sm text-gray-500">
                         {format(new Date(request.startDate), 'MMM d')} -{' '}

@@ -6,6 +6,7 @@ export type ParentalLeaveType = 'PRIMARY' | 'PARTNER' | 'EXTENDED';
 export interface LeaveRequest {
   id: string;
   employeeId: string;
+  employeeName: string;
   type: LeaveType;
   startDate: Date;
   endDate: Date;
