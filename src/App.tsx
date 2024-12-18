@@ -20,6 +20,8 @@ import Training from './pages/Training';
 import Documents from './pages/Documents';
 import Reports from './pages/Reports';
 import DisciplinaryManagement from './pages/DisciplinaryManagement'; // Imported Dashboard component
+import CreateEmployeeForm from './pages/CreateEmployeeForm'; // Assuming this component exists
+import EditEmployeeForm from './pages/EditEmployeeForm'; // Assuming this component exists
 
 const AuthenticatedRoute = ({ children }: { children: React.ReactNode }) => {
   const [user] = useAtom(userAtom);
@@ -57,6 +59,8 @@ export default function App() {
           <Route path="documents" element={<Suspense fallback={<LoadingSpinner />}><Documents /></Suspense>} />
           <Route path="reports" element={<Suspense fallback={<LoadingSpinner />}><Reports /></Suspense>} />
           <Route path="disciplinary" element={<Suspense fallback={<LoadingSpinner />}><DisciplinaryManagement /></Suspense>} />
+          <Route path="/employees/create" element={<CreateEmployeeForm />} />
+          <Route path="/employees/:id/edit" element={<EditEmployeeForm />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
