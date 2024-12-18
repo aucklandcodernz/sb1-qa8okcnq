@@ -44,4 +44,5 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
 Select.displayName = 'Select';
 
+export { Select };
 export default Select;
