@@ -10,7 +10,7 @@ import {
   Settings,
   Users
 } from 'lucide-react';
-import { userAtom } from '../../lib/auth';
+import { userAtom } from '../../atoms/user';
 import { cn } from '../../lib/utils';
 
 interface PayrollNavProps {
