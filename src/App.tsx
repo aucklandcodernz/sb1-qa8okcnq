@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import Reports from './pages/Reports';
 import { Suspense } from 'react';
 import Layout from './components/layout/Layout';
 import LeaveManagement from './pages/LeaveManagement';
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/performance/*" element={<Performance />} />
           <Route path="/training" element={<Training />} />
           <Route path="/documents" element={<Documents />} />
+          <Route path="/reports" element={<Reports />} />
           <Route path="/employees/:id/*" element={<EmployeeProfile />}>
             <Route path="documents" element={<EmployeeDocuments />} />
             <Route path="attendance" element={<EmployeeAttendance />} />
