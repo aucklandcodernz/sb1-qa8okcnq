@@ -2,8 +2,12 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { useAtom } from 'jotai';
 import { Calendar, Clock } from 'lucide-react';
 import { ReviewType } from '../../types/performance';
+import { employeeProfilesAtom } from '../../lib/employees';
+import { userAtom } from '../../lib/auth';
+import { organizationDetailsAtom } from '../../lib/organizations';
 
 const scheduleSchema = z.object({
   type: z.enum(['ANNUAL', 'QUARTERLY', 'PROBATION', 'PROJECT']),
@@ -33,10 +37,18 @@ export default function ReviewScheduleForm({
   onCancel,
   defaultValues,
 }: ReviewScheduleFormProps) {
+  const [employees] = useAtom(employeeProfilesAtom);
+  const [user] = useAtom(userAtom);
+  const [orgDetails] = useAtom(organizationDetailsAtom);
+
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(scheduleSchema),
     defaultValues,
   });
+
+  const filteredEmployees = Object.values(employees).filter(emp => 
+    emp.organizationId === user?.organizationId
+  );
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -92,13 +104,19 @@ export default function ReviewScheduleForm({
 
       <div>
         <label className="block text-sm font-medium text-gray-700">
-          Employee ID
+          Employee
         </label>
-        <input
-          type="text"
+        <select
           {...register('employeeId')}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-        />
+        >
+          <option value="">Select employee</option>
+          {filteredEmployees.map((employee) => (
+            <option key={employee.id} value={employee.id}>
+              {employee.firstName} {employee.lastName} - {employee.department}
+            </option>
+          ))}
+        </select>
         {errors.employeeId && (
           <p className="mt-1 text-sm text-red-600">{errors.employeeId.message}</p>
         )}
