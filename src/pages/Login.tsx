@@ -25,10 +25,14 @@ export default function Login() {
 
   const from = location.state?.from?.pathname || '/dashboard';
 
-  const onSubmit = (data: LoginForm) => {
-    // In a real app, this would validate credentials against an API
-    setUser(TEST_USERS['employee']);
-    navigate(from, { replace: true });
+  const onSubmit = async (data: LoginForm) => {
+    try {
+      // In a real app, this would validate credentials against an API
+      setUser(TEST_USERS['employee']);
+      navigate(from, { replace: true });
+    } catch (error) {
+      console.error('Login error:', error);
+    }
   };
 
   const loginAsTestUser = (userId: string) => {

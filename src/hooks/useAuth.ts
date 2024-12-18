@@ -12,12 +12,15 @@ export function useAuth() {
       setAuthState({ user, token: 'mock-token', loading: false, error: null });
       return user;
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Login failed';
       setAuthState(prev => ({
         ...prev,
         loading: false,
-        error: error instanceof Error ? error.message : 'Login failed',
+        error: errorMessage,
       }));
-      throw error;
+      // Handle error without throwing
+      console.error('Login error:', errorMessage);
+      return null;
     }
   }, [setAuthState]);
 
