@@ -1,10 +1,8 @@
-
 import React, { useState } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { Plus } from 'lucide-react';
 import { organizationDetailsAtom } from '../lib/organizations';
-import { Employee } from '../types/employee/relationships';
 import OrganizationOverview from '../components/organizations/OrganizationOverview';
 import DepartmentList from '../components/organizations/DepartmentList';
 import EmployeeList from '../components/organizations/EmployeeList';
@@ -49,6 +47,15 @@ export default function OrganizationDetails() {
 
           {showCreateDepartment ? (
             <div className="bg-white shadow-sm rounded-lg p-6">
+              <div className="mb-4 flex justify-between items-center">
+                <h4 className="text-lg font-medium text-gray-900">Create New Department</h4>
+                <button
+                  onClick={() => setShowCreateDepartment(false)}
+                  className="text-gray-400 hover:text-gray-500"
+                >
+                  ×
+                </button>
+              </div>
               <CreateDepartmentForm
                 organizationId={id}
                 onSuccess={() => setShowCreateDepartment(false)}
@@ -73,6 +80,15 @@ export default function OrganizationDetails() {
 
           {showCreateEmployee ? (
             <div className="bg-white shadow-sm rounded-lg p-6">
+              <div className="mb-4 flex justify-between items-center">
+                <h4 className="text-lg font-medium text-gray-900">Add New Employee</h4>
+                <button
+                  onClick={() => setShowCreateEmployee(false)}
+                  className="text-gray-400 hover:text-gray-500"
+                >
+                  ×
+                </button>
+              </div>
               <CreateEmployeeForm
                 organizationId={id}
                 onSuccess={() => setShowCreateEmployee(false)}

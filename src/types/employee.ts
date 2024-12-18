@@ -1,17 +1,11 @@
-
 export interface EmployeeProfile {
   id: string;
   userId: string;
   organizationId: string;
   departmentId: string;
-  firstName: string;
-  lastName: string;
-  email: string;
   position: string;
   employmentType: 'FULL_TIME' | 'PART_TIME' | 'CONTRACT' | 'INTERN';
   startDate: string;
-  endDate?: string;
-  status: 'ACTIVE' | 'ON_LEAVE' | 'TERMINATED';
   salary: {
     amount: number;
     currency: string;
@@ -27,25 +21,23 @@ export interface EmployeeProfile {
     phoneNumber: string;
     email?: string;
   };
-  documents: Array<{
+  documents: {
     id: string;
     type: 'CONTRACT' | 'ID' | 'CERTIFICATE' | 'OTHER';
     name: string;
     url: string;
     uploadedAt: string;
-  }>;
+  }[];
   skills: string[];
-  qualifications: Array<{
+  qualifications: {
     degree: string;
     institution: string;
     year: number;
-  }>;
+  }[];
+  status: 'ACTIVE' | 'ON_LEAVE' | 'TERMINATED';
 }
 
 export interface CreateEmployeeProfileData {
-  firstName: string;
-  lastName: string;
-  email: string;
   position: string;
   employmentType: 'FULL_TIME' | 'PART_TIME' | 'CONTRACT' | 'INTERN';
   startDate: string;
@@ -58,5 +50,4 @@ export interface CreateEmployeeProfileData {
     accountNumber: string;
     bankName: string;
   };
-  departmentId: string;
 }

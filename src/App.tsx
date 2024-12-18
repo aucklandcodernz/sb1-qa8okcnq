@@ -34,8 +34,7 @@ export default function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/register" element={<RegisterOrganization />} />
           
-          <Route element={<AuthenticatedRoute><Layout /></AuthenticatedRoute>}>
-            <Route path="/" element={<Navigate to="/dashboard" />} />
+          <Route path="/" element={<AuthenticatedRoute><Layout /></AuthenticatedRoute>}>
             <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="organizations" element={<Organizations />} />
