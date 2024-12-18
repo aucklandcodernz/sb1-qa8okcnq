@@ -8,10 +8,8 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3000,
     hmr: {
-      port: 443,
-      host: '0.0.0.0',
-      protocol: 'wss',
-      clientPort: 443
+      clientPort: 443,
+      host: process.env.REPL_SLUG + '.repl.co'
     }
   }
 })
