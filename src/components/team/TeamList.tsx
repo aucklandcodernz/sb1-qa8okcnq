@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { UserCircle, Mail, Phone, Building2, Calendar, Plus } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
@@ -28,6 +29,12 @@ const employmentTypeColors = {
 
 export default function TeamList({ employees, onEmployeeClick }: TeamListProps) {
   const [user] = useAtom(userAtom);
+  const navigate = useNavigate();
+
+  const handleEditClick = (employeeId: string) => {
+    navigate(`/employees/${employeeId}/edit`);
+  };
+
   return (
     <div className="bg-white shadow-sm rounded-lg">
       <div className="px-4 py-5 sm:p-6">
@@ -89,20 +96,12 @@ export default function TeamList({ employees, onEmployeeClick }: TeamListProps) 
                         View Profile
                       </Link>
                       {['SUPER_ADMIN', 'ORG_ADMIN', 'HR_MANAGER', 'DEPT_MANAGER'].includes(user?.role || '') && (
-                        <Link
-                          to={`/employees/${employee.id}/edit`}
+                        <button
+                          onClick={() => handleEditClick(employee.id)}
                           className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            if (onEmployeeClick) {
-                              onEmployeeClick(employee.id);
-                            } else {
-                              window.location.href = `/employees/${employee.id}/edit`;
-                            }
-                          }}
                         >
                           Edit
-                        </Link>
+                        </button>
                       )}
                     </div>
                   </div>

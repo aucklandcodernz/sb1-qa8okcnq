@@ -60,7 +60,7 @@ export default function App() {
           <Route path="reports" element={<Suspense fallback={<LoadingSpinner />}><Reports /></Suspense>} />
           <Route path="disciplinary" element={<Suspense fallback={<LoadingSpinner />}><DisciplinaryManagement /></Suspense>} />
           <Route path="/employees/create" element={<CreateEmployeeForm />} />
-          <Route path="/employees/:id/edit" element={<EditEmployeeForm />} />
+          <Route path="/employees/:id/edit" element={<Suspense fallback={<LoadingSpinner />}><EditEmployeeForm /></Suspense>} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
