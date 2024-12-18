@@ -10,7 +10,6 @@ import LoadingSpinner from './components/ui/LoadingSpinner';
 import Team from './pages/Team';
 import EmployeeProfile from './pages/EmployeeProfile'; 
 import EditEmployeeForm from './components/employees/EditEmployeeForm';
-import EmployeeDocuments from './pages/employee/EmployeeDocuments';
 
 export default function App() {
   return (
@@ -25,10 +24,8 @@ export default function App() {
           <Route path="/organizations/:id" element={<OrganizationDetails />} />
           <Route path="/organizations/:id/payroll/*" element={<Payroll />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/employees/:id/*" element={<EmployeeProfile />}>
-            <Route path="documents" element={<EmployeeDocuments />} />
-            <Route path="edit" element={<EditEmployeeForm />} />
-          </Route>
+          <Route path="/employees/:id" element={<EmployeeProfile />} />
+          <Route path="/employees/:id/edit" element={<EditEmployeeForm />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/login" replace />} />
