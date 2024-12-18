@@ -20,8 +20,8 @@ import Training from './pages/Training';
 import Documents from './pages/Documents';
 import Reports from './pages/Reports';
 import DisciplinaryManagement from './pages/DisciplinaryManagement'; // Imported Dashboard component
-import CreateEmployeeForm from './pages/CreateEmployeeForm'; // Assuming this component exists
-import EditEmployeeForm from './pages/EditEmployeeForm'; // Assuming this component exists
+import CreateEmployeeForm from './components/employees/CreateEmployeeForm';
+import EditEmployeeForm from './components/employees/EditEmployeeForm';
 
 const AuthenticatedRoute = ({ children }: { children: React.ReactNode }) => {
   const [user] = useAtom(userAtom);
