@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { Plus } from 'lucide-react';
 import { userAtom } from '../../lib/auth';
