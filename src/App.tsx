@@ -13,6 +13,7 @@ export default function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<DashboardLayout />}>
         <Route index element={<Dashboard />} />
+        <Route path="dashboard" element={<Dashboard />} />
         <Route path="organizations" element={<Organizations />} />
         <Route path="settings" element={<Settings />} />
       </Route>
