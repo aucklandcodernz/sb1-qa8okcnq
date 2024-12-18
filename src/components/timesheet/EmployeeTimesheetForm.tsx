@@ -7,6 +7,7 @@ import { Clock, Calendar, Plus } from 'lucide-react';
 import { Timesheet, TimeEntry } from '../../types/timesheet';
 import TimesheetEntry from './TimesheetEntry';
 import { cn } from '../../lib/utils';
+import FormSelect from '../ui/FormSelect'; // Import added here
 
 const timesheetSchema = z.object({
   employeeId: z.string(),
