@@ -3,8 +3,11 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { useNavigate, useParams } from 'react-router-dom';
 import FormField from '../ui/FormField';
-import { User } from '../../types/auth';
+import { useAtom } from 'jotai';
+import { employeeProfilesAtom } from '../../lib/atoms';
+import LoadingSpinner from '../ui/LoadingSpinner';
 
 const editEmployeeSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
@@ -14,14 +17,16 @@ const editEmployeeSchema = z.object({
   departmentId: z.string().min(1, 'Department is required'),
 });
 
-interface EditEmployeeFormProps {
-  employee: User;
-  departments: Array<{ id: string; name: string }>;
-  onSubmit: (data: any) => void;
-  onCancel: () => void;
-}
+export default function EditEmployeeForm() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [employeeProfiles] = useAtom(employeeProfilesAtom);
+  const employee = employeeProfiles[id];
 
-export default function EditEmployeeForm({ employee, departments, onSubmit, onCancel }: EditEmployeeFormProps) {
+  if (!employee) {
+    return <LoadingSpinner />;
+  }
+
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(editEmployeeSchema),
     defaultValues: {
@@ -33,8 +38,18 @@ export default function EditEmployeeForm({ employee, departments, onSubmit, onCa
     }
   });
 
+  const onSubmit = (data) => {
+    console.log('Form submitted:', data);
+    // Handle form submission
+    navigate('/team');
+  };
+
+  const onCancel = () => {
+    navigate('/team');
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-2xl mx-auto p-6">
       <div className="grid grid-cols-2 gap-4">
         <FormField
           label="First Name"
@@ -77,9 +92,9 @@ export default function EditEmployeeForm({ employee, departments, onSubmit, onCa
           {...register('departmentId')}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
         >
-          {departments.map((dept) => (
-            <option key={dept.id} value={dept.id}>{dept.name}</option>
-          ))}
+          <option value="">Select Department</option>
+          <option value="dept1">Department 1</option>
+          <option value="dept2">Department 2</option>
         </select>
         {errors.departmentId && (
           <p className="mt-1 text-sm text-red-600">{errors.departmentId.message}</p>
