@@ -10,6 +10,7 @@ import OrganizationDetails from './pages/OrganizationDetails';
 import Payroll from './pages/Payroll';
 import Performance from './pages/Performance';
 import Training from './pages/Training';
+import Documents from './pages/Documents';
 import LoadingSpinner from './components/ui/LoadingSpinner';
 import Team from './pages/Team';
 import EmployeeProfile from './pages/EmployeeProfile'; 
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/performance/*" element={<Performance />} />
           <Route path="/training" element={<Training />} />
+          <Route path="/documents" element={<Documents />} />
           <Route path="/employees/:id/*" element={<EmployeeProfile />}>
             <Route path="documents" element={<EmployeeDocuments />} />
             <Route path="attendance" element={<EmployeeAttendance />} />
