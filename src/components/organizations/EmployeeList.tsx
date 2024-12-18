@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { UserCircle } from 'lucide-react';
 import { User } from '../../types/auth';
 import { cn } from '../../lib/utils';
+import { useAuth } from '../../hooks/useAuth';
 
 interface EmployeeListProps {
   employees: User[];
@@ -19,6 +20,7 @@ const roleColors = {
 };
 
 export default function EmployeeList({ employees }: EmployeeListProps) {
+  const { user } = useAuth();
   const canAddEmployee = ['SUPER_ADMIN', 'ORG_ADMIN', 'HR_MANAGER', 'DEPT_MANAGER'].includes(user?.role || '');
 
   return (
