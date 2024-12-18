@@ -128,7 +128,12 @@ export default function Team() {
             />
           </div>
 
-          <TeamList employees={filteredEmployees} />
+          <TeamList 
+  employees={filteredEmployees} 
+  onEmployeeClick={(employeeId) => {
+    navigate(`/employees/${employeeId}/edit`);
+  }}
+/>
         </div>
       </div>
     </div>
