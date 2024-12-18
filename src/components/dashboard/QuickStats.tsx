@@ -51,20 +51,20 @@ export default function QuickStats() {
             key={stat.name}
             className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
           >
-            <div className="flex items-center">
+            <div className="flex items-center p-2 hover:bg-gray-50 rounded-lg transition-colors">
               <div className={cn('p-3 rounded-lg', stat.bgColor)}>
                 <Icon className={cn('h-6 w-6', stat.color)} />
               </div>
-              <div className="ml-4">
+              <div className="ml-4 flex-grow">
                 <p className="text-sm font-medium text-gray-600">{stat.name}</p>
-                <div className="flex items-baseline">
+                <div className="flex items-baseline justify-between">
                   <p className="text-2xl font-semibold text-gray-900">{stat.value}</p>
                   {stat.change !== 0 && (
                     <span className={cn(
-                      'ml-2 text-sm',
+                      'ml-2 text-sm flex items-center',
                       stat.change > 0 ? 'text-green-600' : 'text-red-600'
                     )}>
-                      {stat.change > 0 ? '+' : ''}{stat.change}%
+                      {stat.change > 0 ? '↑' : '↓'} {Math.abs(stat.change)}%
                     </span>
                   )}
                 </div>
