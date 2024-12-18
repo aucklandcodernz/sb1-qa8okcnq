@@ -23,8 +23,22 @@ export default function PayrollDashboard() {
           <PayrollSummary employeeId={user?.id} />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <PayrollCalculator />
-            <KiwiSaverCalculator />
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h3 className="text-lg font-medium mb-4">Payroll Calculator</h3>
+              <PayrollCalculator />
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h3 className="text-lg font-medium mb-4">KiwiSaver Calculator</h3>
+              <KiwiSaverCalculator />
+            </div>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow text-center">
+            {payrollItems.length === 0 ? (
+              <div className="py-8 text-gray-500">
+                <p className="mb-2">No payroll information available</p>
+                <p className="text-sm">Start by adding employees or processing payroll</p>
+              </div>
+            ) : null}
           </div>
           
           <PayParityChart 
