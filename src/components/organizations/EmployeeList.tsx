@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { UserCircle } from 'lucide-react';
 import { User } from '../../types/auth';
+
+import { deleteEmployee } from '../../lib/employee/relationships';
+
 import { cn } from '../../lib/utils';
 import { useAuth } from '../../hooks/useAuth';
 
@@ -79,9 +82,15 @@ export default function EmployeeList({ employees }: EmployeeListProps) {
                             <button
                               onClick={() => {
                                 if (window.confirm('Are you sure you want to delete this employee?')) {
-                                  // Remove employee from the organization
-                                  const updatedEmployees = employees.filter(emp => emp.id !== employee.id);
-                                  // TODO: Update organization state with new employees list
+                                  try {
+                                    // Import and use deleteEmployee utility
+                                    deleteEmployee(employee.id);
+                                    // Refresh the employee list
+                                    window.location.reload();
+                                  } catch (error) {
+                                    console.error('Error deleting employee:', error);
+                                    alert('Failed to delete employee. Please try again.');
+                                  }
                                 }
                               }}
                               className="inline-flex items-center px-3 py-2 border border-red-300 shadow-sm text-sm leading-4 font-medium rounded-md text-red-700 bg-white hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 ml-2"
