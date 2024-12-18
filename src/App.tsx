@@ -22,6 +22,7 @@ import EditEmployeeForm from './components/employees/EditEmployeeForm';
 import EmployeeDocuments from './pages/employee/EmployeeDocuments';
 import EmployeeAttendance from './pages/employee/EmployeeAttendance';
 import EmployeeQualifications from './pages/employee/EmployeeQualifications';
+import EmployeeTraining from './pages/employee/EmployeeTraining'; // Import the EmployeeTraining component
 
 export default function App() {
   return (
@@ -49,6 +50,7 @@ export default function App() {
             <Route path="documents" element={<EmployeeDocuments />} />
             <Route path="attendance" element={<EmployeeAttendance />} />
             <Route path="qualifications" element={<EmployeeQualifications />} />
+            <Route path="training" element={<EmployeeTraining employeeId="emp1" />} /> {/* Added EmployeeTraining route */}
             <Route path="edit" element={<EditEmployeeForm />} />
           </Route>
         </Route>
