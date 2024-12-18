@@ -24,8 +24,10 @@ export default function App() {
           <Route path="/organizations/:id" element={<OrganizationDetails />} />
           <Route path="/organizations/:id/payroll/*" element={<Payroll />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/employees/:id" element={<EmployeeProfile />} />
-          <Route path="/employees/:id/edit" element={<EditEmployeeForm />} />
+          <Route path="/employees/:id/*" element={<EmployeeProfile />}>
+            <Route path="documents" element={<EmployeeDocuments />} />
+            <Route path="edit" element={<EditEmployeeForm />} />
+          </Route>
         </Route>
 
         <Route path="*" element={<Navigate to="/login" replace />} />

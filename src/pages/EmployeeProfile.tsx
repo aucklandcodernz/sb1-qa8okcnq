@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Routes, Route, Navigate } from 'react-router-dom';
+import { useParams, Outlet, Routes, Route, Navigate } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { employeeProfilesAtom } from '../lib/employees';
 import { userAtom } from '../lib/auth';
@@ -83,6 +83,7 @@ function EmployeeProfileContent() {
             )}
             <Route path="*" element={<Navigate to={`/employees/${id}`} replace />} />
           </Routes>
+          <Outlet />
         </div>
       </div>
     </div>
