@@ -15,6 +15,9 @@ export default function TimeAndAttendance() {
   const [timeEntries] = useAtom(timeEntriesAtom);
   const [location, setLocation] = useState<{ latitude: number; longitude: number; address: string }>();
   const [employeeAge] = useState<number | undefined>(25);
+  const [employees] = useState([
+    { id: user?.id || '', name: user?.name || 'Current User' }
+  ]);
   const [showTimesheetForm, setShowTimesheetForm] = useState(false);
 
   const todayEntry = timeEntries.find(
