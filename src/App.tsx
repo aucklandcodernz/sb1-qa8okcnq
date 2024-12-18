@@ -24,6 +24,7 @@ export default function App() {
           <Route path="/organizations" element={<Organizations />} />
           <Route path="/organizations/:id" element={<OrganizationDetails />} />
           <Route path="/organizations/:id/payroll/*" element={<Payroll />} />
+          <Route path="/attendance" element={<TimeAndAttendance />} />
           <Route path="/team" element={<Team />} />
           <Route path="/employees/:id/*" element={<EmployeeProfile />}>
             <Route path="documents" element={<EmployeeDocuments />} />
