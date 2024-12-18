@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Plus } from 'lucide-react';
@@ -66,19 +67,6 @@ export default function Organizations() {
       ) : (
         <OrganizationList />
       )}
-    </div>
-  );
-}
-import React from 'react';
-import OrganizationList from '../components/organizations/OrganizationList';
-import CreateOrganizationForm from '../components/organizations/CreateOrganizationForm';
-
-export default function Organizations() {
-  return (
-    <div className="space-y-6 p-6">
-      <h1 className="text-2xl font-bold">Organizations</h1>
-      <OrganizationList />
-      <CreateOrganizationForm />
     </div>
   );
 }
