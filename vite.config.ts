@@ -8,11 +8,11 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   server: {
-    host: '0.0.0.0',
+    host: true,
+    strictPort: true,
     port: 3000,
     hmr: {
-      clientPort: 443,
-      protocol: 'wss'
+      clientPort: 443
     }
   }
 });
