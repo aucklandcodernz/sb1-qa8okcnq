@@ -3,6 +3,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Organizations from './pages/Organizations';
+import OrganizationDetails from './pages/OrganizationDetails';
 import Login from './pages/Login';
 import Settings from './pages/Settings';
 import DashboardLayout from './components/layout/DashboardLayout';
