@@ -60,6 +60,7 @@ export default function EmployeeProfile() {
         <div className="p-6">
           <Routes>
             <Route index element={<EmployeeOverview profile={profile} />} />
+            <Route path="edit" element={<EditEmployeeForm />} />
             <Route path="documents" element={<EmployeeDocuments profile={profile} />} />
             <Route path="agreements" element={<EmployeeAgreements employeeId={id} />} />
             <Route path="qualifications" element={<EmployeeQualifications profile={profile} />} />
