@@ -225,4 +225,4 @@ export interface EmployeeProfile {
   department: string;
 }
 
-export const employeeProfilesAtom = atom<EmployeeProfile[]>([]);
+
