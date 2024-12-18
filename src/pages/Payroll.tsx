@@ -18,7 +18,11 @@ export default function Payroll() {
     return <Navigate to="/organizations" replace />;
   }
 
-  if (user?.role !== 'ORG_ADMIN' && user?.role !== 'SUPER_ADMIN') {
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+  
+  if (!['ORG_ADMIN', 'SUPER_ADMIN', 'HR_MANAGER'].includes(user.role)) {
     return <Navigate to="/dashboard" replace />;
   }
 
