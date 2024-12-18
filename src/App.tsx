@@ -12,6 +12,7 @@ import Team from './pages/Team';
 import EmployeeProfile from './pages/EmployeeProfile'; 
 import EditEmployeeForm from './components/employees/EditEmployeeForm';
 import EmployeeDocuments from './pages/employee/EmployeeDocuments';
+import EmployeeAttendance from './pages/employee/EmployeeAttendance';
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/employees/:id/*" element={<EmployeeProfile />}>
             <Route path="documents" element={<EmployeeDocuments />} />
+            <Route path="attendance" element={<EmployeeAttendance />} />
             <Route path="edit" element={<EditEmployeeForm />} />
           </Route>
         </Route>
