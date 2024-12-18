@@ -6,6 +6,7 @@ import { useAtom } from 'jotai';
 import { performanceReviewsAtom } from '../../lib/performance';
 import { userAtom } from '../../lib/auth';
 import { employeeProfilesAtom } from '../../lib/employees';
+import { organizationDetailsAtom } from '../../lib/organizations';
 import { ReviewType, RatingScale } from '../../types/performance';
 
 const reviewSchema = z.object({
