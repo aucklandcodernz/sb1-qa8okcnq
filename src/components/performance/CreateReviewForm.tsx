@@ -42,11 +42,13 @@ const ratingCategories = [
 
 export default function CreateReviewForm({ onSuccess }: CreateReviewFormProps) {
   const [performanceReviews, setPerformanceReviews] = useAtom(performanceReviewsAtom);
-  const [currentUser] = useAtom(userAtom);
-  
+  const [user] = useAtom(userAtom);
+  const canReviewOthers = ['SUPER_ADMIN', 'ORG_ADMIN', 'HR_MANAGER', 'DEPT_MANAGER'].includes(user?.role || '');
+
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(reviewSchema),
     defaultValues: {
+      employeeId: canReviewOthers ? '' : user?.id,
       ratings: ratingCategories.map(category => ({
         category,
         rating: 3,
@@ -56,7 +58,7 @@ export default function CreateReviewForm({ onSuccess }: CreateReviewFormProps) {
   });
 
   const onSubmit = (data: any) => {
-    if (!currentUser) return;
+    if (!user) return;
 
     const overallRating = Math.round(
       data.ratings.reduce((acc: number, curr: any) => acc + curr.rating, 0) / data.ratings.length
@@ -65,7 +67,7 @@ export default function CreateReviewForm({ onSuccess }: CreateReviewFormProps) {
     const newReview = {
       id: Math.random().toString(36).substr(2, 9),
       employeeId: data.employeeId,
-      reviewerId: currentUser.id,
+      reviewerId: user.id,
       type: data.type,
       period: {
         startDate: data.startDate,
