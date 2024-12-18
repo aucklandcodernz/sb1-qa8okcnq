@@ -6,11 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
-    port: 3000,
     hmr: {
       clientPort: 443,
-      path: '/@vite/client',
-      host: process.env.REPL_SLUG + '.id.repl.co'
+      protocol: 'wss'
     }
   }
 })
