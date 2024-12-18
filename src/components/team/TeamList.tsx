@@ -32,7 +32,7 @@ export default function TeamList({ employees, onEmployeeClick }: TeamListProps) 
   const navigate = useNavigate();
 
   const handleEditClick = (employeeId: string) => {
-    navigate(`/employees/${employeeId}/edit`);
+    navigate(`/employees/${employeeId}`);
   };
 
   return (
@@ -96,8 +96,8 @@ export default function TeamList({ employees, onEmployeeClick }: TeamListProps) 
                         View Profile
                       </Link>
                       {['SUPER_ADMIN', 'ORG_ADMIN', 'HR_MANAGER', 'DEPT_MANAGER'].includes(user?.role || '') && (
-                        <button
-                          onClick={() => handleEditClick(employee.id)}
+                        <Link
+                          to={`/employees/${employee.id}`}
                           className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                           Edit
