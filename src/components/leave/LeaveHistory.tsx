@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { Calendar, Clock, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 import { LeaveRequest } from '../../types/leave';
@@ -9,13 +10,6 @@ interface LeaveHistoryProps {
   className?: string;
   showSearch?: boolean;
 }
-
-const LeaveHistory = ({ requests, className, showSearch = false }: LeaveHistoryProps) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const filteredRequests = requests.filter(request => 
-    !searchTerm || 
-    request.employeeName?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
 const statusConfig = {
   PENDING: {
@@ -38,7 +32,13 @@ const statusConfig = {
   },
 };
 
-export default function LeaveHistory({ requests, className }: LeaveHistoryProps) {
+export default function LeaveHistory({ requests, className, showSearch = false }: LeaveHistoryProps) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const filteredRequests = requests.filter(request => 
+    !searchTerm || 
+    request.employeeName?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className={cn('bg-white shadow-sm rounded-lg', className)}>
       <div className="px-4 py-5 sm:p-6">
@@ -48,18 +48,18 @@ export default function LeaveHistory({ requests, className }: LeaveHistoryProps)
         </h3>
 
         {showSearch && (
-        <div className="mb-4">
-          <input
-            type="text"
-            placeholder="Search by employee name..."
-            className="w-full px-3 py-2 border rounded-md"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-      )}
-      <div className="space-y-4">
-          {requests.map((request) => {
+          <div className="mb-4">
+            <input
+              type="text"
+              placeholder="Search by employee name..."
+              className="w-full px-3 py-2 border rounded-md"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+        )}
+        <div className="space-y-4">
+          {filteredRequests.map((request) => {
             const status = statusConfig[request.status];
             const StatusIcon = status.icon;
 
@@ -96,7 +96,7 @@ export default function LeaveHistory({ requests, className }: LeaveHistoryProps)
                       </div>
                       <div className="mt-1 flex items-center text-sm text-gray-500">
                         <Clock className="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400" />
-                        {format(request.startDate, 'MMM d')} - {format(request.endDate, 'MMM d, yyyy')}
+                        {format(new Date(request.startDate), 'MMM d')} - {format(new Date(request.endDate), 'MMM d, yyyy')}
                       </div>
                       {request.reason && (
                         <p className="mt-1 text-sm text-gray-600">
@@ -106,10 +106,10 @@ export default function LeaveHistory({ requests, className }: LeaveHistoryProps)
                     </div>
                   </div>
                   <div className="text-right text-sm text-gray-500">
-                    <p>Submitted on {format(request.createdAt, 'MMM d, yyyy')}</p>
+                    <p>Submitted on {format(new Date(request.createdAt), 'MMM d, yyyy')}</p>
                     {request.approvedAt && (
                       <p className="mt-1">
-                        Approved on {format(request.approvedAt, 'MMM d, yyyy')}
+                        Approved on {format(new Date(request.approvedAt), 'MMM d, yyyy')}
                       </p>
                     )}
                   </div>
@@ -117,7 +117,7 @@ export default function LeaveHistory({ requests, className }: LeaveHistoryProps)
               </div>
             );
           })}
-          {requests.length === 0 && (
+          {filteredRequests.length === 0 && (
             <p className="text-center text-gray-500 py-4">
               No leave requests found
             </p>
