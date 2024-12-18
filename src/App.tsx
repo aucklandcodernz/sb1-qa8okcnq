@@ -7,7 +7,19 @@ import Pricing from './pages/Pricing';
 import RegisterOrganization from './pages/RegisterOrganization';
 import LoadingSpinner from './components/ui/LoadingSpinner';
 import { Suspense } from 'react';
-import Dashboard from './pages/Dashboard'; // Imported Dashboard component
+import Dashboard from './pages/Dashboard';
+import Organizations from './pages/Organizations';
+import OrganizationDetails from './pages/OrganizationDetails';
+import Team from './pages/Team';
+import LeaveManagement from './pages/LeaveManagement';
+import TimeAndAttendance from './pages/TimeAndAttendance';
+import Settings from './pages/Settings';
+import EmployeeProfile from './pages/EmployeeProfile';
+import Performance from './pages/Performance';
+import Training from './pages/Training';
+import Documents from './pages/Documents';
+import Reports from './pages/Reports';
+import DisciplinaryManagement from './pages/DisciplinaryManagement'; // Imported Dashboard component
 
 const AuthenticatedRoute = ({ children }: { children: React.ReactNode }) => {
   const [user] = useAtom(userAtom);
