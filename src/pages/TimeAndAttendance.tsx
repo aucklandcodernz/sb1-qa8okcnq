@@ -15,13 +15,18 @@ export default function TimeAndAttendance() {
   const [timeEntries] = useAtom(timeEntriesAtom);
   const [location, setLocation] = useState<{ latitude: number; longitude: number; address: string }>();
   const [employeeAge] = useState<number | undefined>(25);
-  const [employees] = useState([
-    { id: user?.id || '', name: user?.name || 'Current User' }
-  ]);
+  const [selectedEmployee, setSelectedEmployee] = useState(user?.id || '');
   const [showTimesheetForm, setShowTimesheetForm] = useState(false);
+  
+  const canManageOtherTimesheets = ['ORG_ADMIN', 'HR_MANAGER', 'DEPT_MANAGER'].includes(user?.role || '');
+  const employees = canManageOtherTimesheets ? [
+    { id: user?.id || '', name: 'Current User' },
+    { id: 'emp1', name: 'John Doe' },
+    { id: 'emp2', name: 'Jane Smith' }
+  ] : [{ id: user?.id || '', name: 'Current User' }];
 
   const todayEntry = timeEntries.find(
-    entry => entry.employeeId === user?.id && entry.date === format(new Date(), 'yyyy-MM-dd')
+    entry => entry.employeeId === selectedEmployee && entry.date === format(new Date(), 'yyyy-MM-dd')
   );
 
   const weeklyTimeEntries = timeEntries.filter(entry => {
@@ -29,7 +34,7 @@ export default function TimeAndAttendance() {
     const now = new Date();
     const weekStart = new Date(now);
     weekStart.setDate(now.getDate() - now.getDay());
-    return entry.employeeId === user?.id && entryDate >= weekStart;
+    return entry.employeeId === selectedEmployee && entryDate >= weekStart;
   });
 
   const breaks = [
@@ -101,7 +106,7 @@ export default function TimeAndAttendance() {
       {showTimesheetForm ? (
         <div className="bg-white shadow-sm rounded-lg p-6">
           <EmployeeTimesheetForm
-            employeeId={user?.id || ''}
+            employeeId={selectedEmployee}
             onSubmit={handleTimesheetSubmit}
             onCancel={() => setShowTimesheetForm(false)}
             isOrgAdmin={user?.role === 'ORG_ADMIN'}
@@ -129,13 +134,13 @@ export default function TimeAndAttendance() {
               breaks={breaks}
             />
             <div className="lg:col-span-2">
-              <AttendanceStats employeeId={user?.id} />
+              <AttendanceStats employeeId={selectedEmployee} />
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <ShiftSchedule employeeId={user?.id} />
-            <AttendanceCalendar employeeId={user?.id} />
+            <ShiftSchedule employeeId={selectedEmployee} />
+            <AttendanceCalendar employeeId={selectedEmployee} />
           </div>
         </>
       )}
