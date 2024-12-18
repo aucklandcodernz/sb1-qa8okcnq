@@ -23,7 +23,8 @@ export default function PayProcessing() {
         <div className="grid grid-cols-4 gap-4 mb-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
-            <Select
+            <select
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               value={filters.status}
               onChange={(e) => setFilters({ ...filters, status: e.target.value })}
             >
@@ -31,18 +32,19 @@ export default function PayProcessing() {
               <option value="pending">Pending</option>
               <option value="processed">Processed</option>
               <option value="failed">Failed</option>
-            </Select>
+            </select>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Payment Method</label>
-            <Select
+            <select
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               value={filters.paymentMethod}
               onChange={(e) => setFilters({ ...filters, paymentMethod: e.target.value })}
             >
               <option value="all">All</option>
               <option value="direct-deposit">Direct Deposit</option>
               <option value="check">Check</option>
-            </Select>
+            </select>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">From Date</label>
