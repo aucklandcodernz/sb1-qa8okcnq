@@ -45,6 +45,10 @@ export default function CreateReviewForm({ onSuccess }: CreateReviewFormProps) {
   const [user] = useAtom(userAtom);
   const canReviewOthers = ['SUPER_ADMIN', 'ORG_ADMIN', 'HR_MANAGER', 'DEPT_MANAGER'].includes(user?.role || '');
 
+  const [employeeProfiles] = useAtom(employeeProfilesAtom);
+  const [organizationDetails] = useAtom(organizationDetailsAtom);
+  const currentOrgEmployees = organizationDetails?.[user?.organizationId || '']?.employees || [];
+
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(reviewSchema),
     defaultValues: {
@@ -92,13 +96,20 @@ export default function CreateReviewForm({ onSuccess }: CreateReviewFormProps) {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div>
         <label className="block text-sm font-medium text-gray-700">
-          Employee ID
+          Employee
         </label>
-        <input
-          type="text"
+        <select
           {...register('employeeId')}
+          disabled={!canReviewOthers}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-        />
+        >
+          <option value="">Select employee</option>
+          {currentOrgEmployees.map((employee) => (
+            <option key={employee.id} value={employee.id}>
+              {employee.firstName} {employee.lastName} - {employee.email}
+            </option>
+          ))}
+        </select>
         {errors.employeeId && (
           <p className="mt-1 text-sm text-red-600">{errors.employeeId.message}</p>
         )}
