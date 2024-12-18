@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Activity } from '../../types/activity';
 import { formatDistanceToNow } from 'date-fns';
