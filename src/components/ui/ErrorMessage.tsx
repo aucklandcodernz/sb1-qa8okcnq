@@ -1,34 +1,6 @@
-import React from 'react';
-import { AlertCircle } from 'lucide-react';
-import { cn } from '../../lib/utils';
 
-interface ErrorMessageProps {
-  title?: string;
-  message: string;
-  className?: string;
-}
-
-export default function ErrorMessage({ 
-  title = 'Error', 
-  message,
-  className 
-}: ErrorMessageProps) {
-  return (
-    <div className={cn(
-      'rounded-lg bg-red-50 p-4',
-      className
-    )}>
-      <div className="flex items-center">
-        <AlertCircle className="h-5 w-5 text-red-400" />
-        <div className="ml-3">
-          <h3 className="text-sm font-medium text-red-800">{title}</h3>
-          <p className="mt-1 text-sm text-red-700">{message}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
 import React from 'react';
+import { AlertTriangle } from 'lucide-react';
 
 interface ErrorMessageProps {
   message: string;
@@ -36,8 +8,9 @@ interface ErrorMessageProps {
 
 export default function ErrorMessage({ message }: ErrorMessageProps) {
   return (
-    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative" role="alert">
-      <span className="block sm:inline">{message}</span>
+    <div className="bg-red-50 border border-red-200 rounded-md p-4 flex items-center space-x-2">
+      <AlertTriangle className="h-5 w-5 text-red-500" />
+      <p className="text-red-700">{message}</p>
     </div>
   );
 }

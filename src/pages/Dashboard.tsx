@@ -10,8 +10,61 @@ import UpcomingEvents from '../components/dashboard/UpcomingEvents';
 
 export default function Dashboard() {
   const [user] = useAtom(userAtom);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
+  const [activities, setActivities] = React.useState([]);
+  const [stats, setStats] = React.useState([]);
+  const [events, setEvents] = React.useState([]);
 
-  const activities = [
+  React.useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        setIsLoading(true);
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        setActivities([
+          {
+            id: '1',
+            type: 'LEAVE_REQUEST',
+            title: 'Leave Request Approved',
+            timestamp: new Date().toISOString(),
+            user: { name: user?.name || 'Anonymous' }
+          }
+        ]);
+
+        setStats([
+          { title: 'Total Employees', value: '48', icon: <Users className="h-6 w-6" /> },
+          { title: 'Attendance Rate', value: '96%', icon: <Clock className="h-6 w-6" /> },
+          { title: 'Leave Requests', value: '12', icon: <Calendar className="h-6 w-6" /> },
+          { title: 'Goals', value: '8', icon: <Target className="h-6 w-6" /> }
+        ]);
+
+        setEvents([
+          {
+            id: '1',
+            title: 'Team Meeting',
+            startTime: new Date().toISOString(),
+            type: 'MEETING'
+          }
+        ]);
+      } catch (err) {
+        setError('Failed to load dashboard data');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchDashboardData();
+  }, [user]);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
     {
       id: '1',
       type: 'LEAVE_REQUEST',
