@@ -6,6 +6,13 @@ import Organizations from './pages/Organizations';
 import Login from './pages/Login';
 import Settings from './pages/Settings';
 import DashboardLayout from './components/layout/DashboardLayout';
+import Users from './pages/Users';
+import TimeAndAttendance from './pages/TimeAndAttendance';
+import LeaveManagement from './pages/LeaveManagement';
+import Performance from './pages/Performance';
+import Training from './pages/Training';
+import Documents from './pages/Documents';
+import Reports from './pages/Reports';
 
 export default function App() {
   return (
@@ -15,6 +22,13 @@ export default function App() {
         <Route index element={<Dashboard />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="organizations" element={<Organizations />} />
+        <Route path="users" element={<Users />} />
+        <Route path="attendance" element={<TimeAndAttendance />} />
+        <Route path="leave" element={<LeaveManagement />} />
+        <Route path="performance/*" element={<Performance />} />
+        <Route path="training" element={<Training />} />
+        <Route path="documents" element={<Documents />} />
+        <Route path="reports" element={<Reports />} />
         <Route path="settings" element={<Settings />} />
       </Route>
     </Routes>
