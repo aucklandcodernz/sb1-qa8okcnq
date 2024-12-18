@@ -15,48 +15,57 @@ const editEmployeeSchema = z.object({
   email: z.string().email('Invalid email address'),
   phone: z.string().optional(),
   role: z.enum(['HR_MANAGER', 'DEPT_MANAGER', 'SUPERVISOR', 'EMPLOYEE']),
-  departmentId: z.string().min(1, 'Department is required'),
+  department: z.string().min(1, 'Department is required'),
   position: z.string().min(2, 'Position is required'),
   workLocation: z.string().optional(),
   workPhone: z.string().optional(),
-  workEmail: z.string().email('Invalid work email'),
+  workEmail: z.string().email('Invalid work email').optional(),
 });
+
+const departments = [
+  { id: 'eng', name: 'Engineering' },
+  { id: 'hr', name: 'Human Resources' },
+  { id: 'sales', name: 'Sales' },
+  { id: 'marketing', name: 'Marketing' },
+  { id: 'finance', name: 'Finance' }
+];
 
 export default function EditEmployeeForm() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [employeeProfiles] = useAtom(employeeProfilesAtom);
+  const [employeeProfiles, setEmployeeProfiles] = useAtom(employeeProfilesAtom);
   const employee = employeeProfiles[id];
-
-  if (!employee) {
-    return <LoadingSpinner />;
-  }
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(editEmployeeSchema),
     defaultValues: {
-      firstName: employee.firstName,
-      lastName: employee.lastName,
-      email: employee.email,
-      phone: employee.phone,
-      role: employee.role,
-      departmentId: employee.departmentId,
-      position: employee.position,
-      workLocation: employee.workLocation,
-      workPhone: employee.workPhone,
-      workEmail: employee.workEmail,
+      firstName: employee?.firstName || '',
+      lastName: employee?.lastName || '',
+      email: employee?.email || '',
+      phone: employee?.phone || '',
+      role: employee?.role || 'EMPLOYEE',
+      department: employee?.department || '',
+      position: employee?.position || '',
+      workLocation: employee?.workLocation || '',
+      workPhone: employee?.workPhone || '',
+      workEmail: employee?.workEmail || '',
     }
   });
 
   const onSubmit = (data) => {
-    console.log('Form submitted:', data);
-    // Handle form submission
+    setEmployeeProfiles(prev => ({
+      ...prev,
+      [id]: {
+        ...prev[id],
+        ...data
+      }
+    }));
     navigate('/team');
   };
 
-  const onCancel = () => {
-    navigate('/team');
-  };
+  if (!employee) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
@@ -108,17 +117,16 @@ export default function EditEmployeeForm() {
         <div>
           <label className="block text-sm font-medium text-gray-700">Department</label>
           <select
-            {...register('departmentId')}
+            {...register('department')}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           >
             <option value="">Select Department</option>
-            <option value="dept1">Engineering</option>
-            <option value="dept2">Marketing</option>
-            <option value="dept3">Sales</option>
-            <option value="dept4">Human Resources</option>
+            {departments.map(dept => (
+              <option key={dept.id} value={dept.id}>{dept.name}</option>
+            ))}
           </select>
-          {errors.departmentId && (
-            <p className="mt-1 text-sm text-red-600">{errors.departmentId.message}</p>
+          {errors.department && (
+            <p className="mt-1 text-sm text-red-600">{errors.department.message}</p>
           )}
         </div>
       </div>
@@ -154,7 +162,7 @@ export default function EditEmployeeForm() {
       <div className="flex justify-end space-x-3 pt-4">
         <button
           type="button"
-          onClick={onCancel}
+          onClick={() => navigate('/team')}
           className="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
         >
           Cancel
