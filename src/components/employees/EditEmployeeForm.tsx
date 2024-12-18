@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import FormField from '../ui/FormField';
 import { useAtom } from 'jotai';
 import { employeeProfilesAtom } from '../../lib/employees';
+import { userAtom } from '../../atoms/user';
 import LoadingSpinner from '../ui/LoadingSpinner';
 
 const editEmployeeSchema = z.object({
