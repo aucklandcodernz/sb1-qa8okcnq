@@ -56,7 +56,7 @@ export default function TimesheetEntry({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <div className="space-y-4 timesheet-entry">
       <div className="grid grid-cols-2 gap-4">
         <FormField
           label="Start Time"
@@ -169,6 +169,6 @@ export default function TimesheetEntry({
           Save Entry
         </button>
       </div>
-    </form>
+    </div>
   );
 }
