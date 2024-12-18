@@ -23,6 +23,8 @@ interface EmployeeTimesheetFormProps {
   defaultValues?: Partial<Timesheet>;
   projects?: { id: string; name: string }[];
   tasks?: { id: string; name: string }[];
+  employees?: { id: string; name: string }[];
+  isOrgAdmin?: boolean;
 }
 
 export default function EmployeeTimesheetForm({
@@ -32,7 +34,10 @@ export default function EmployeeTimesheetForm({
   defaultValues,
   projects,
   tasks,
+  employees = [],
+  isOrgAdmin = false,
 }: EmployeeTimesheetFormProps) {
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState(employeeId);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [entries, setEntries] = useState<TimeEntry[]>(defaultValues?.entries || []);
 
@@ -79,6 +84,14 @@ export default function EmployeeTimesheetForm({
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
+      {isOrgAdmin && (
+        <FormSelect
+          label="Employee"
+          value={selectedEmployeeId}
+          onChange={(e) => setSelectedEmployeeId(e.target.value)}
+          options={employees.map(emp => ({ value: emp.id, label: emp.name }))}
+        />
+      )}
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">

@@ -101,6 +101,8 @@ export default function TimeAndAttendance() {
             employeeId={user?.id || ''}
             onSubmit={handleTimesheetSubmit}
             onCancel={() => setShowTimesheetForm(false)}
+            isOrgAdmin={user?.role === 'ORG_ADMIN'}
+            employees={employees}
             projects={[
               { id: 'p1', name: 'Project A' },
               { id: 'p2', name: 'Project B' },
