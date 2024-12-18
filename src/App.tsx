@@ -7,7 +7,8 @@ import Organizations from './pages/Organizations';
 import OrganizationDetails from './pages/OrganizationDetails';
 import Payroll from './pages/Payroll';
 import LoadingSpinner from './components/ui/LoadingSpinner';
-import Team from './pages/Team'; // Added import for Team component
+import Team from './pages/Team';
+import EmployeeProfile from './pages/EmployeeProfile'; // Added import for Team component
 
 export default function App() {
   return (
@@ -21,7 +22,8 @@ export default function App() {
           <Route path="/organizations" element={<Organizations />} />
           <Route path="/organizations/:id" element={<OrganizationDetails />} />
           <Route path="/organizations/:id/payroll/*" element={<Payroll />} />
-          <Route path="/team" element={<Team />} /> {/* Added Team route */}
+          <Route path="/team" element={<Team />} />
+          <Route path="/employees/:id" element={<EmployeeProfile />} /> {/* Added Team route */}
         </Route>
 
         <Route path="*" element={<Navigate to="/login" replace />} />
