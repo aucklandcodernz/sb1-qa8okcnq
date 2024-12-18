@@ -30,6 +30,7 @@ export default function App() {
           <Route path="/attendance" element={<TimeAndAttendance />} />
           <Route path="/leave" element={<LeaveManagement />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/performance/*" element={<Performance />} />
           <Route path="/employees/:id/*" element={<EmployeeProfile />}>
             <Route path="documents" element={<EmployeeDocuments />} />
             <Route path="attendance" element={<EmployeeAttendance />} />
