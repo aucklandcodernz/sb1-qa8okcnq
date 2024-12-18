@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Organizations from './pages/Organizations';
 import OrganizationDetails from './pages/OrganizationDetails';
@@ -17,22 +17,24 @@ import Reports from './pages/Reports';
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="login" element={<Login />} />
-      <Route element={<DashboardLayout />}>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="organizations" element={<Organizations />} />
-        <Route path="organizations/:id" element={<OrganizationDetails />} />
-        <Route path="users" element={<Users />} />
-        <Route path="attendance" element={<TimeAndAttendance />} />
-        <Route path="leave" element={<LeaveManagement />} />
-        <Route path="performance/*" element={<Performance />} />
-        <Route path="training" element={<Training />} />
-        <Route path="documents" element={<Documents />} />
-        <Route path="reports" element={<Reports />} />
-        <Route path="settings" element={<Settings />} />
-      </Route>
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route element={<DashboardLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/organizations" element={<Organizations />} />
+          <Route path="/organizations/:id" element={<OrganizationDetails />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/attendance" element={<TimeAndAttendance />} />
+          <Route path="/leave" element={<LeaveManagement />} />
+          <Route path="/performance/*" element={<Performance />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/documents" element={<Documents />} />
+          <Route path="/reports" element={<Reports />} />
+          <Route path="/settings" element={<Settings />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
