@@ -13,8 +13,13 @@ const editEmployeeSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
   lastName: z.string().min(2, 'Last name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
+  phone: z.string().optional(),
   role: z.enum(['HR_MANAGER', 'DEPT_MANAGER', 'SUPERVISOR', 'EMPLOYEE']),
   departmentId: z.string().min(1, 'Department is required'),
+  position: z.string().min(2, 'Position is required'),
+  workLocation: z.string().optional(),
+  workPhone: z.string().optional(),
+  workEmail: z.string().email('Invalid work email'),
 });
 
 export default function EditEmployeeForm() {
@@ -33,8 +38,13 @@ export default function EditEmployeeForm() {
       firstName: employee.firstName,
       lastName: employee.lastName,
       email: employee.email,
+      phone: employee.phone,
       role: employee.role,
       departmentId: employee.departmentId,
+      position: employee.position,
+      workLocation: employee.workLocation,
+      workPhone: employee.workPhone,
+      workEmail: employee.workEmail,
     }
   });
 
@@ -49,8 +59,8 @@ export default function EditEmployeeForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-2xl mx-auto p-6">
-      <div className="grid grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <FormField
           label="First Name"
           {...register('firstName')}
@@ -63,45 +73,85 @@ export default function EditEmployeeForm() {
         />
       </div>
 
-      <FormField
-        label="Email"
-        type="email"
-        {...register('email')}
-        error={errors.email?.message}
-      />
-
-      <div>
-        <label className="block text-sm font-medium text-gray-700">Role</label>
-        <select
-          {...register('role')}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-        >
-          <option value="HR_MANAGER">HR Manager</option>
-          <option value="DEPT_MANAGER">Department Manager</option>
-          <option value="SUPERVISOR">Supervisor</option>
-          <option value="EMPLOYEE">Employee</option>
-        </select>
-        {errors.role && (
-          <p className="mt-1 text-sm text-red-600">{errors.role.message}</p>
-        )}
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <FormField
+          label="Email"
+          type="email"
+          {...register('email')}
+          error={errors.email?.message}
+        />
+        <FormField
+          label="Phone"
+          type="tel"
+          {...register('phone')}
+          error={errors.phone?.message}
+        />
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700">Department</label>
-        <select
-          {...register('departmentId')}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-        >
-          <option value="">Select Department</option>
-          <option value="dept1">Department 1</option>
-          <option value="dept2">Department 2</option>
-        </select>
-        {errors.departmentId && (
-          <p className="mt-1 text-sm text-red-600">{errors.departmentId.message}</p>
-        )}
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Role</label>
+          <select
+            {...register('role')}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          >
+            <option value="HR_MANAGER">HR Manager</option>
+            <option value="DEPT_MANAGER">Department Manager</option>
+            <option value="SUPERVISOR">Supervisor</option>
+            <option value="EMPLOYEE">Employee</option>
+          </select>
+          {errors.role && (
+            <p className="mt-1 text-sm text-red-600">{errors.role.message}</p>
+          )}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Department</label>
+          <select
+            {...register('departmentId')}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          >
+            <option value="">Select Department</option>
+            <option value="dept1">Engineering</option>
+            <option value="dept2">Marketing</option>
+            <option value="dept3">Sales</option>
+            <option value="dept4">Human Resources</option>
+          </select>
+          {errors.departmentId && (
+            <p className="mt-1 text-sm text-red-600">{errors.departmentId.message}</p>
+          )}
+        </div>
       </div>
 
-      <div className="flex justify-end space-x-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <FormField
+          label="Position"
+          {...register('position')}
+          error={errors.position?.message}
+        />
+        <FormField
+          label="Work Location"
+          {...register('workLocation')}
+          error={errors.workLocation?.message}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <FormField
+          label="Work Phone"
+          type="tel"
+          {...register('workPhone')}
+          error={errors.workPhone?.message}
+        />
+        <FormField
+          label="Work Email"
+          type="email"
+          {...register('workEmail')}
+          error={errors.workEmail?.message}
+        />
+      </div>
+
+      <div className="flex justify-end space-x-3 pt-4">
         <button
           type="button"
           onClick={onCancel}
