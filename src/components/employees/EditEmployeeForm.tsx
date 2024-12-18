@@ -33,6 +33,11 @@ const departments = [
 export default function EditEmployeeForm() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [user] = useAtom(userAtom);
+  
+  if (!user) {
+    return <Navigate to="/login" state={{ from: `/employees/${id}/edit` }} />;
+  }
   const [employeeProfiles, setEmployeeProfiles] = useAtom(employeeProfilesAtom);
   const employee = employeeProfiles[id];
 
