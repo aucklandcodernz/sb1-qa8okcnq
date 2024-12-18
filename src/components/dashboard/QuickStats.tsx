@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useAtom } from 'jotai';
 import { Clock, Calendar, Users, Target } from 'lucide-react';
@@ -49,24 +50,32 @@ export default function QuickStats() {
         return (
           <div
             key={stat.name}
-            className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+            className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden"
           >
-            <div className="flex items-center p-2 hover:bg-gray-50 rounded-lg transition-colors">
-              <div className={cn('p-3 rounded-lg', stat.bgColor)}>
-                <Icon className={cn('h-6 w-6', stat.color)} />
-              </div>
-              <div className="ml-4 flex-grow">
-                <p className="text-sm font-medium text-gray-600">{stat.name}</p>
-                <div className="flex items-baseline justify-between">
-                  <p className="text-2xl font-semibold text-gray-900">{stat.value}</p>
-                  {stat.change !== 0 && (
-                    <span className={cn(
-                      'ml-2 text-sm flex items-center',
-                      stat.change > 0 ? 'text-green-600' : 'text-red-600'
-                    )}>
-                      {stat.change > 0 ? '↑' : '↓'} {Math.abs(stat.change)}%
-                    </span>
-                  )}
+            <div className="p-6">
+              <div className="flex items-center space-x-4">
+                <div className={cn('p-3 rounded-xl', stat.bgColor)}>
+                  <Icon className={cn('h-6 w-6', stat.color)} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-500 truncate">
+                    {stat.name}
+                  </p>
+                  <div className="flex items-baseline justify-between mt-1">
+                    <p className="text-2xl font-semibold text-gray-900">
+                      {stat.value}
+                    </p>
+                    {stat.change !== 0 && (
+                      <span className={cn(
+                        'inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium',
+                        stat.change > 0 
+                          ? 'text-green-800 bg-green-100' 
+                          : 'text-red-800 bg-red-100'
+                      )}>
+                        {stat.change > 0 ? '↑' : '↓'} {Math.abs(stat.change)}%
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
