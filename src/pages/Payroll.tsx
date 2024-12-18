@@ -12,9 +12,14 @@ import PayrollCompliance from './payroll/PayrollCompliance';
 
 export default function Payroll() {
   const { id: organizationId } = useParams();
+  const [user] = useAtom(userAtom);
 
   if (!organizationId) {
     return <Navigate to="/organizations" replace />;
+  }
+
+  if (user?.role !== 'ORG_ADMIN' && user?.role !== 'SUPER_ADMIN') {
+    return <Navigate to="/dashboard" replace />;
   }
 
   return (
