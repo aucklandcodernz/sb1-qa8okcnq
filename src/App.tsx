@@ -10,6 +10,7 @@ import LoadingSpinner from './components/ui/LoadingSpinner';
 import Team from './pages/Team';
 import EmployeeProfile from './pages/EmployeeProfile'; 
 import EditEmployeeForm from './components/employees/EditEmployeeForm';
+import EmployeeDocuments from './pages/employee/EmployeeDocuments';
 
 export default function App() {
   return (
