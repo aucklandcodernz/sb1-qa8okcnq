@@ -1,6 +1,8 @@
 import React from 'react';
 import { useAtom } from 'jotai';
 import { payrollSettingsAtom } from '../../lib/payroll';
+import { checkMinimumWageCompliance } from '../../lib/payroll/minimumWage';
+import MinimumWageAlert from '../../components/payroll/MinimumWageAlert';
 import { userAtom } from '../../lib/auth';
 
 export default function PayrollSettings() {
