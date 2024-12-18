@@ -1,4 +1,3 @@
-
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { userAtom } from './lib/auth';
@@ -8,6 +7,7 @@ import Pricing from './pages/Pricing';
 import RegisterOrganization from './pages/RegisterOrganization';
 import LoadingSpinner from './components/ui/LoadingSpinner';
 import { Suspense } from 'react';
+import Dashboard from './pages/Dashboard'; // Imported Dashboard component
 
 const AuthenticatedRoute = ({ children }: { children: React.ReactNode }) => {
   const [user] = useAtom(userAtom);
