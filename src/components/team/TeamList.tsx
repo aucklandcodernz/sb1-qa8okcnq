@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { UserCircle, Mail, Phone, Building2, Calendar } from 'lucide-react';
+import { UserCircle, Mail, Phone, Building2, Calendar, Plus } from 'lucide-react';
+import { useAuth } from '../../hooks/useAuth';
 import { format } from 'date-fns';
 import { EmployeeProfile } from '../../types/employee';
 import { cn } from '../../lib/utils';
@@ -77,12 +78,22 @@ export default function TeamList({ employees, onEmployeeClick }: TeamListProps) 
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Link
-                      to={`/employees/${employee.id}`}
-                      className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                      View Profile
-                    </Link>
+                    <div className="flex space-x-2">
+                      <Link
+                        to={`/employees/${employee.id}`}
+                        className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      >
+                        View Profile
+                      </Link>
+                      {['SUPER_ADMIN', 'ORG_ADMIN', 'HR_MANAGER', 'DEPT_MANAGER'].includes(user?.role || '') && (
+                        <Link
+                          to={`/employees/${employee.id}/edit`}
+                          className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        >
+                          Edit
+                        </Link>
+                      )}
+                    </div>
                   </div>
                 </div>
               </li>
