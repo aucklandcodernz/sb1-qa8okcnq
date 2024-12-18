@@ -13,6 +13,7 @@ import LeaveManagementSection from '../components/leave/LeaveManagementSection';
 import EmployeePayroll from './employee/EmployeePayroll';
 import EmployeeTraining from './employee/EmployeeTraining';
 import EmployeeVisa from './employee/EmployeeVisa';
+import EditEmployeeForm from '../components/employees/EditEmployeeForm'; // Added import
 
 export default function EmployeeProfile() {
   const { id } = useParams<{ id: string }>();
