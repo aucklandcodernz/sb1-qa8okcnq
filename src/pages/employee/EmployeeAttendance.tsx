@@ -15,7 +15,9 @@ interface EmployeeAttendanceProps {
   employeeId: string;
 }
 
-export default function EmployeeAttendance({ employeeId }: EmployeeAttendanceProps) {
+export default function EmployeeAttendance() {
+  const { id } = useParams();
+  const employeeId = id;
   const [showTimesheetForm, setShowTimesheetForm] = useState(false);
   const [user] = useAtom(userAtom);
   const [timesheets] = useAtom(timesheetsAtom);
