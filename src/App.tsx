@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Organizations from './pages/Organizations';
+import TimeAndAttendance from './pages/TimeAndAttendance';
 import OrganizationDetails from './pages/OrganizationDetails';
 import Payroll from './pages/Payroll';
 import LoadingSpinner from './components/ui/LoadingSpinner';
