@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Reports from './pages/Reports';
 import Settings from './pages/Settings';
+import Recruitment from './pages/Recruitment';
 import { Suspense } from 'react';
 import Layout from './components/layout/Layout';
 import LeaveManagement from './pages/LeaveManagement';
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/organizations" element={<Organizations />} />
           <Route path="/organizations/:id" element={<OrganizationDetails />} />
           <Route path="/organizations/:id/payroll/*" element={<Payroll />} />
+          <Route path="/organizations/:id/recruitment/*" element={<Recruitment />} />
           <Route path="/attendance" element={<TimeAndAttendance />} />
           <Route path="/leave" element={<LeaveManagement />} />
           <Route path="/team" element={<Team />} />
