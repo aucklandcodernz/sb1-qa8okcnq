@@ -21,6 +21,7 @@ import EmployeeProfile from './pages/EmployeeProfile';
 import EditEmployeeForm from './components/employees/EditEmployeeForm';
 import EmployeeDocuments from './pages/employee/EmployeeDocuments';
 import EmployeeAttendance from './pages/employee/EmployeeAttendance';
+import EmployeeQualifications from './pages/employee/EmployeeQualifications';
 
 export default function App() {
   return (
