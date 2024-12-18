@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { AlertTriangle, DollarSign, Calendar } from 'lucide-react';
 import { format } from 'date-fns';
@@ -20,7 +19,7 @@ export default function MinimumWageAlert({
 
   return (
     <div className={cn(
-      'rounded-md bg-red-50 p-4',
+      'rounded-lg bg-red-50 border border-red-100 p-4 shadow-sm mb-6',
       className
     )}>
       <div className="flex">
