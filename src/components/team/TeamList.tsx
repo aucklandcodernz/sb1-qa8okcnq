@@ -5,6 +5,8 @@ import { useAuth } from '../../hooks/useAuth';
 import { format } from 'date-fns';
 import { EmployeeProfile } from '../../types/employee';
 import { cn } from '../../lib/utils';
+import { useAtom } from 'jotai';
+import { userAtom } from '../../lib/auth';
 
 interface TeamListProps {
   employees: EmployeeProfile[];
@@ -25,6 +27,7 @@ const employmentTypeColors = {
 };
 
 export default function TeamList({ employees, onEmployeeClick }: TeamListProps) {
+  const [user] = useAtom(userAtom);
   return (
     <div className="bg-white shadow-sm rounded-lg">
       <div className="px-4 py-5 sm:p-6">
