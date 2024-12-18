@@ -57,13 +57,11 @@ function EmployeeProfileContent() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-gray-900">Employee Profile</h2>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-gray-500">View and manage employee information</p>
         </div>
         <span className={`px-3 py-1 text-sm rounded-full ${profile.status === 'ACTIVE' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
           {profile.status}
         </span>
-          View and manage employee information
-        </p>
       </div>
 
       <div className="bg-white shadow-sm rounded-lg overflow-hidden">
