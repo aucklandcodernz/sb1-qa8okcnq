@@ -1,5 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
+import { useAtom } from 'jotai';
+import { userAtom } from '../atoms/user';
 import PayrollNav from '../components/payroll/PayrollNav';
 import PayrollDashboard from './payroll/PayrollDashboard';
 import PayProcessing from './payroll/PayProcessing';
