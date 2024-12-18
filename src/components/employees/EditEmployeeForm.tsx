@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -35,7 +35,6 @@ export default function EditEmployeeForm() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [user] = useAtom(userAtom);
-  const [isSaving, setIsSaving] = useState(false);
   
   if (!user) {
     return <Navigate to="/login" state={{ from: `/employees/${id}/edit` }} />;
@@ -59,23 +58,15 @@ export default function EditEmployeeForm() {
     }
   });
 
-  const onSubmit = async (data) => {
-    try {
-      setIsSaving(true);
-      setEmployeeProfiles(prev => ({
-        ...prev,
-        [id]: {
-          ...prev[id],
-          ...data
-        }
-      }));
-      await new Promise(resolve => setTimeout(resolve, 500)); // Simulate API call
-      navigate('/team');
-    } catch (error) {
-      console.error('Error saving employee:', error);
-    } finally {
-      setIsSaving(false);
-    }
+  const onSubmit = (data) => {
+    setEmployeeProfiles(prev => ({
+      ...prev,
+      [id]: {
+        ...prev[id],
+        ...data
+      }
+    }));
+    navigate('/team');
   };
 
   if (!employee) {
@@ -186,7 +177,7 @@ export default function EditEmployeeForm() {
           type="submit"
           className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
         >
-          {isSaving ? 'Saving...' : 'Save Changes'}
+          Save Changes
         </button>
       </div>
     </form>
