@@ -69,3 +69,16 @@ export default function Organizations() {
     </div>
   );
 }
+import React from 'react';
+import OrganizationList from '../components/organizations/OrganizationList';
+import CreateOrganizationForm from '../components/organizations/CreateOrganizationForm';
+
+export default function Organizations() {
+  return (
+    <div className="space-y-6 p-6">
+      <h1 className="text-2xl font-bold">Organizations</h1>
+      <OrganizationList />
+      <CreateOrganizationForm />
+    </div>
+  );
+}
