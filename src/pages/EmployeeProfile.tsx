@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Routes, Route, Navigate } from 'react-router-dom';
+import { useParams, Outlet, Routes, Route, Navigate } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { employeeProfilesAtom } from '../lib/employees';
 import { userAtom } from '../lib/auth';
@@ -13,8 +13,19 @@ import LeaveManagementSection from '../components/leave/LeaveManagementSection';
 import EmployeePayroll from './employee/EmployeePayroll';
 import EmployeeTraining from './employee/EmployeeTraining';
 import EmployeeVisa from './employee/EmployeeVisa';
+import EditEmployeeForm from '../components/employees/EditEmployeeForm'; // Added import
+
+import { ErrorBoundary } from '../components/layout/ErrorBoundary';
 
 export default function EmployeeProfile() {
+  return (
+    <ErrorBoundary>
+      <EmployeeProfileContent />
+    </ErrorBoundary>
+  );
+}
+
+function EmployeeProfileContent() {
   const { id } = useParams<{ id: string }>();
   const [employeeProfiles] = useAtom(employeeProfilesAtom);
   const [user] = useAtom(userAtom);
@@ -22,11 +33,7 @@ export default function EmployeeProfile() {
   const profile = id ? employeeProfiles[id] : null;
 
   if (!profile) {
-    return (
-      <div className="text-center py-12">
-        <p className="text-gray-500">Employee profile not found</p>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   // Check if user has access to this employee's profile
@@ -47,11 +54,14 @@ export default function EmployeeProfile() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold text-gray-900">Employee Profile</h2>
-        <p className="mt-1 text-sm text-gray-500">
-          View and manage employee information
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900">Employee Profile</h2>
+          <p className="mt-1 text-sm text-gray-500">View and manage employee information</p>
+        </div>
+        <span className={`px-3 py-1 text-sm rounded-full ${profile.status === 'ACTIVE' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
+          {profile.status}
+        </span>
       </div>
 
       <div className="bg-white shadow-sm rounded-lg overflow-hidden">
@@ -73,6 +83,7 @@ export default function EmployeeProfile() {
             )}
             <Route path="*" element={<Navigate to={`/employees/${id}`} replace />} />
           </Routes>
+          <Outlet />
         </div>
       </div>
     </div>

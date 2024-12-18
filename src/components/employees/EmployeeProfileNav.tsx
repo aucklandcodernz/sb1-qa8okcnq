@@ -93,7 +93,7 @@ export default function EmployeeProfileNav({ employeeId }: EmployeeProfileNavPro
 
   return (
     <nav className="border-b border-gray-200">
-      <div className="flex -mb-px overflow-x-auto">
+      <div className="flex -mb-px overflow-x-auto transition-all duration-200"> {/* Added transition */}
         {visibleTabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = tab.exact 
