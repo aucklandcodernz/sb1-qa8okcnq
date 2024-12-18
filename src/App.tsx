@@ -8,7 +8,8 @@ import OrganizationDetails from './pages/OrganizationDetails';
 import Payroll from './pages/Payroll';
 import LoadingSpinner from './components/ui/LoadingSpinner';
 import Team from './pages/Team';
-import EmployeeProfile from './pages/EmployeeProfile'; // Added import for Team component
+import EmployeeProfile from './pages/EmployeeProfile'; 
+import EditEmployeeForm from './components/employees/EditEmployeeForm';
 
 export default function App() {
   return (
