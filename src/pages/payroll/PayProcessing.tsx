@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { Button } from '../../components/ui/Button';
 import { Select } from '../../components/ui/Select';
-import { DataTable } from '../../components/ui/DataTable';
+import DataTable from '../../components/ui/DataTable';
 
 export default function PayProcessing() {
   const [status, setStatus] = useState('all');
