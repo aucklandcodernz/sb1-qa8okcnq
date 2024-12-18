@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Event } from '../../types/event';
 import { format } from 'date-fns';
@@ -6,7 +7,7 @@ interface UpcomingEventsProps {
   events: Event[];
 }
 
-export default function UpcomingEvents({ events }: UpcomingEventsProps) {
+export function UpcomingEvents({ events }: UpcomingEventsProps) {
   return (
     <div className="bg-white rounded-lg shadow p-4">
       <h2 className="text-lg font-semibold mb-4">Upcoming Events</h2>
@@ -34,40 +35,4 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
   );
 }
 
-
-function OrgAdminDashboard() {
-  const [events, setEvents] = useState<Event[]>([]);
-
-  useEffect(() => {
-    // Replace with actual data fetching logic
-    const mockEvents = [
-      {
-        id: '1',
-        title: 'Team Meeting',
-        startTime: new Date().toISOString(),
-        type: 'MEETING'
-      },
-      {
-        id: '2',
-        title: 'Performance Reviews',
-        startTime: new Date(Date.now() + 86400000).toISOString(),
-        type: 'REVIEW'
-      },
-      {
-        id: '3',
-        title: 'Training Workshop',
-        startTime: new Date(Date.now() + 172800000).toISOString(),
-        type: 'TRAINING'
-      }
-    ];
-    setEvents(mockEvents);
-  }, []);
-
-  return (
-    <div>
-      <UpcomingEvents events={events} />
-    </div>
-  );
-}
-
-export default OrgAdminDashboard;
+export default UpcomingEvents;
