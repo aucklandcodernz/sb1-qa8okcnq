@@ -31,23 +31,28 @@ interface RegisterOrganizationData {
 
 export const authService = {
   async login(credentials: LoginCredentials): Promise<User> {
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Mock validation
-    if (!credentials.email || !credentials.password) {
-      throw new Error('Invalid credentials');
-    }
+    try {
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Mock validation
+      if (!credentials.email || !credentials.password) {
+        throw new Error('Invalid credentials');
+      }
 
-    // Return mock user data
-    return {
-      id: 'org-admin-1',
-      email: credentials.email,
-      firstName: 'John',
-      lastName: 'Doe',
-      role: 'ORG_ADMIN',
-      organizationId: '1',
-    };
+      // Return mock user data
+      return {
+        id: 'org-admin-1',
+        email: credentials.email,
+        firstName: 'John',
+        lastName: 'Doe',
+        role: 'ORG_ADMIN',
+        organizationId: '1',
+      };
+    } catch (error) {
+      console.error('Login error:', error);
+      throw error;
+    }
   },
 
   async registerOrganization(data: RegisterOrganizationData): Promise<{ organization: Organization; user: User }> {
