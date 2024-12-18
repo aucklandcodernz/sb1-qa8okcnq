@@ -10,7 +10,7 @@ export default defineConfig({
     hmr: {
       clientPort: 443,
       path: '/@vite/client',
-      host: process.env.REPL_SLUG + '.repl.co'
+      host: process.env.REPL_SLUG + '.id.repl.co'
     }
   }
 })
