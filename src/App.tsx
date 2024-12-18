@@ -47,6 +47,7 @@ export default function App() {
           <Route path="/employees/:id/*" element={<EmployeeProfile />}>
             <Route path="documents" element={<EmployeeDocuments />} />
             <Route path="attendance" element={<EmployeeAttendance />} />
+            <Route path="qualifications" element={<EmployeeQualifications />} />
             <Route path="edit" element={<EditEmployeeForm />} />
           </Route>
         </Route>
