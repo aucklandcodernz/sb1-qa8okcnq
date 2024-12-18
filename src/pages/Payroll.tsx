@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { userAtom } from '../atoms/user';
+import LoadingSpinner from '../components/ui/LoadingSpinner';
 import PayrollNav from '../components/payroll/PayrollNav';
 import PayrollDashboard from './payroll/PayrollDashboard';
 import PayProcessing from './payroll/PayProcessing';
@@ -15,6 +17,17 @@ import PayrollCompliance from './payroll/PayrollCompliance';
 export default function Payroll() {
   const { id: organizationId } = useParams();
   const [user] = useAtom(userAtom);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    // Simulate auth check completion
+    const timer = setTimeout(() => setIsLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   if (!organizationId) {
     return <Navigate to="/organizations" replace />;
