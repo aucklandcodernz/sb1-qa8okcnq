@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../lib/auth';
@@ -14,6 +14,11 @@ export default function Team() {
   const [employeeProfiles] = useAtom(employeeProfilesAtom);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string>>({});
+  const navigate = useNavigate();
+
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
 
   // Filter employees based on organization
   const organizationEmployees = Object.values(employeeProfiles).filter(
