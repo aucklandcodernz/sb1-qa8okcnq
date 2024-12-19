@@ -52,7 +52,8 @@ export default function App() {
             <Route path="documents" element={<EmployeeDocuments />} />
             <Route path="attendance" element={<EmployeeAttendance />} />
             <Route path="qualifications" element={<EmployeeQualifications />} />
-            <Route path="training" element={<EmployeeTraining employeeId="emp1" />} /> {/* Added EmployeeTraining route */}
+            <Route path="training" element={<EmployeeTraining employeeId="emp1" />} />
+            <Route path="onboarding" element={<OnboardingDashboard employeeId={id} />} />
             <Route path="edit" element={<EditEmployeeForm />} />
           </Route>
         </Route>

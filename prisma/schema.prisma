@@ -43,6 +43,10 @@ model Onboarding {
   employee        Employee  @relation(fields: [employeeId], references: [id])
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+
+  @@index([employeeId])
+  @@index([status])
+  @@index([startDate])
 }
 
 model OnboardingTask {

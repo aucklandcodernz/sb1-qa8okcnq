@@ -32,6 +32,12 @@ export default function EmployeeProfileNav({ employeeId }: EmployeeProfileNavPro
       roles: ['SUPER_ADMIN', 'ORG_ADMIN', 'HR_MANAGER', 'DEPT_MANAGER', 'SUPERVISOR', 'EMPLOYEE']
     },
     {
+      name: 'Onboarding',
+      href: `/employees/${employeeId}/onboarding`,
+      icon: BadgeCheck, // Placeholder icon
+      roles: ['SUPER_ADMIN', 'ORG_ADMIN', 'HR_MANAGER', 'EMPLOYEE'] // Placeholder roles
+    },
+    {
       name: 'Documents',
       href: `/employees/${employeeId}/documents`,
       icon: FileText,
