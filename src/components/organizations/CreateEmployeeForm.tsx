@@ -1,5 +1,11 @@
-import React, { useState } from 'react';
-import { useEmployeeData } from '../../hooks/useEmployeeData';
+
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { employeeSchema } from '../../lib/validations/employee';
+import type { CreateEmployeeInput } from '../../lib/validations/employee';
+import FormField from '../ui/FormField';
+import FormSelect from '../ui/FormSelect';
 
 interface CreateEmployeeFormProps {
   organizationId: string;
@@ -7,39 +13,26 @@ interface CreateEmployeeFormProps {
 }
 
 export default function CreateEmployeeForm({ organizationId, onSuccess }: CreateEmployeeFormProps) {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    position: '',
-    department: ''
+  const { register, handleSubmit, formState: { errors } } = useForm<CreateEmployeeInput>({
+    resolver: zodResolver(employeeSchema),
+    defaultValues: {
+      organizationId,
+      employmentType: 'FULL_TIME',
+      status: 'ACTIVE',
+      startDate: new Date(),
+    }
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: CreateEmployeeInput) => {
     try {
       const response = await fetch('/api/employees', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          ...formData,
-          organizationId
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to create employee');
-      }
-
+      
+      if (!response.ok) throw new Error('Failed to create employee');
+      
       onSuccess();
     } catch (error) {
       console.error('Error creating employee:', error);
@@ -47,88 +40,60 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Create
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 p-4">
-      <div>
-        <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
-          First Name
-        </label>
-        <input
-          type="text"
-          id="firstName"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-          required
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <FormField
+          label="First Name"
+          {...register('firstName')}
+          error={errors.firstName?.message}
         />
-      </div>
-
-      <div>
-        <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
-          Last Name
-        </label>
-        <input
-          type="text"
-          id="lastName"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-          required
+        
+        <FormField
+          label="Last Name"
+          {...register('lastName')}
+          error={errors.lastName?.message}
         />
-      </div>
-
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-          Email
-        </label>
-        <input
+        
+        <FormField
+          label="Email"
           type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-          required
+          {...register('email')}
+          error={errors.email?.message}
+        />
+        
+        <FormField
+          label="Position"
+          {...register('position')}
+          error={errors.position?.message}
+        />
+        
+        <FormSelect
+          label="Employment Type"
+          {...register('employmentType')}
+          error={errors.employmentType?.message}
+          options={[
+            { value: 'FULL_TIME', label: 'Full Time' },
+            { value: 'PART_TIME', label: 'Part Time' },
+            { value: 'CONTRACT', label: 'Contract' },
+          ]}
+        />
+        
+        <FormField
+          label="Start Date"
+          type="date"
+          {...register('startDate')}
+          error={errors.startDate?.message}
         />
       </div>
 
-      <div>
-        <label htmlFor="position" className="block text-sm font-medium text-gray-700">
-          Position
-        </label>
-        <input
-          type="text"
-          id="position"
-          name="position"
-          value={formData.position}
-          onChange={handleChange}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-          required
-        />
+      <div className="flex justify-end space-x-3">
+        <button
+          type="submit"
+          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Create Employee
+        </button>
       </div>
-
-      <div>
-        <label htmlFor="department" className="block text-sm font-medium text-gray-700">
-          Department
-        </label>
-        <input
-          type="text"
-          id="department"
-          name="department"
-          value={formData.department}
-          onChange={handleChange}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-          required
-        />
-      </div>
-
-      <button
-        type="submit"
-        className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        Create Employee
-      </button>
     </form>
   );
 }
