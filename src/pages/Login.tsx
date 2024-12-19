@@ -1,132 +1,124 @@
-
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAtom } from 'jotai';
-import { userAtom } from '../atoms/user';
-import { TEST_USERS } from '../lib/auth.ts';
+import { userAtom, TEST_USERS } from '../lib/auth';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ArrowRight, User } from 'lucide-react';
+
+const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
+});
+
+type LoginForm = z.infer<typeof loginSchema>;
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [, setUser] = useAtom(userAtom);
   const navigate = useNavigate();
+  const location = useLocation();
+  const [, setUser] = useAtom(userAtom);
+  
+  const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>({
+    resolver: zodResolver(loginSchema),
+  });
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    
-    try {
-      const mockToken = 'mock-token-' + Date.now();
-      localStorage.setItem('token', mockToken);
-      setUser(TEST_USERS['org-admin']); // Default to org-admin
-      navigate('/dashboard');
-    } catch (err) {
-      setError('Invalid credentials');
-    } finally {
-      setLoading(false);
-    }
-  }
+  const from = location.state?.from?.pathname || '/dashboard';
 
-  const handleQuickLogin = async (role: string) => {
+  const onSubmit = async (data: LoginForm) => {
     try {
-      setLoading(true);
-      const response = await quickLogin(role);
-      setUser(response.user);
-      navigate('/dashboard');
-    } catch (err) {
-      setError('Failed to quick login');
-    } finally {
-      setLoading(false);
+      // In a real app, this would validate credentials against an API
+      setUser(TEST_USERS['employee']);
+      navigate(from, { replace: true });
+    } catch (error) {
+      console.error('Login error:', error);
     }
   };
 
+  const loginAsTestUser = (userId: string) => {
+    setUser(TEST_USERS[userId]);
+    navigate(from, { replace: true });
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded shadow">
-        <h2 className="text-center text-3xl font-bold">Sign in</h2>
-        
-        {/* Quick Login Buttons */}
-        <div className="space-y-2">
-          <h3 className="text-lg font-medium text-gray-700">Quick Login (Testing)</h3>
-          <div className="grid grid-cols-2 gap-2">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
+        <div>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            Sign in to Ask Your HR
+          </h2>
+          <p className="mt-2 text-center text-sm text-gray-600">
+            Choose a test account or sign in with your credentials
+          </p>
+        </div>
+
+        <div className="mt-8 space-y-4">
+          {Object.entries(TEST_USERS).map(([id, user]) => (
             <button
-              onClick={() => handleQuickLogin('super-admin')}
-              className="p-2 text-sm bg-blue-100 text-blue-700 rounded hover:bg-blue-200"
+              key={id}
+              onClick={() => loginAsTestUser(id)}
+              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Super Admin
+              <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                <User className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" />
+              </span>
+              Continue as {user.role.replace('_', ' ')} ({user.firstName} {user.lastName})
             </button>
-            <button
-              onClick={() => handleQuickLogin('org-admin')}
-              className="p-2 text-sm bg-green-100 text-green-700 rounded hover:bg-green-200"
-            >
-              Org Admin
-            </button>
-            <button
-              onClick={() => handleQuickLogin('hr-manager')}
-              className="p-2 text-sm bg-purple-100 text-purple-700 rounded hover:bg-purple-200"
-            >
-              HR Manager
-            </button>
-            <button
-              onClick={() => handleQuickLogin('dept-manager')}
-              className="p-2 text-sm bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200"
-            >
-              Dept Manager
-            </button>
-            <button
-              onClick={() => handleQuickLogin('supervisor')}
-              className="p-2 text-sm bg-red-100 text-red-700 rounded hover:bg-red-200"
-            >
-              Supervisor
-            </button>
-            <button
-              onClick={() => handleQuickLogin('employee')}
-              className="p-2 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200"
-            >
-              Employee
-            </button>
-          </div>
+          ))}
         </div>
 
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-300"></div>
+            <div className="w-full border-t border-gray-300" />
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">Or continue with email</span>
+            <span className="px-2 bg-gray-50 text-gray-500">Or continue with email</span>
           </div>
         </div>
 
-        {error && (
-          <div className="bg-red-50 text-red-500 p-3 rounded">{error}</div>
-        )}
-        <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email address"
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            required
-            className="w-full px-3 py-2 border rounded"
-          />
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
-          >
-            {loading ? 'Signing in...' : 'Sign in'}
-          </button>
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <div className="rounded-md shadow-sm -space-y-px">
+            <div>
+              <label htmlFor="email" className="sr-only">
+                Email address
+              </label>
+              <input
+                {...register('email')}
+                type="email"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Email address"
+              />
+              {errors.email && (
+                <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+              )}
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <input
+                {...register('password')}
+                type="password"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Password"
+              />
+              {errors.password && (
+                <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              <span className="absolute right-0 inset-y-0 flex items-center pr-3">
+                <ArrowRight className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" />
+              </span>
+              Sign in
+            </button>
+          </div>
         </form>
       </div>
     </div>

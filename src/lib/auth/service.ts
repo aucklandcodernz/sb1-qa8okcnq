@@ -1,14 +1,9 @@
-
-import { User } from '@prisma/client';
 import { atom } from 'jotai';
-
-interface LoginResponse {
-  token: string;
-  user: Pick<User, 'id' | 'email' | 'role'>;
-}
+import { User } from '../../types/auth';
+import { Organization } from '../../types/organization';
 
 interface AuthState {
-  user: Pick<User, 'id' | 'email' | 'role'> | null;
+  user: User | null;
   token: string | null;
   loading: boolean;
   error: string | null;
@@ -21,80 +16,77 @@ export const authStateAtom = atom<AuthState>({
   error: null,
 });
 
-// Export individual functions for backwards compatibility
-export async function login(email: string, password: string): Promise<LoginResponse> {
-  return authService.login({ email, password });
+interface LoginCredentials {
+  email: string;
+  password: string;
 }
 
-export async function quickLogin(role: string): Promise<LoginResponse> {
-  const user = TEST_USERS[role];
-  if (!user) {
-    throw new Error('Invalid role');
-  }
-  const mockToken = 'mock-token-' + Date.now();
-  localStorage.setItem('token', mockToken);
-  return { user, token: mockToken };
-}
-
-export async function register(data: {
+interface RegisterOrganizationData {
   organizationName: string;
   adminEmail: string;
   adminFirstName: string;
   adminLastName: string;
   password: string;
-}): Promise<User> {
-  return authService.registerOrganization(data);
-}
-
-export async function logout(): Promise<void> {
-  return authService.logout();
 }
 
 export const authService = {
-  async login(credentials: { email: string; password: string }): Promise<LoginResponse> {
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(credentials)
-    });
-    
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message);
+  async login(credentials: LoginCredentials): Promise<User> {
+    try {
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Mock validation
+      if (!credentials.email || !credentials.password) {
+        throw new Error('Invalid credentials');
+      }
+
+      // Return mock user data
+      return {
+        id: 'org-admin-1',
+        email: credentials.email,
+        firstName: 'John',
+        lastName: 'Doe',
+        role: 'ORG_ADMIN',
+        organizationId: '1',
+      };
+    } catch (error) {
+      console.error('Login error:', error);
+      throw error;
     }
-    
-    return response.json();
+  },
+
+  async registerOrganization(data: RegisterOrganizationData): Promise<{ organization: Organization; user: User }> {
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Create organization
+    const organization: Organization = {
+      id: Math.random().toString(36).substr(2, 9),
+      name: data.organizationName,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+
+    // Create admin user
+    const user: User = {
+      id: Math.random().toString(36).substr(2, 9),
+      email: data.adminEmail,
+      firstName: data.adminFirstName,
+      lastName: data.adminLastName,
+      role: 'ORG_ADMIN',
+      organizationId: organization.id,
+    };
+
+    return { organization, user };
   },
 
   async logout(): Promise<void> {
-    const response = await fetch('/api/auth/logout', {
-      method: 'POST'
-    });
-    
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message);
-    }
+    // Clear auth state
+    authStateAtom.init = {
+      user: null,
+      token: null,
+      loading: false,
+      error: null,
+    };
   },
-
-  async registerOrganization(data: {
-    organizationName: string;
-    adminEmail: string;
-    adminFirstName: string;
-    adminLastName: string;
-    password: string;
-  }): Promise<User> {
-    const response = await fetch('/api/auth/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message);
-    }
-    
-    return response.json();
-  }
 };
