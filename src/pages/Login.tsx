@@ -50,37 +50,37 @@ export default function Login() {
           <h3 className="text-lg font-medium text-gray-700">Quick Login (Testing)</h3>
           <div className="grid grid-cols-2 gap-2">
             <button
-              onClick={() => handleQuickLogin('SUPER_ADMIN')}
+              onClick={() => handleQuickLogin('super-admin')}
               className="p-2 text-sm bg-blue-100 text-blue-700 rounded hover:bg-blue-200"
             >
               Super Admin
             </button>
             <button
-              onClick={() => handleQuickLogin('ORG_ADMIN')}
+              onClick={() => handleQuickLogin('org-admin')}
               className="p-2 text-sm bg-green-100 text-green-700 rounded hover:bg-green-200"
             >
               Org Admin
             </button>
             <button
-              onClick={() => handleQuickLogin('HR_MANAGER')}
+              onClick={() => handleQuickLogin('hr-manager')}
               className="p-2 text-sm bg-purple-100 text-purple-700 rounded hover:bg-purple-200"
             >
               HR Manager
             </button>
             <button
-              onClick={() => handleQuickLogin('DEPT_MANAGER')}
+              onClick={() => handleQuickLogin('dept-manager')}
               className="p-2 text-sm bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200"
             >
               Dept Manager
             </button>
             <button
-              onClick={() => handleQuickLogin('SUPERVISOR')}
+              onClick={() => handleQuickLogin('supervisor')}
               className="p-2 text-sm bg-red-100 text-red-700 rounded hover:bg-red-200"
             >
               Supervisor
             </button>
             <button
-              onClick={() => handleQuickLogin('EMPLOYEE')}
+              onClick={() => handleQuickLogin('employee')}
               className="p-2 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200"
             >
               Employee
