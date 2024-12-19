@@ -15,5 +15,10 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['socket.io-client']
+  },
+  resolve: {
+    alias: {
+      'socket.io-client': 'socket.io-client/dist/socket.io.js'
+    }
   }
 });
