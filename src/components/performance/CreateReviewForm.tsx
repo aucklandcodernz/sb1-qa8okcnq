@@ -2,6 +2,21 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { reviewSchema } from '../../lib/validations/review';
+import { FormField } from '../ui/FormField';
+import { Button } from '../ui/Button';
+import { Toast } from '../ui/Toast';
+
+const createReview = async (data: any) => {
+  const response = await fetch('/api/reviews', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  if (!response.ok) throw new Error('Failed to create review');
+  return response.json();
+};
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { z } from 'zod';
 import { Button } from '../ui/Button';
 import { FormField } from '../ui/FormField';

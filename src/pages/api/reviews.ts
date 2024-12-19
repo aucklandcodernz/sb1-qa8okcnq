@@ -50,3 +50,38 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     handleError(error, res);
   }
 }
+import { NextApiRequest, NextApiResponse } from 'next'
+import { prisma } from '../../lib/db'
+import { reviewSchema } from '../../lib/validations/review'
+import { getServerSession } from 'next-auth'
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  try {
+    const session = await getServerSession(req, res)
+    if (!session) return res.status(401).json({ error: 'Unauthorized' })
+
+    switch (req.method) {
+      case 'POST': {
+        const data = reviewSchema.parse(req.body)
+        const review = await prisma.performanceReview.create({ data })
+        return res.status(201).json(review)
+      }
+
+      case 'GET': {
+        const { employeeId } = req.query
+        const reviews = await prisma.performanceReview.findMany({
+          where: { employeeId: employeeId as string },
+          orderBy: { date: 'desc' }
+        })
+        return res.json(reviews)
+      }
+
+      default:
+        res.setHeader('Allow', ['GET', 'POST'])
+        return res.status(405).end(`Method ${req.method} Not Allowed`)
+    }
+  } catch (error) {
+    console.error(error)
+    return res.status(500).json({ error: 'Internal Server Error' })
+  }
+}
