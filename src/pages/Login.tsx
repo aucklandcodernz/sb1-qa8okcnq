@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { userAtom, TEST_USERS } from '../lib/auth';
@@ -8,8 +9,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowRight, User } from 'lucide-react';
 
 const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
+  email: z.string().email('Valid email is required'),
+  password: z.string().min(6, 'Password must be at least 6 characters'),
 });
 
 type LoginForm = z.infer<typeof loginSchema>;
@@ -18,6 +19,7 @@ export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const [, setUser] = useAtom(userAtom);
+  const [error, setError] = useState<string | null>(null);
   
   const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
@@ -27,17 +29,36 @@ export default function Login() {
 
   const onSubmit = async (data: LoginForm) => {
     try {
-      // In a real app, this would validate credentials against an API
-      setUser(TEST_USERS['employee']);
+      setError(null);
+      // In a real app, validate credentials against an API
+      const matchedUser = Object.values(TEST_USERS).find(
+        user => user.email === data.email
+      );
+      
+      if (!matchedUser) {
+        throw new Error('Invalid email or password');
+      }
+
+      setUser(matchedUser);
       navigate(from, { replace: true });
     } catch (error) {
       console.error('Login error:', error);
+      setError(error instanceof Error ? error.message : 'Login failed');
     }
   };
 
-  const loginAsTestUser = (userId: string) => {
-    setUser(TEST_USERS[userId]);
-    navigate(from, { replace: true });
+  const loginAsTestUser = (userId: keyof typeof TEST_USERS) => {
+    try {
+      setError(null);
+      const user = TEST_USERS[userId];
+      if (!user) {
+        throw new Error('Invalid test user');
+      }
+      setUser(user);
+      navigate(from, { replace: true });
+    } catch (err) {
+      setError('Failed to login as test user');
+    }
   };
 
   return (
@@ -52,11 +73,17 @@ export default function Login() {
           </p>
         </div>
 
+        {error && (
+          <div className="rounded-md bg-red-50 p-4">
+            <p className="text-sm text-red-700">{error}</p>
+          </div>
+        )}
+
         <div className="mt-8 space-y-4">
           {Object.entries(TEST_USERS).map(([id, user]) => (
             <button
               key={id}
-              onClick={() => loginAsTestUser(id)}
+              onClick={() => loginAsTestUser(id as keyof typeof TEST_USERS)}
               className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
@@ -84,7 +111,9 @@ export default function Login() {
               </label>
               <input
                 {...register('email')}
+                id="email"
                 type="email"
+                autoComplete="email"
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
               />
@@ -98,7 +127,9 @@ export default function Login() {
               </label>
               <input
                 {...register('password')}
+                id="password"
                 type="password"
+                autoComplete="current-password"
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
               />
