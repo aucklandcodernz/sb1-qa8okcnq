@@ -42,8 +42,28 @@ model Employee {
   attendance     Attendance[]
   leaves         Leave[]
   qualifications EmployeeQualification[]
+  training       EmployeeTraining[]
   createdAt      DateTime               @default(now())
   updatedAt      DateTime               @updatedAt
+}
+
+model EmployeeTraining {
+  id                String   @id @default(cuid())
+  employeeId        String
+  employee          Employee @relation(fields: [employeeId], references: [id])
+  title             String
+  provider          String
+  completionDate    DateTime
+  expiryDate        DateTime?
+  certificateNumber String?
+  status            String
+  isNZQAAccredited  Boolean  @default(false)
+  complianceCategory String
+  notes             String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([employeeId])
 }
 
 model EmployeeQualification {
