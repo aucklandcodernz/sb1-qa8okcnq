@@ -8,33 +8,109 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id             String    @id @default(cuid())
-  email          String    @unique
-  name           String?
-  role           String    @default("USER")
-  organizationId String?
-  organization   Organization? @relation(fields: [organizationId], references: [id])
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+model Organization {
+  id          String      @id @default(cuid())
+  name        String
+  users       User[]
+  employees   Employee[]
+  departments Department[]
+  documents   Document[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
 }
 
-model Organization {
-  id        String   @id @default(cuid())
-  name      String
-  users     User[]
-  employees Employee[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model User {
+  id             String       @id @default(cuid())
+  email          String       @unique
+  name           String?
+  role           String       @default("USER")
+  organizationId String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 }
 
 model Employee {
-  id             String    @id @default(cuid())
-  firstName      String
-  lastName       String
-  email         String    @unique
+  id              String           @id @default(cuid())
+  firstName       String
+  lastName        String
+  email           String           @unique
+  phone           String?
+  dateOfBirth     DateTime?
+  organizationId  String
+  departmentId    String?
+  employeeId      String           @unique
+  position        String?
+  employmentType  String?
+  startDate       DateTime?
+  status          String           @default("ACTIVE")
+  organization    Organization     @relation(fields: [organizationId], references: [id])
+  department      Department?      @relation(fields: [departmentId], references: [id])
+  documents       Document[]
+  attendances     Attendance[]
+  leaves          Leave[]
+  qualifications  Qualification[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+model Department {
+  id             String       @id @default(cuid())
+  name           String
   organizationId String
+  managerId      String?
   organization   Organization @relation(fields: [organizationId], references: [id])
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  employees      Employee[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Document {
+  id             String       @id @default(cuid())
+  title          String
+  type           String
+  fileUrl        String
+  employeeId     String?
+  organizationId String
+  employee       Employee?    @relation(fields: [employeeId], references: [id])
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Attendance {
+  id         String    @id @default(cuid())
+  employeeId String
+  checkIn    DateTime
+  checkOut   DateTime?
+  employee   Employee  @relation(fields: [employeeId], references: [id])
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Leave {
+  id          String    @id @default(cuid())
+  employeeId  String
+  startDate   DateTime
+  endDate     DateTime
+  type        String
+  status      String    @default("PENDING")
+  description String?
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Qualification {
+  id          String   @id @default(cuid())
+  employeeId  String
+  type        String
+  title       String
+  institution String
+  dateObtained DateTime
+  expiryDate  DateTime?
+  status      String   @default("ACTIVE")
+  employee    Employee @relation(fields: [employeeId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
