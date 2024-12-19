@@ -110,3 +110,38 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
+import { prisma } from '../../../../lib/db';
+import { NextApiRequest, NextApiResponse } from 'next';
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const { organizationId } = req.query;
+
+  try {
+    const payrollPeriods = await prisma.payrollPeriod.findMany({
+      where: { organizationId: String(organizationId) },
+      include: {
+        payslips: {
+          include: {
+            employee: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true
+              }
+            }
+          }
+        }
+      },
+      orderBy: { startDate: 'desc' }
+    });
+
+    return res.status(200).json(payrollPeriods);
+  } catch (error) {
+    console.error('Fetch payroll periods error:', error);
+    return res.status(400).json({ error: 'Failed to fetch payroll periods' });
+  }
+}
