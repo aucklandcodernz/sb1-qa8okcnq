@@ -1,6 +1,5 @@
 
 import { io, Socket } from 'socket.io-client';
-import { prisma } from '../db';
 import type { Notification } from '@prisma/client';
 
 class WebSocketService {
@@ -17,6 +16,8 @@ class WebSocketService {
   }
 
   connect(userId: string) {
+    if (this.socket?.connected) return;
+
     this.socket = io(import.meta.env.VITE_WS_URL || 'ws://0.0.0.0:3001', {
       query: { userId },
       transports: ['websocket']
