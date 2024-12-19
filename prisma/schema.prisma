@@ -30,11 +30,53 @@ model Organization {
   departments Department[]
 }
 
+model Onboarding {
+  id              String    @id @default(cuid())
+  employeeId      String
+  templateId      String
+  startDate       DateTime
+  status          OnboardingStatus @default(NOT_STARTED)
+  completedTasks  Int      @default(0)
+  totalTasks      Int
+  currentPhase    String
+  tasks           OnboardingTask[]
+  employee        Employee  @relation(fields: [employeeId], references: [id])
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model OnboardingTask {
+  id              String    @id @default(cuid())
+  onboardingId    String
+  title           String
+  description     String
+  category        String
+  status          TaskStatus @default(NOT_STARTED)
+  dueDate         DateTime
+  assignedTo      String?
+  completedAt     DateTime?
+  notes           String?
+  onboarding      Onboarding @relation(fields: [onboardingId], references: [id])
+}
+
+enum OnboardingStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum TaskStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
 model Employee {
   id             String    @id @default(cuid())
   firstName      String    @db.VarChar(50)
   lastName       String    @db.VarChar(50)
   email          String    @unique @db.VarChar(255)
+  onboarding     Onboarding[]
   employeeId     String    @unique @db.VarChar(20)
   hireDate       DateTime  @default(now())
   employmentType EmploymentType @default(FULL_TIME)

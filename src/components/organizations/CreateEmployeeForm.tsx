@@ -69,21 +69,32 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Props)
 
   const onSubmit = async (data: any) => {
     try {
-      const response = await fetch('/api/employees', {
+      const template = onboardingTemplates.find(t => t.id === data.onboardingTemplate);
+      
+      // Create employee with onboarding
+      const response = await fetch('/api/employees/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...data,
-          organizationId,
           onboarding: {
-            template: data.onboardingTemplate,
+            templateId: data.onboardingTemplate,
             startDate: data.startDate,
-            status: 'PENDING'
+            totalTasks: template?.tasks.length || 0,
+            currentPhase: 'DOCUMENTATION',
+            tasks: template?.tasks.map(task => ({
+              title: task.title,
+              description: task.description || '',
+              category: task.category,
+              dueDate: new Date(data.startDate),
+            }))
           }
         })
       });
 
-      if (!response.ok) throw new Error('Failed to create employee');
+      if (!response.ok) {
+        throw new Error('Failed to create employee');
+      }
       
       toast.success('Employee created successfully');
       onSuccess();
