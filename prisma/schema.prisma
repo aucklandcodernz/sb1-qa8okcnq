@@ -9,20 +9,72 @@ datasource db {
 }
 
 model Organization {
-  id        String      @id @default(cuid())
-  name      String
-  employees Employee[]
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
+  id          String      @id @default(cuid())
+  name        String
+  employees   Employee[]
+  departments Department[]
+  documents   Document[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
 }
 
 model Employee {
   id             String       @id @default(cuid())
   firstName      String
   lastName       String
-  email         String       @unique
+  email          String       @unique
   organization   Organization @relation(fields: [organizationId], references: [id])
   organizationId String
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
+  department     Department?  @relation(fields: [departmentId], references: [id])
+  departmentId   String?
+  documents      Document[]
+  attendance     Attendance[]
+  leaves         Leave[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Department {
+  id             String       @id @default(cuid())
+  name           String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  organizationId String
+  employees      Employee[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Document {
+  id             String       @id @default(cuid())
+  title          String
+  url            String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  organizationId String
+  employee       Employee?    @relation(fields: [employeeId], references: [id])
+  employeeId     String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Attendance {
+  id         String    @id @default(cuid())
+  employee   Employee  @relation(fields: [employeeId], references: [id])
+  employeeId String
+  date       DateTime  @db.Date
+  clockIn    DateTime
+  clockOut   DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Leave {
+  id         String    @id @default(cuid())
+  employee   Employee  @relation(fields: [employeeId], references: [id])
+  employeeId String
+  startDate  DateTime  @db.Date
+  endDate    DateTime  @db.Date
+  type       String
+  status     String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
