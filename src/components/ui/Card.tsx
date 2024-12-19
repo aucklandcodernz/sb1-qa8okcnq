@@ -9,7 +9,7 @@ interface CardProps {
   description?: string;
 }
 
-export default function Card({ className, children, title, description }: CardProps) {
+export const Card = ({ className, children, title, description }: CardProps) => {
   return (
     <div className={cn("bg-white shadow-sm rounded-lg", className)}>
       <div className="px-4 py-5 sm:p-6">
@@ -28,3 +28,5 @@ export default function Card({ className, children, title, description }: CardPr
     </div>
   );
 }
+
+export default Card;
