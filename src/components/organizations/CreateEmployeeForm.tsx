@@ -37,12 +37,16 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Create
         }),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to create employee');
+        throw new Error(result.message || 'Failed to create employee');
       }
 
-      const result = await response.json();
+      if (!result.success) {
+        throw new Error(result.message || 'Failed to create employee');
+      }
+
       onSuccess();
     } catch (err: any) {
       console.error('Error creating employee:', err);
