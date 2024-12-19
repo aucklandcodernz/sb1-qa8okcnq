@@ -24,6 +24,7 @@ import EmployeeAttendance from './pages/employee/EmployeeAttendance';
 import EmployeeQualifications from './pages/employee/EmployeeQualifications';
 import EmployeeTraining from './pages/employee/EmployeeTraining'; // Import the EmployeeTraining component
 import CreateEmployeeForm from './components/organizations/CreateEmployeeForm';
+import OnboardingDashboard from './components/onboarding/OnboardingDashboard';
 
 export default function App() {
   return (
@@ -53,7 +54,7 @@ export default function App() {
             <Route path="attendance" element={<EmployeeAttendance />} />
             <Route path="qualifications" element={<EmployeeQualifications />} />
             <Route path="training" element={<EmployeeTraining employeeId="emp1" />} />
-            <Route path="onboarding" element={<OnboardingDashboard employeeId={id} />} />
+            <Route path="onboarding" element={<OnboardingDashboard employeeId=":id" />} />
             <Route path="edit" element={<EditEmployeeForm />} />
           </Route>
         </Route>
