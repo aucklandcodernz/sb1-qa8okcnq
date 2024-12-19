@@ -15,6 +15,7 @@ model Organization {
   employees   Employee[]
   departments Department[]
   documents   Document[]
+  settings    OrganizationSettings?
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 }
@@ -50,6 +51,10 @@ model Employee {
   attendances     Attendance[]
   leaves          Leave[]
   qualifications  Qualification[]
+  benefits        EmployeeBenefit[]
+  timesheets      Timesheet[]
+  performance     PerformanceReview[]
+  training        TrainingRecord[]
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
 }
@@ -70,6 +75,8 @@ model Document {
   title          String
   type           String
   fileUrl        String
+  fileType       String
+  fileSize       Int
   employeeId     String?
   organizationId String
   employee       Employee?    @relation(fields: [employeeId], references: [id])
@@ -113,4 +120,69 @@ model Qualification {
   employee    Employee @relation(fields: [employeeId], references: [id])
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model EmployeeBenefit {
+  id          String   @id @default(cuid())
+  employeeId  String
+  type        String
+  provider    String
+  policyNumber String?
+  startDate   DateTime
+  endDate     DateTime?
+  coverage    Json
+  dependents  Json?
+  status      String   @default("ACTIVE")
+  employee    Employee @relation(fields: [employeeId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Timesheet {
+  id          String   @id @default(cuid())
+  employeeId  String
+  date        DateTime
+  hoursWorked Float
+  description String?
+  status      String   @default("PENDING")
+  employee    Employee @relation(fields: [employeeId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model PerformanceReview {
+  id          String   @id @default(cuid())
+  employeeId  String
+  reviewerId  String
+  reviewDate  DateTime
+  rating      Int
+  feedback    String
+  goals       Json?
+  status      String   @default("DRAFT")
+  employee    Employee @relation(fields: [employeeId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model TrainingRecord {
+  id          String   @id @default(cuid())
+  employeeId  String
+  courseTitle String
+  completionDate DateTime
+  certificateUrl String?
+  status      String   @default("COMPLETED")
+  employee    Employee @relation(fields: [employeeId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model OrganizationSettings {
+  id             String       @id @default(cuid())
+  organizationId String       @unique
+  workingHours   Json
+  leavePolicy    Json
+  approvalChain  Json
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 }
