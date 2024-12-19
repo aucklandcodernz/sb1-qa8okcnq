@@ -41,6 +41,7 @@ export default function App() {
           <Route path="/attendance" element={<TimeAndAttendance />} />
           <Route path="/leave" element={<LeaveManagement />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/employees/create" element={<CreateEmployeeForm onSubmit={() => {}} onCancel={() => {}} />} />
           <Route path="/performance/*" element={<Performance />} />
           <Route path="/training" element={<Training />} />
           <Route path="/documents" element={<Documents />} />
