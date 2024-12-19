@@ -8,9 +8,10 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3000,
     hmr: {
-      protocol: 'ws',
+      protocol: 'wss',
       host: '0.0.0.0',
-      clientPort: 443
+      clientPort: 443,
+      port: 443
     }
   },
   build: {
