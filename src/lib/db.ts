@@ -2,23 +2,18 @@
 import { PrismaClient } from '@prisma/client'
 import { Redis } from 'ioredis'
 
-const prismaClientConfig = {
-  log: [
-    { level: 'query', emit: 'event' },
-    { level: 'error', emit: 'event' },
-    { level: 'warn', emit: 'event' }
-  ],
-  connectionLimit: 20
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined
 }
 
-export const prisma = new PrismaClient(prismaClientConfig)
+export const prisma = globalForPrisma.prisma ?? new PrismaClient({
+  log: ['error', 'warn'],
+  errorFormat: 'minimal',
+})
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
 export const redis = new Redis(process.env.REDIS_URL || '')
-
-prisma.$on('query', (e) => {
-  console.log('Query: ' + e.query)
-  console.log('Duration: ' + e.duration + 'ms')
-})
 
 prisma.$on('error', (e) => {
   console.error('Prisma Error:', e.message)
