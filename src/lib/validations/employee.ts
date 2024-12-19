@@ -1,6 +1,15 @@
 
 import { z } from 'zod';
 
+export const documentStatusSchema = z.object({
+  id: z.string(),
+  status: z.enum(['PENDING', 'APPROVED', 'REJECTED', 'EXPIRED']),
+  documentType: z.string(),
+  expiryDate: z.string().optional(),
+  comments: z.string().optional(),
+  updatedAt: z.string(),
+});
+
 export const employeeSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
   lastName: z.string().min(2, 'Last name must be at least 2 characters'),
