@@ -30,3 +30,52 @@ export const useNotifications = () => {
     markAllRead,
   };
 };
+import { useEffect, useState } from 'react';
+import { useAtom } from 'jotai';
+import { userAtom } from '../atoms/user';
+import { webSocketService } from '../lib/notifications/websocket';
+
+export type Notification = {
+  id: string;
+  type: 'INFO' | 'WARNING' | 'ERROR';
+  message: string;
+  read: boolean;
+  createdAt: Date;
+};
+
+export function useNotifications() {
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [currentUser] = useAtom(userAtom);
+
+  useEffect(() => {
+    if (!currentUser?.id) return;
+
+    webSocketService.connect(currentUser.id);
+
+    webSocketService.subscribe('notification', (notification: Notification) => {
+      setNotifications(prev => [notification, ...prev]);
+    });
+
+    return () => {
+      webSocketService.disconnect();
+    };
+  }, [currentUser?.id]);
+
+  const markAsRead = (notificationId: string) => {
+    setNotifications(prev =>
+      prev.map(notif =>
+        notif.id === notificationId ? { ...notif, read: true } : notif
+      )
+    );
+  };
+
+  const clearNotifications = () => {
+    setNotifications([]);
+  };
+
+  return {
+    notifications,
+    markAsRead,
+    clearNotifications,
+  };
+}
