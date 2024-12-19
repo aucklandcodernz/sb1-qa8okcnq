@@ -7,15 +7,11 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 3000,
+    strictPort: true,
     hmr: {
-      protocol: 'wss',
+      protocol: 'ws',
       host: '0.0.0.0',
-      clientPort: 443,
-      port: 443
-    },
-    watch: {
-      usePolling: true,
-      interval: 1000
+      port: 3000
     }
   },
   build: {
@@ -29,11 +25,6 @@ export default defineConfig({
     }
   },
   optimizeDeps: {
-    exclude: ['@replit/database'],
-    force: true
-  },
-  esbuild: {
-    logLimit: 0,
-    logLevel: 'error'
+    exclude: ['@replit/database']
   }
 });
