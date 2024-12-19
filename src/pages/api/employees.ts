@@ -1,36 +1,49 @@
 
 import { Request, Response } from 'express';
 import { prisma } from '../../lib/db';
-import { employeeSchema, statusHistorySchema } from '../../lib/validations/employee';
+import { employeeSchema } from '../../lib/validations/employee';
 import { z } from 'zod';
 
-export async function updateEmployeeStatus(req: Request, res: Response) {
+export async function createEmployee(req: Request, res: Response) {
   try {
-    const { id } = req.params;
-    const validatedData = statusHistorySchema.parse(req.body);
+    const validatedData = employeeSchema.parse(req.body);
     
-    const [statusHistory, employee] = await prisma.$transaction([
-      prisma.employeeStatusHistory.create({
-        data: {
-          employeeId: id,
-          ...validatedData
-        }
-      }),
-      prisma.employee.update({
-        where: { id },
-        data: {
-          status: validatedData.status,
-          lastStatusUpdate: new Date()
-        }
-      })
-    ]);
+    const employee = await prisma.employee.create({
+      data: {
+        ...validatedData,
+        createdById: req.user?.id,
+      }
+    });
     
-    res.json({ statusHistory, employee });
+    res.status(201).json(employee);
   } catch (error) {
     if (error instanceof z.ZodError) {
       res.status(400).json({ error: error.errors });
     } else {
-      res.status(500).json({ error: 'Failed to update employee status' });
+      res.status(500).json({ error: 'Failed to create employee' });
+    }
+  }
+}
+
+export async function updateEmployee(req: Request, res: Response) {
+  try {
+    const { id } = req.params;
+    const validatedData = employeeSchema.partial().parse(req.body);
+    
+    const employee = await prisma.employee.update({
+      where: { id },
+      data: {
+        ...validatedData,
+        updatedById: req.user?.id,
+      }
+    });
+    
+    res.json(employee);
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      res.status(400).json({ error: error.errors });
+    } else {
+      res.status(500).json({ error: 'Failed to update employee' });
     }
   }
 }

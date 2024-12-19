@@ -8,18 +8,20 @@ export const employeeSchema = z.object({
   position: z.string().min(2, 'Position must be at least 2 characters'),
   employmentType: z.enum(['FULL_TIME', 'PART_TIME', 'CONTRACT', 'TEMPORARY']),
   departmentId: z.string().optional(),
-  startDate: z.date(),
+  startDate: z.string().min(1, 'Start date is required'),
   status: z.enum(['ACTIVE', 'INACTIVE', 'ON_LEAVE', 'TERMINATED']),
-  version: z.number().optional()
+  salary: z.object({
+    amount: z.number().min(0, 'Salary must be a positive number'),
+    currency: z.string().min(1, 'Currency is required'),
+  }),
+  bankDetails: z.object({
+    accountName: z.string().min(1, 'Account name is required'),
+    accountNumber: z.string().min(1, 'Account number is required'),
+    bankName: z.string().min(1, 'Bank name is required'),
+  }).optional(),
 });
 
 export const employeeUpdateSchema = employeeSchema.partial().extend({
   id: z.string(),
   version: z.number()
-});
-
-export const auditLogSchema = z.object({
-  action: z.enum(['CREATE', 'UPDATE', 'DELETE']),
-  details: z.record(z.unknown()),
-  performedBy: z.string()
 });

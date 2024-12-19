@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -24,13 +23,37 @@ const createEmployeeSchema = z.object({
   }),
 });
 
-export default function CreateEmployeeForm({ onSubmit, onCancel }) {
-  const { register, handleSubmit, formState: { errors } } = useForm({
+export default function CreateEmployeeForm({ onSubmit: onSuccess, onCancel }) {
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: zodResolver(createEmployeeSchema),
     defaultValues: {
-      salary: { currency: 'USD' }
+      employmentType: 'FULL_TIME',
+      status: 'ACTIVE',
+      salary: { currency: 'USD', amount: 0 },
+      bankDetails: {
+        accountName: '',
+        accountNumber: '',
+        bankName: ''
+      }
     }
   });
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('/api/employees', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      
+      if (!response.ok) throw new Error('Failed to create employee');
+      
+      reset();
+      onSuccess?.();
+    } catch (error) {
+      console.error('Error creating employee:', error);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
