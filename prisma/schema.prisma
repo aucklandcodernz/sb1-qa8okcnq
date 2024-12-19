@@ -18,6 +18,8 @@ model Organization {
   settings    OrganizationSettings?
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
+
+  @@index([name])
 }
 
 model User {
@@ -29,160 +31,19 @@ model User {
   organization   Organization? @relation(fields: [organizationId], references: [id])
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
+  hashedPassword String?
+  sessions       Session[]
+
+  @@index([email])
 }
 
-model Employee {
-  id              String           @id @default(cuid())
-  firstName       String
-  lastName        String
-  email           String           @unique
-  phone           String?
-  dateOfBirth     DateTime?
-  organizationId  String
-  departmentId    String?
-  employeeId      String           @unique
-  position        String?
-  employmentType  String?
-  startDate       DateTime?
-  status          String           @default("ACTIVE")
-  organization    Organization     @relation(fields: [organizationId], references: [id])
-  department      Department?      @relation(fields: [departmentId], references: [id])
-  documents       Document[]
-  attendances     Attendance[]
-  leaves          Leave[]
-  qualifications  Qualification[]
-  benefits        EmployeeBenefit[]
-  timesheets      Timesheet[]
-  performance     PerformanceReview[]
-  training        TrainingRecord[]
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-}
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 
-model Department {
-  id             String       @id @default(cuid())
-  name           String
-  organizationId String
-  managerId      String?
-  organization   Organization @relation(fields: [organizationId], references: [id])
-  employees      Employee[]
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
-}
-
-model Document {
-  id             String       @id @default(cuid())
-  title          String
-  type           String
-  fileUrl        String
-  fileType       String
-  fileSize       Int
-  employeeId     String?
-  organizationId String
-  employee       Employee?    @relation(fields: [employeeId], references: [id])
-  organization   Organization @relation(fields: [organizationId], references: [id])
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
-}
-
-model Attendance {
-  id         String    @id @default(cuid())
-  employeeId String
-  checkIn    DateTime
-  checkOut   DateTime?
-  employee   Employee  @relation(fields: [employeeId], references: [id])
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-}
-
-model Leave {
-  id          String    @id @default(cuid())
-  employeeId  String
-  startDate   DateTime
-  endDate     DateTime
-  type        String
-  status      String    @default("PENDING")
-  description String?
-  employee    Employee  @relation(fields: [employeeId], references: [id])
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-}
-
-model Qualification {
-  id          String   @id @default(cuid())
-  employeeId  String
-  type        String
-  title       String
-  institution String
-  dateObtained DateTime
-  expiryDate  DateTime?
-  status      String   @default("ACTIVE")
-  employee    Employee @relation(fields: [employeeId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
-model EmployeeBenefit {
-  id          String   @id @default(cuid())
-  employeeId  String
-  type        String
-  provider    String
-  policyNumber String?
-  startDate   DateTime
-  endDate     DateTime?
-  coverage    Json
-  dependents  Json?
-  status      String   @default("ACTIVE")
-  employee    Employee @relation(fields: [employeeId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
-model Timesheet {
-  id          String   @id @default(cuid())
-  employeeId  String
-  date        DateTime
-  hoursWorked Float
-  description String?
-  status      String   @default("PENDING")
-  employee    Employee @relation(fields: [employeeId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
-model PerformanceReview {
-  id          String   @id @default(cuid())
-  employeeId  String
-  reviewerId  String
-  reviewDate  DateTime
-  rating      Int
-  feedback    String
-  goals       Json?
-  status      String   @default("DRAFT")
-  employee    Employee @relation(fields: [employeeId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
-model TrainingRecord {
-  id          String   @id @default(cuid())
-  employeeId  String
-  courseTitle String
-  completionDate DateTime
-  certificateUrl String?
-  status      String   @default("COMPLETED")
-  employee    Employee @relation(fields: [employeeId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
-model OrganizationSettings {
-  id             String       @id @default(cuid())
-  organizationId String       @unique
-  workingHours   Json
-  leavePolicy    Json
-  approvalChain  Json
-  organization   Organization @relation(fields: [organizationId], references: [id])
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
+  @@index([token])
 }

@@ -1,25 +1,25 @@
 
-import { atom } from 'jotai'
+export class NotificationService {
+  private ws: WebSocket | null = null
+  private subscribers: Set<(data: any) => void> = new Set()
 
-export const wsConnectionAtom = atom<WebSocket | null>(null)
-export const notificationsAtom = atom<Notification[]>([])
+  connect() {
+    this.ws = new WebSocket(`ws://${window.location.hostname}:8080`)
+    
+    this.ws.onmessage = (event) => {
+      const data = JSON.parse(event.data)
+      this.subscribers.forEach(subscriber => subscriber(data))
+    }
 
-export const initializeWebSocket = (userId: string) => {
-  const ws = new WebSocket(`wss://${window.location.hostname}/ws?userId=${userId}`)
-  
-  ws.onmessage = (event) => {
-    const notification = JSON.parse(event.data)
-    notificationsAtom.set((prev) => [...prev, notification])
+    this.ws.onclose = () => {
+      setTimeout(() => this.connect(), 1000)
+    }
   }
 
-  ws.onerror = (error) => {
-    console.error('WebSocket error:', error)
-  }
-
-  wsConnectionAtom.set(ws)
-  
-  return () => {
-    ws.close()
-    wsConnectionAtom.set(null)
+  subscribe(callback: (data: any) => void) {
+    this.subscribers.add(callback)
+    return () => this.subscribers.delete(callback)
   }
 }
+
+export const notificationService = new NotificationService()

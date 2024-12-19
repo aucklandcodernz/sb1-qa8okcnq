@@ -1,5 +1,6 @@
 
 import { PrismaClient } from '@prisma/client'
+import { Redis } from 'ioredis'
 
 const prismaClientConfig = {
   log: [
@@ -7,9 +8,12 @@ const prismaClientConfig = {
     { level: 'error', emit: 'event' },
     { level: 'warn', emit: 'event' }
   ],
+  connectionLimit: 20
 }
 
-const prisma = new PrismaClient(prismaClientConfig)
+export const prisma = new PrismaClient(prismaClientConfig)
+
+export const redis = new Redis(process.env.REDIS_URL || '')
 
 prisma.$on('query', (e) => {
   console.log('Query: ' + e.query)
