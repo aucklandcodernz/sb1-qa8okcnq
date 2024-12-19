@@ -156,6 +156,9 @@ model PerformanceReview {
   category    String    @default("ANNUAL")
   score       Decimal   @default(0) @db.Decimal(3,2)
   improvement String[]
+  metrics     Json?     @default("{}")
+  acknowledgement Boolean @default(false)
+  discussionNotes String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   employee    Employee  @relation(fields: [employeeId], references: [id])

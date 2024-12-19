@@ -13,6 +13,9 @@ export const performanceReviewSchema = z.object({
   nextReviewDate: z.date().optional(),
   category: z.enum(["ANNUAL", "QUARTERLY", "PROBATION", "PROJECT"]),
   improvement: z.array(z.string()),
+  metrics: z.record(z.any()).optional(),
+  acknowledgement: z.boolean().default(false),
+  discussionNotes: z.string().optional(),
   score: z.number().min(0).max(5).optional()
 });
 

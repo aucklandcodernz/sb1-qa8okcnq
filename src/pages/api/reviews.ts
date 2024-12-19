@@ -49,3 +49,27 @@ export async function getReviews(req: Request, res: Response) {
     res.status(500).json({ error: 'Failed to fetch reviews' });
   }
 }
+
+export async function updateReview(req: Request, res: Response) {
+  try {
+    const { id } = req.params;
+    const validatedData = performanceReviewSchema.partial().parse(req.body);
+    
+    const review = await prisma.performanceReview.update({
+      where: { id },
+      data: validatedData,
+      include: {
+        employee: true,
+        reviewer: true,
+      },
+    });
+    
+    res.json(review);
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      res.status(400).json({ error: error.errors });
+    } else {
+      res.status(500).json({ error: 'Failed to update review' });
+    }
+  }
+}
