@@ -5,8 +5,6 @@
     pkgs.nodePackages.npm
     pkgs.nodePackages.typescript
     pkgs.nodePackages.typescript-language-server
-    (pkgs.openssl_1_1.overrideAttrs (old: {
-      meta = old.meta // { insecure = false; };
-    }))
+    pkgs.openssl_1_1
   ];
 }
