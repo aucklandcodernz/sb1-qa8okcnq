@@ -152,11 +152,18 @@ model PerformanceReview {
   skillAssessments Json?
   status      String    @default("DRAFT")
   nextReviewDate DateTime?
+  completedAt DateTime?
+  category    String    @default("ANNUAL")
+  score       Decimal   @default(0) @db.Decimal(3,2)
+  improvement String[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   employee    Employee  @relation(fields: [employeeId], references: [id])
   reviewer    Employee  @relation("ReviewerRelation", fields: [reviewerId], references: [id])
   feedback    Feedback[]
+
+  @@index([employeeId, reviewDate])
+  @@index([status])
 
   @@index([employeeId, reviewDate])
   @@index([status])
