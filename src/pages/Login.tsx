@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { userAtom } from '../atoms/user';
-import { TEST_USERS } from '../lib/auth';
+import { TEST_USERS } from '../lib/auth.ts';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -50,37 +50,37 @@ export default function Login() {
           <h3 className="text-lg font-medium text-gray-700">Quick Login (Testing)</h3>
           <div className="grid grid-cols-2 gap-2">
             <button
-              onClick={() => handleQuickLogin('super-admin')}
+              onClick={() => handleQuickLogin('SUPER_ADMIN')}
               className="p-2 text-sm bg-blue-100 text-blue-700 rounded hover:bg-blue-200"
             >
               Super Admin
             </button>
             <button
-              onClick={() => handleQuickLogin('org-admin')}
+              onClick={() => handleQuickLogin('ORG_ADMIN')}
               className="p-2 text-sm bg-green-100 text-green-700 rounded hover:bg-green-200"
             >
               Org Admin
             </button>
             <button
-              onClick={() => handleQuickLogin('hr-manager')}
+              onClick={() => handleQuickLogin('HR_MANAGER')}
               className="p-2 text-sm bg-purple-100 text-purple-700 rounded hover:bg-purple-200"
             >
               HR Manager
             </button>
             <button
-              onClick={() => handleQuickLogin('dept-manager')}
+              onClick={() => handleQuickLogin('DEPT_MANAGER')}
               className="p-2 text-sm bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200"
             >
               Dept Manager
             </button>
             <button
-              onClick={() => handleQuickLogin('supervisor')}
+              onClick={() => handleQuickLogin('SUPERVISOR')}
               className="p-2 text-sm bg-red-100 text-red-700 rounded hover:bg-red-200"
             >
               Supervisor
             </button>
             <button
-              onClick={() => handleQuickLogin('employee')}
+              onClick={() => handleQuickLogin('EMPLOYEE')}
               className="p-2 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200"
             >
               Employee
