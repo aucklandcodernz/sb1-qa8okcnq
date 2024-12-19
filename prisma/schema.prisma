@@ -43,8 +43,55 @@ model Employee {
   leaves         Leave[]
   qualifications EmployeeQualification[]
   training       EmployeeTraining[]
+  payrollDetails PayrollDetails?
+  payslips       Payslip[]
   createdAt      DateTime               @default(now())
   updatedAt      DateTime               @updatedAt
+}
+
+model PayrollDetails {
+  id                String   @id @default(cuid())
+  employeeId        String   @unique
+  employee          Employee @relation(fields: [employeeId], references: [id])
+  baseSalary        Float
+  taxCode           String
+  kiwiSaverRate     Float    @default(3.0)
+  bankAccountNumber String
+  bankName          String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model PayrollPeriod {
+  id        String    @id @default(cuid())
+  startDate DateTime
+  endDate   DateTime
+  status    String    @default("DRAFT") // DRAFT, PROCESSING, COMPLETED
+  payslips  Payslip[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([startDate, endDate])
+}
+
+model Payslip {
+  id              String        @id @default(cuid())
+  employeeId      String
+  employee        Employee      @relation(fields: [employeeId], references: [id])
+  payrollPeriodId String
+  payrollPeriod   PayrollPeriod @relation(fields: [payrollPeriodId], references: [id])
+  grossPay        Float
+  netPay          Float
+  payeTax         Float
+  kiwiSaver       Float
+  accLevy         Float
+  deductions      Json?         // Additional deductions
+  allowances      Json?         // Additional allowances
+  hoursWorked     Float
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([employeeId, payrollPeriodId])
 }
 
 model EmployeeTraining {

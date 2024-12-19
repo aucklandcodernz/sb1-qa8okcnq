@@ -94,3 +94,80 @@ export function calculatePayrollItem(
     updatedAt: new Date().toISOString(),
   };
 }
+interface PayrollCalculation {
+  grossPay: number;
+  netPay: number;
+  payeTax: number;
+  kiwiSaver: number;
+  accLevy: number;
+  hoursWorked: number;
+  deductions: Record<string, number>;
+  allowances: Record<string, number>;
+}
+
+const PAYE_RATES = {
+  UNDER_14000: 0.105,
+  UNDER_48000: 0.175,
+  UNDER_70000: 0.30,
+  UNDER_180000: 0.33,
+  OVER_180000: 0.39
+};
+
+const ACC_LEVY_RATE = 0.0139;
+
+export async function calculatePayrollForEmployee({ 
+  employee, 
+  startDate, 
+  endDate 
+}: {
+  employee: any;
+  startDate: Date;
+  endDate: Date;
+}): Promise<PayrollCalculation> {
+  const hoursWorked = calculateHoursWorked(employee.attendance);
+  const grossPay = employee.payrollDetails.baseSalary / 26; // Assuming fortnightly pay
+  
+  // Calculate PAYE tax
+  const payeTax = calculatePayeTax(grossPay * 26) / 26;
+  
+  // Calculate KiwiSaver
+  const kiwiSaver = grossPay * (employee.payrollDetails.kiwiSaverRate / 100);
+  
+  // Calculate ACC Levy
+  const accLevy = grossPay * ACC_LEVY_RATE;
+  
+  // Calculate net pay
+  const netPay = grossPay - payeTax - kiwiSaver - accLevy;
+  
+  return {
+    grossPay,
+    netPay,
+    payeTax,
+    kiwiSaver,
+    accLevy,
+    hoursWorked,
+    deductions: {},
+    allowances: {}
+  };
+}
+
+function calculateHoursWorked(attendance: any[]): number {
+  return attendance.reduce((total, record) => {
+    if (record.clockIn && record.clockOut) {
+      const hours = (record.clockOut.getTime() - record.clockIn.getTime()) / (1000 * 60 * 60);
+      return total + hours;
+    }
+    return total;
+  }, 0);
+}
+
+function calculatePayeTax(annualIncome: number): number {
+  if (annualIncome <= 14000) {
+    return annualIncome * PAYE_RATES.UNDER_14000;
+  } else if (annualIncome <= 48000) {
+    return 14000 * PAYE_RATES.UNDER_14000 + 
+           (annualIncome - 14000) * PAYE_RATES.UNDER_48000;
+  }
+  // Add more tax brackets as needed
+  return annualIncome * PAYE_RATES.UNDER_48000; // Simplified for example
+}
