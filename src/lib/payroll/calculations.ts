@@ -10,7 +10,7 @@ const TAX_BRACKETS = [
 ];
 
 // ACC Levy rate for 2024
-const ACC_LEVY_RATE = 0.0139; // 1.39%
+//const ACC_LEVY_RATE = 0.0139; // 1.39%  Removed duplicate declaration
 const ACC_LEVY_MAX = 130911; // Maximum earnings for ACC levy
 
 // KiwiSaver rates
@@ -55,7 +55,7 @@ export function calculatePayrollItem(
 
   // Calculate ACC Levy
   const accEarnings = Math.min(taxableIncome, ACC_LEVY_MAX);
-  const accLevy = accEarnings * ACC_LEVY_RATE;
+  const accLevy = accEarnings * ACC_LEVY_RATE; // Assuming ACC_LEVY_RATE is imported from acc/constants.ts
 
   // Calculate KiwiSaver
   const kiwiSaverEmployee = taxableIncome * kiwiSaverRate;
@@ -80,7 +80,7 @@ export function calculatePayrollItem(
     taxableIncome,
     taxDeductions: [
       { type: 'PAYE', amount: totalTax, rate: totalTax / taxableIncome },
-      { type: 'ACC', amount: accLevy, rate: ACC_LEVY_RATE },
+      { type: 'ACC', amount: accLevy, rate: ACC_LEVY_RATE }, // Assuming ACC_LEVY_RATE is imported from acc/constants.ts
     ],
     kiwiSaver: {
       employeeContribution: kiwiSaverEmployee,
@@ -113,7 +113,7 @@ const PAYE_RATES = {
   OVER_180000: 0.39
 };
 
-const ACC_LEVY_RATE = 0.0139;
+//const ACC_LEVY_RATE = 0.0139; // Removed duplicate declaration
 
 export async function calculatePayrollForEmployee({ 
   employee, 
@@ -134,7 +134,7 @@ export async function calculatePayrollForEmployee({
   const kiwiSaver = grossPay * (employee.payrollDetails.kiwiSaverRate / 100);
   
   // Calculate ACC Levy
-  const accLevy = grossPay * ACC_LEVY_RATE;
+  const accLevy = grossPay * ACC_LEVY_RATE; // Assuming ACC_LEVY_RATE is imported from acc/constants.ts
   
   // Calculate net pay
   const netPay = grossPay - payeTax - kiwiSaver - accLevy;
