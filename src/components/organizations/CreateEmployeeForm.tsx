@@ -1,137 +1,97 @@
+
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { employeeSchema } from '../../lib/validations/employee';
-import type { CreateEmployeeInput } from '../../lib/validations/employee';
-import FormField from '../ui/FormField';
-import FormSelect from '../ui/FormSelect';
+import { toast } from 'react-hot-toast';
 
-interface CreateEmployeeFormProps {
+interface Props {
   organizationId: string;
   onSuccess: () => void;
 }
 
-export default function CreateEmployeeForm({ organizationId, onSuccess }: CreateEmployeeFormProps) {
-  const { register, handleSubmit, formState: { errors } } = useForm<CreateEmployeeInput>({
-    resolver: zodResolver(employeeSchema),
-    defaultValues: {
-      organizationId,
-      employmentType: 'FULL_TIME',
-      status: 'ACTIVE',
-      startDate: new Date(),
-    }
+export default function CreateEmployeeForm({ organizationId, onSuccess }: Props) {
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: zodResolver(employeeSchema)
   });
 
-  const onSubmit = async (data: CreateEmployeeInput) => {
+  const onSubmit = async (data: any) => {
     try {
       const response = await fetch('/api/employees', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, organizationId })
       });
-      
-      if (!response.ok) throw new Error('Failed to create employee');
-      
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to create employee');
+      }
+
+      toast.success('Employee created successfully');
       onSuccess();
     } catch (error) {
-      console.error('Error creating employee:', error);
+      console.error('Create employee error:', error);
+      toast.error('Failed to create employee');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        <FormField
-          label="First Name"
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <div>
+        <label className="block text-sm font-medium text-gray-700">First Name</label>
+        <input
+          type="text"
           {...register('firstName')}
-          error={errors.firstName?.message}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         />
-        
-        <FormField
-          label="Last Name"
+        {errors.firstName && (
+          <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>
+        )}
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Last Name</label>
+        <input
+          type="text"
           {...register('lastName')}
-          error={errors.lastName?.message}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         />
-        
-        <FormField
-          label="Email"
+        {errors.lastName && (
+          <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>
+        )}
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Email</label>
+        <input
           type="email"
           {...register('email')}
-          error={errors.email?.message}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         />
-        
-        <FormField
-          label="Position"
+        {errors.email && (
+          <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+        )}
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Position</label>
+        <input
+          type="text"
           {...register('position')}
-          error={errors.position?.message}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         />
-        
-        <FormSelect
-          label="Employment Type"
-          {...register('employmentType')}
-          error={errors.employmentType?.message}
-          options={[
-            { value: 'FULL_TIME', label: 'Full Time' },
-            { value: 'PART_TIME', label: 'Part Time' },
-            { value: 'CONTRACT', label: 'Contract' },
-            { value: 'INTERN', label: 'Intern' }, // Added Intern option
-          ]}
-        />
-        
-        <FormField
-          label="Start Date"
-          type="date"
-          {...register('startDate')}
-          error={errors.startDate?.message}
-        />
-        <FormField
-          label="Phone Number"
-          {...register('phoneNumber')}
-          error={errors.phoneNumber?.message}
-        />
-
-        <FormField
-          label="Street Address"
-          {...register('address.street')}
-          error={errors.address?.street?.message}
-        />
-        <FormField
-          label="City"
-          {...register('address.city')}
-          error={errors.address?.city?.message}
-        />
-        <FormField
-          label="Postal Code"
-          {...register('address.postalCode')}
-          error={errors.address?.postalCode?.message}
-        />
-        <FormField
-          label="Country"
-          {...register('address.country')}
-          error={errors.address?.country?.message}
-        />
-        <FormField
-          label="KiwiSaver Rate"
-          type="number"
-          step="0.01"
-          {...register('kiwiSaverRate')}
-          error={errors.kiwiSaverRate?.message}
-        />
-        <FormField
-          label="Tax Code"
-          {...register('taxCode')}
-          error={errors.taxCode?.message}
-        />
+        {errors.position && (
+          <p className="mt-1 text-sm text-red-600">{errors.position.message}</p>
+        )}
       </div>
 
-      <div className="flex justify-end space-x-3">
-        <button
-          type="submit"
-          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          Create Employee
-        </button>
-      </div>
+      <button
+        type="submit"
+        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        Create Employee
+      </button>
     </form>
   );
 }

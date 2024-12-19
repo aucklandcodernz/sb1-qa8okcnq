@@ -1,3 +1,4 @@
+
 import { Request, Response } from 'express';
 import { prisma } from '../../lib/db';
 import { employeeSchema, employeeUpdateSchema } from '../../lib/validations/employee';
@@ -23,12 +24,23 @@ export async function createEmployee(req: Request, res: Response) {
         version: 1,
       }
     });
+
+    // Create audit log entry
+    await prisma.auditLog.create({
+      data: {
+        employeeId: employee.id,
+        action: 'CREATE',
+        details: validatedData,
+        performedBy: req.user?.id || 'SYSTEM'
+      }
+    });
     
     res.status(201).json(employee);
   } catch (error) {
     if (error instanceof z.ZodError) {
       res.status(400).json({ error: error.errors });
     } else {
+      console.error('Create employee error:', error);
       res.status(500).json({ error: 'Failed to create employee' });
     }
   }
@@ -47,16 +59,12 @@ export async function updateEmployee(req: Request, res: Response) {
       return res.status(404).json({ error: 'Employee not found' });
     }
 
-    if (currentEmployee.version !== validatedData.version) {
-      return res.status(409).json({ error: 'Employee data has been modified' });
-    }
-
     const employee = await prisma.employee.update({
       where: { id },
       data: {
         ...validatedData,
         updatedById: req.user?.id,
-        version: currentEmployee.version + 1,
+        version: { increment: 1 }
       }
     });
     
@@ -65,6 +73,7 @@ export async function updateEmployee(req: Request, res: Response) {
     if (error instanceof z.ZodError) {
       res.status(400).json({ error: error.errors });
     } else {
+      console.error('Update employee error:', error);
       res.status(500).json({ error: 'Failed to update employee' });
     }
   }
