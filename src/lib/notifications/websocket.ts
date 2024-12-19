@@ -1,5 +1,12 @@
 
 import { io, Socket } from 'socket.io-client';
+import { z } from 'zod';
+
+const notificationSchema = z.object({
+  type: z.enum(['INFO', 'WARNING', 'ERROR']),
+  message: z.string(),
+  data: z.any().optional(),
+});
 
 export class WebSocketService {
   private socket: Socket | null = null;
@@ -20,25 +27,40 @@ export class WebSocketService {
     if (this.socket?.connected) return;
     if (typeof window === 'undefined') return;
 
-    this.socket = io(import.meta.env.VITE_WS_URL || 'ws://0.0.0.0:3001', {
-      query: { userId },
-      transports: ['websocket'],
-      reconnection: true,
-      reconnectionAttempts: 5
-    });
+    try {
+      this.socket = io(import.meta.env.VITE_WS_URL || 'ws://0.0.0.0:3001', {
+        query: { userId },
+        transports: ['websocket'],
+        reconnection: true,
+        reconnectionAttempts: 5
+      });
 
-    this.socket.on('connect', () => {
-      console.log('WebSocket connected');
-    });
+      this.socket.on('connect', () => {
+        console.log('WebSocket connected');
+      });
 
-    this.socket.on('disconnect', () => {
-      console.log('WebSocket disconnected');
-    });
+      this.socket.on('disconnect', () => {
+        console.log('WebSocket disconnected');
+      });
+
+      this.socket.on('connect_error', (error) => {
+        console.error('Connection error:', error);
+      });
+    } catch (error) {
+      console.error('WebSocket initialization error:', error);
+    }
   }
 
   subscribe(event: string, callback: (data: any) => void) {
     if (!this.socket) return;
-    this.socket.on(event, callback);
+    this.socket.on(event, (data) => {
+      try {
+        const validatedData = notificationSchema.parse(data);
+        callback(validatedData);
+      } catch (error) {
+        console.error('Invalid notification format:', error);
+      }
+    });
   }
 
   unsubscribe(event: string) {
@@ -48,7 +70,12 @@ export class WebSocketService {
 
   emit(event: string, data: any) {
     if (!this.socket) return;
-    this.socket.emit(event, data);
+    try {
+      const validatedData = notificationSchema.parse(data);
+      this.socket.emit(event, validatedData);
+    } catch (error) {
+      console.error('Invalid notification format:', error);
+    }
   }
 }
 
