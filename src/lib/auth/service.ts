@@ -21,6 +21,25 @@ export const authStateAtom = atom<AuthState>({
   error: null,
 });
 
+// Export individual functions for backwards compatibility
+export async function login(email: string, password: string): Promise<LoginResponse> {
+  return authService.login({ email, password });
+}
+
+export async function register(data: {
+  organizationName: string;
+  adminEmail: string;
+  adminFirstName: string;
+  adminLastName: string;
+  password: string;
+}): Promise<User> {
+  return authService.registerOrganization(data);
+}
+
+export async function logout(): Promise<void> {
+  return authService.logout();
+}
+
 export const authService = {
   async login(credentials: { email: string; password: string }): Promise<LoginResponse> {
     const response = await fetch('/api/auth/login', {
