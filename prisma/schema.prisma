@@ -196,7 +196,17 @@ model PerformanceReview {
   comments    String?
   goals       Json?
   skillAssessments Json?
-  status      String    @default("DRAFT")
+  status      ReviewStatus @default(DRAFT)
+  nextReviewDate DateTime?
+  metrics     Json?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+  reviewer    Employee  @relation("ReviewerRelation", fields: [reviewerId], references: [id])
+  feedback    Feedback[]
+
+  @@index([employeeId, reviewDate])
+  @@index([status])
   nextReviewDate DateTime?
   completedAt DateTime?
   category    String    @default("ANNUAL")
@@ -359,6 +369,13 @@ enum EmployeeStatus {
   INACTIVE
   ON_LEAVE
   TERMINATED
+}
+
+enum ReviewStatus {
+  DRAFT
+  PENDING
+  COMPLETED
+  ARCHIVED
 }
 model DocumentStatus {
   id          String    @id @default(cuid())

@@ -2,80 +2,118 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { performanceReviewSchema } from "../../lib/validations/review";
-import FormField from "../ui/FormField";
-import type { PerformanceReview } from '../../types/performance';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { z } from 'zod';
+import { Button } from '../ui/Button';
+import { FormField } from '../ui/FormField';
+import { toast } from 'react-hot-toast';
 
-interface CreateReviewFormProps {
-  employeeId: string;
-  onSuccess: () => void;
-}
+const reviewSchema = z.object({
+  employeeId: z.string().min(1, 'Employee is required'),
+  reviewerId: z.string().min(1, 'Reviewer is required'),
+  reviewDate: z.string(),
+  rating: z.number().min(1).max(5),
+  comments: z.string().optional(),
+  goals: z.object({}).passthrough().optional(),
+});
 
-export default function CreateReviewForm({ employeeId, onSuccess }: CreateReviewFormProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  const { register, handleSubmit, formState: { errors } } = useForm<PerformanceReview>({
-    resolver: zodResolver(performanceReviewSchema),
-    defaultValues: {
-      employeeId,
-      reviewDate: new Date().toISOString().split('T')[0],
-      rating: '',
-      comments: '',
-      reviewerId: '',
-      status: 'DRAFT'
-    }
+type ReviewFormData = z.infer<typeof reviewSchema>;
+
+export default function CreateReviewForm() {
+  const queryClient = useQueryClient();
+  const { register, handleSubmit, formState: { errors } } = useForm<ReviewFormData>({
+    resolver: zodResolver(reviewSchema)
   });
 
-  const onSubmit = async (data: PerformanceReview) => {
-    try {
-      setIsSubmitting(true);
+  const createReview = useMutation({
+    mutationFn: async (data: ReviewFormData) => {
       const response = await fetch('/api/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       });
-      
       if (!response.ok) throw new Error('Failed to create review');
-      onSuccess();
-    } catch (error) {
-      console.error('Error creating review:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
+      return response.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['reviews'] });
+      toast.success('Review created successfully');
+    },
+    onError: (error) => {
+      toast.error(error.message || 'Failed to create review');
+    },
+  });
+
+  const onSubmit = (data: ReviewFormData) => {
+    createReview.mutate(data);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <FormField
+        label="Employee"
+        error={errors.employeeId?.message}
+        required
+      >
+        <input
+          type="text"
+          {...register('employeeId')}
+          className="w-full p-2 border rounded"
+        />
+      </FormField>
+
+      <FormField
+        label="Reviewer"
+        error={errors.reviewerId?.message}
+        required
+      >
+        <input
+          type="text"
+          {...register('reviewerId')}
+          className="w-full p-2 border rounded"
+        />
+      </FormField>
+
+      <FormField
         label="Review Date"
-        type="date"
-        {...register('reviewDate')}
         error={errors.reviewDate?.message}
-      />
+        required
+      >
+        <input
+          type="date"
+          {...register('reviewDate')}
+          className="w-full p-2 border rounded"
+        />
+      </FormField>
 
       <FormField
         label="Rating"
-        type="number"
-        min="1"
-        max="5"
-        {...register('rating')}
         error={errors.rating?.message}
-      />
+        required
+      >
+        <input
+          type="number"
+          min="1"
+          max="5"
+          {...register('rating', { valueAsNumber: true })}
+          className="w-full p-2 border rounded"
+        />
+      </FormField>
 
       <FormField
         label="Comments"
-        type="textarea"
-        {...register('comments')}
         error={errors.comments?.message}
-      />
-
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:opacity-50"
       >
-        {isSubmitting ? 'Submitting...' : 'Submit Review'}
-      </button>
+        <textarea
+          {...register('comments')}
+          className="w-full p-2 border rounded"
+          rows={4}
+        />
+      </FormField>
+
+      <Button type="submit" disabled={createReview.isPending}>
+        {createReview.isPending ? 'Creating...' : 'Create Review'}
+      </Button>
     </form>
   );
 }
