@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -36,27 +35,30 @@ export default function CreateReviewForm({ employeeId, onSuccess }) {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <FormField
-        label="Rating"
-        type="number"
-        {...register('rating')}
-        error={errors.rating?.message}
-      />
-      
-      <FormField
-        label="Comments"
-        as="textarea"
-        {...register('comments')}
-        error={errors.comments?.message}
-      />
+    <>
+      <Toaster position="top-right" />
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <FormField
+          label="Rating"
+          type="number"
+          {...register('rating')}
+          error={errors.rating?.message}
+        />
 
-      <button
-        type="submit"
-        className="w-full px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
-      >
-        Create Review
-      </button>
-    </form>
+        <FormField
+          label="Comments"
+          as="textarea"
+          {...register('comments')}
+          error={errors.comments?.message}
+        />
+
+        <button
+          type="submit"
+          className="w-full px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
+        >
+          Create Review
+        </button>
+      </form>
+    </>
   );
 }
