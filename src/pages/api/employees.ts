@@ -41,19 +41,32 @@ export async function getEmployees(req: Request, res: Response) {
 export async function createEmployee(req: Request, res: Response) {
   try {
     const validatedData = employeeSchema.parse(req.body);
+    
     const employee = await prisma.employee.create({
-      data: validatedData,
+      data: {
+        ...validatedData,
+        address: validatedData.address ? JSON.stringify(validatedData.address) : null,
+        bankDetails: validatedData.bankDetails ? JSON.stringify(validatedData.bankDetails) : null,
+      },
       include: {
         department: true,
         manager: true,
       },
     });
+    
     res.status(201).json(employee);
   } catch (error) {
     if (error instanceof z.ZodError) {
-      res.status(400).json({ error: error.errors });
+      res.status(400).json({ 
+        error: 'Validation failed',
+        details: error.errors 
+      });
     } else {
-      res.status(500).json({ error: 'Failed to create employee' });
+      console.error('Employee creation error:', error);
+      res.status(500).json({ 
+        error: 'Failed to create employee',
+        message: error instanceof Error ? error.message : 'Unknown error'
+      });
     }
   }
 }

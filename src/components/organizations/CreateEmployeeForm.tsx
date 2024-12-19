@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -75,6 +74,7 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Create
             { value: 'FULL_TIME', label: 'Full Time' },
             { value: 'PART_TIME', label: 'Part Time' },
             { value: 'CONTRACT', label: 'Contract' },
+            { value: 'INTERN', label: 'Intern' }, // Added Intern option
           ]}
         />
         
@@ -83,6 +83,44 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Create
           type="date"
           {...register('startDate')}
           error={errors.startDate?.message}
+        />
+        <FormField
+          label="Phone Number"
+          {...register('phoneNumber')}
+          error={errors.phoneNumber?.message}
+        />
+
+        <FormField
+          label="Street Address"
+          {...register('address.street')}
+          error={errors.address?.street?.message}
+        />
+        <FormField
+          label="City"
+          {...register('address.city')}
+          error={errors.address?.city?.message}
+        />
+        <FormField
+          label="Postal Code"
+          {...register('address.postalCode')}
+          error={errors.address?.postalCode?.message}
+        />
+        <FormField
+          label="Country"
+          {...register('address.country')}
+          error={errors.address?.country?.message}
+        />
+        <FormField
+          label="KiwiSaver Rate"
+          type="number"
+          step="0.01"
+          {...register('kiwiSaverRate')}
+          error={errors.kiwiSaverRate?.message}
+        />
+        <FormField
+          label="Tax Code"
+          {...register('taxCode')}
+          error={errors.taxCode?.message}
         />
       </div>
 

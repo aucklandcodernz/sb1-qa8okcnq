@@ -42,6 +42,12 @@ model Employee {
   status         String    @default("ACTIVE")
   salary         Decimal?  @db.Decimal(10, 2)
   taxId          String?   @db.VarChar(50)
+  phoneNumber    String?   @db.VarChar(20)
+  address        Json?
+  bankDetails    Json?
+  emergencyContact Json?
+  kiwiSaverRate  Decimal? @db.Decimal(4, 2)
+  taxCode        String?  @db.VarChar(10)
   organizationId String
   departmentId   String?
   managerId      String?
