@@ -42,7 +42,7 @@ export default function EditEmployeeForm() {
   const [employeeProfiles, setEmployeeProfiles] = useAtom(employeeProfilesAtom);
   const employee = employeeProfiles[employeeId];
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors }, setError } = useForm({
     resolver: zodResolver(editEmployeeSchema),
     defaultValues: {
       firstName: employee?.firstName || '',
@@ -69,14 +69,15 @@ export default function EditEmployeeForm() {
         },
         body: JSON.stringify({
           ...data,
-          version: employee.version
+          version: employee?.version
         })
       });
 
       if (response.status === 409) {
         // Handle version conflict
-        const error = await response.json();
-        toast.error(error.message);
+        setError('form', { 
+          message: 'This record has been modified. Please refresh and try again.'
+        });
         return;
       }
 

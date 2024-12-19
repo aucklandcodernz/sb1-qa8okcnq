@@ -35,6 +35,12 @@ model Employee {
   firstName      String    @db.VarChar(50)
   lastName       String    @db.VarChar(50)
   email          String    @unique @db.VarChar(255)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  lastLoginAt    DateTime?
+  version        Int       @default(1)
+  status         EmployeeStatus @default(ACTIVE)
+  skillAssessments SkillAssessment[]
   createdById    String?
   updatedById    String?
   createdAt      DateTime  @default(now())
@@ -292,4 +298,23 @@ model AuditLog {
 
   @@index([employeeId])
   @@index([timestamp])
+}
+model SkillAssessment {
+  id          String   @id @default(cuid())
+  employeeId  String
+  skillName   String
+  level       Int      @default(1)
+  assessedAt  DateTime @default(now())
+  assessedBy  String
+  notes       String?
+  employee    Employee @relation(fields: [employeeId], references: [id])
+
+  @@index([employeeId])
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  INACTIVE
+  ON_LEAVE
+  TERMINATED
 }
