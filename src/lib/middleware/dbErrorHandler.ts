@@ -1,16 +1,22 @@
 
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+import { Request, Response, NextFunction } from 'express';
+import { Prisma } from '@prisma/client';
 
-export function handleDatabaseError(error: unknown) {
-  if (error instanceof PrismaClientKnownRequestError) {
+export const handleDatabaseError = (
+  error: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  if (error instanceof Prisma.PrismaClientKnownRequestError) {
     switch (error.code) {
       case 'P2002':
-        return new Error('A unique constraint would be violated.');
+        return res.status(409).json({ error: 'Unique constraint violation' });
       case 'P2025':
-        return new Error('Record not found.');
+        return res.status(404).json({ error: 'Record not found' });
       default:
-        return new Error('Database operation failed.');
+        return res.status(500).json({ error: 'Database error' });
     }
   }
-  return error;
-}
+  next(error);
+};
