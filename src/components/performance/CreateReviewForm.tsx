@@ -3,7 +3,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { performanceReviewSchema } from '../../lib/validations/review';
 import FormField from '../ui/FormField';
-import { Toaster, toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 export default function CreateReviewForm({ employeeId, onSuccess }) {
   const { register, handleSubmit, formState: { errors } } = useForm({
