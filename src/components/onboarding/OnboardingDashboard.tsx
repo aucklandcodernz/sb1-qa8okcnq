@@ -16,7 +16,15 @@ export default function OnboardingDashboard({ employeeId }: Props) {
     error,
     updateOnboarding,
     isUpdating
-  } = useOnboardingStatus(employeeId);
+  } = useOnboardingStatus(employeeId || '');
+
+  if (error) {
+    return (
+      <div className="p-4 text-red-500">
+        Failed to load onboarding status
+      </div>
+    );
+  }
 
   if (isLoading) {
     return (
