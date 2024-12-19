@@ -67,19 +67,36 @@ function EmployeeProfileContent() {
       </div>
 
       {employeeOnboarding && (
-        <div className="mb-6 bg-blue-50 p-4 rounded-lg">
-          <h3 className="text-lg font-medium text-blue-900">Onboarding Status</h3>
-          <div className="mt-2">
-            <div className="flex items-center">
-              <div className="w-full bg-blue-200 rounded-full h-2.5">
+        <div className="mb-6 bg-blue-50 p-6 rounded-lg">
+          <div className="flex justify-between items-center">
+            <h3 className="text-lg font-medium text-blue-900">Onboarding Status</h3>
+            <span className="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">
+              {employeeOnboarding.currentPhase}
+            </span>
+          </div>
+          <div className="mt-4">
+            <div className="flex items-center mb-2">
+              <div className="w-full bg-blue-200 rounded-full h-2.5 mr-2">
                 <div 
-                  className="bg-blue-600 h-2.5 rounded-full" 
+                  className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" 
                   style={{ width: `${(employeeOnboarding.completedTasks / employeeOnboarding.totalTasks) * 100}%` }}
                 ></div>
               </div>
-              <span className="ml-2 text-sm text-blue-900">
+              <span className="text-sm font-medium text-blue-900">
                 {Math.round((employeeOnboarding.completedTasks / employeeOnboarding.totalTasks) * 100)}%
               </span>
+            </div>
+            <div className="mt-4 grid grid-cols-2 gap-4">
+              <div className="bg-white p-4 rounded-md shadow-sm">
+                <span className="text-sm text-gray-500">Completed Tasks</span>
+                <p className="text-2xl font-semibold text-blue-600">{employeeOnboarding.completedTasks}</p>
+              </div>
+              <div className="bg-white p-4 rounded-md shadow-sm">
+                <span className="text-sm text-gray-500">Remaining Tasks</span>
+                <p className="text-2xl font-semibold text-orange-600">
+                  {employeeOnboarding.totalTasks - employeeOnboarding.completedTasks}
+                </p>
+              </div>
             </div>
           </div>
         </div>

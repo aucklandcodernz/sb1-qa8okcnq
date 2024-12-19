@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -11,9 +10,23 @@ interface Props {
 }
 
 export default function CreateEmployeeForm({ organizationId, onSuccess }: Props) {
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: zodResolver(employeeSchema)
+  const { register, handleSubmit, formState: { errors }, watch } = useForm({
+    resolver: zodResolver(employeeSchema),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      position: '',
+      onboardingTemplate: 'standard'
+    }
   });
+
+  const onboardingTemplates = [
+    { id: 'standard', name: 'Standard Onboarding' },
+    { id: 'technical', name: 'Technical Role Onboarding' },
+    { id: 'management', name: 'Management Role Onboarding' },
+    { id: 'remote', name: 'Remote Worker Onboarding' }
+  ];
 
   const onSubmit = async (data: any) => {
     try {
@@ -86,9 +99,22 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Props)
         )}
       </div>
 
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700">Onboarding Template</label>
+        <select
+          {...register('onboardingTemplate')}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+        >
+          {onboardingTemplates.map(template => (
+            <option key={template.id} value={template.id}>
+              {template.name}
+            </option>
+          ))}
+        </select>
+      </div>
       <button
         type="submit"
-        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
       >
         Create Employee
       </button>
