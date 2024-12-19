@@ -23,7 +23,7 @@ import EmployeeDocuments from './pages/employee/EmployeeDocuments';
 import EmployeeAttendance from './pages/employee/EmployeeAttendance';
 import EmployeeQualifications from './pages/employee/EmployeeQualifications';
 import EmployeeTraining from './pages/employee/EmployeeTraining'; // Import the EmployeeTraining component
-import CreateEmployeeForm from './components/employees/CreateEmployeeForm';
+import CreateEmployeeForm from './components/organizations/CreateEmployeeForm';
 
 export default function App() {
   return (
