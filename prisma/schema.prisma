@@ -35,6 +35,28 @@ model Employee {
   firstName      String    @db.VarChar(50)
   lastName       String    @db.VarChar(50)
   email          String    @unique @db.VarChar(255)
+  employeeId     String    @unique @db.VarChar(20)
+  hireDate       DateTime  @default(now())
+  employmentType EmploymentType @default(FULL_TIME)
+  status         EmployeeStatus @default(ACTIVE)
+  department     Department?    @relation(fields: [departmentId], references: [id])
+  departmentId   String?
+  position       String    @db.VarChar(100)
+  
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  TEMPORARY
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  PROBATION
+  ON_LEAVE
+  TERMINATED
+  SUSPENDED
+}
   profileImage   String?
   dateOfBirth    DateTime?
   gender         String?
