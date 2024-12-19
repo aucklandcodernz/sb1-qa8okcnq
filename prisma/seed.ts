@@ -27,3 +27,34 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
+async function main() {
+  // Create test users
+  const testUsers = [
+    { email: 'super-admin@test.com', name: 'Super Admin', role: 'super-admin' },
+    { email: 'org-admin@test.com', name: 'Org Admin', role: 'org-admin' },
+    { email: 'hr-manager@test.com', name: 'HR Manager', role: 'hr-manager' },
+    { email: 'dept-manager@test.com', name: 'Dept Manager', role: 'dept-manager' },
+    { email: 'supervisor@test.com', name: 'Supervisor', role: 'supervisor' },
+    { email: 'employee@test.com', name: 'Employee', role: 'employee' }
+  ]
+
+  for (const user of testUsers) {
+    await prisma.user.upsert({
+      where: { email: user.email },
+      update: {},
+      create: user
+    })
+  }
+}
+
+main()
+  .catch((e) => {
+    console.error(e)
+    process.exit(1)
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
