@@ -12,13 +12,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const { firstName, lastName, email, position, department, organizationId } = req.body;
 
-    if (!firstName || !lastName || !email || !position || !department || !organizationId) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Missing required fields' 
-      });
-    }
-
     const employee = await prisma.employee.create({
       data: {
         firstName,
@@ -28,22 +21,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         employeeId: `EMP${Date.now()}`,
         organizationId,
         department: {
-          connectOrCreate: {
-            where: {
-              name_organizationId: {
-                name: department,
-                organizationId
-              }
-            },
-            create: {
-              name: department,
-              organizationId
-            }
+          create: {
+            name: department,
+            organizationId
           }
         }
-      },
-      include: {
-        department: true
       }
     });
 

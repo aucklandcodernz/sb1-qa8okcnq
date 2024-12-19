@@ -37,6 +37,32 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Create
         }),
       });
 
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to create employee');
+      }
+
+      const result = await response.json();
+      if (result.success) {
+        onSuccess();
+      } else {
+        throw new Error(result.message || 'Failed to create employee');
+      }
+    } catch (err: any) {
+      console.error('Error creating employee:', err);
+      setError(err.message || 'Failed to create employee');
+    }
+  };
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...data,
+          organizationId
+        }),
+      });
+
       const result = await response.json();
 
       if (!response.ok) {
