@@ -96,12 +96,79 @@ model Leave {
 model PerformanceReview {
   id          String    @id @default(cuid())
   employeeId  String
+  reviewerId  String
   reviewDate  DateTime
   rating      Int
   comments    String?
+  goals       Json?
+  skillAssessments Json?
+  status      String    @default("DRAFT")
+  nextReviewDate DateTime?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   employee    Employee  @relation(fields: [employeeId], references: [id])
+  reviewer    Employee  @relation("ReviewerRelation", fields: [reviewerId], references: [id])
+  feedback    Feedback[]
+
+  @@index([employeeId, reviewDate])
+  @@index([status])
+}
+
+model Feedback {
+  id          String    @id @default(cuid())
+  reviewId    String
+  providerId  String
+  content     String
+  rating      Int?
+  createdAt   DateTime  @default(now())
+  review      PerformanceReview @relation(fields: [reviewId], references: [id])
+  provider    Employee  @relation(fields: [providerId], references: [id])
+}
+
+model SafetyIncident {
+  id          String    @id @default(cuid())
+  reporterId  String
+  type        String
+  severity    String
+  description String
+  location    String
+  dateOccurred DateTime
+  status      String    @default("OPEN")
+  resolution  String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  reporter    Employee  @relation(fields: [reporterId], references: [id])
+
+  @@index([status])
+  @@index([dateOccurred])
+}
+
+model TrainingCertification {
+  id          String    @id @default(cuid())
+  employeeId  String
+  courseId    String
+  certificationNumber String?
+  issueDate   DateTime
+  expiryDate  DateTime?
+  status      String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+  course      TrainingCourse @relation(fields: [courseId], references: [id])
+
+  @@index([employeeId, status])
+  @@index([expiryDate])
+}
+
+model TrainingCourse {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  duration    Int
+  required    Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  certifications TrainingCertification[]
 }
 
 model TrainingRecord {

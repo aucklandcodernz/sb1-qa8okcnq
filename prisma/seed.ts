@@ -58,3 +58,46 @@ main()
   .finally(async () => {
     await prisma.$disconnect()
   })
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
+async function main() {
+  // Seed organizations
+  const org = await prisma.organization.create({
+    data: {
+      name: 'Test Organization',
+      users: {
+        create: [{
+          email: 'admin@test.com',
+          name: 'Admin User',
+          role: 'ADMIN'
+        }]
+      },
+      departments: {
+        create: [{
+          name: 'HR Department'
+        }]
+      }
+    }
+  })
+
+  // Seed employees
+  await prisma.employee.create({
+    data: {
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john@test.com',
+      organizationId: org.id,
+      departmentId: org.departments[0].id
+    }
+  })
+}
+
+main()
+  .catch((e) => {
+    console.error(e)
+    process.exit(1)
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
