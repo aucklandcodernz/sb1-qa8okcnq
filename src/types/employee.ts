@@ -60,3 +60,20 @@ export interface EmployeeProfile {
   }[];
   status: 'ACTIVE' | 'ON_LEAVE' | 'TERMINATED';
 }
+export interface OnboardingStatus {
+  employeeId: string;
+  startDate: string;
+  completedTasks: number;
+  totalTasks: number;
+  currentPhase: 'DOCUMENTATION' | 'TRAINING' | 'SETUP' | 'COMPLETE';
+  tasks: OnboardingTask[];
+}
+
+export interface OnboardingTask {
+  id: string;
+  title: string;
+  status: 'NOT_STARTED' | 'IN_PROGRESS' | 'COMPLETED';
+  dueDate: string;
+  assignedTo: string;
+  category: 'PAPERWORK' | 'IT_SETUP' | 'TRAINING' | 'INTRODUCTION';
+}

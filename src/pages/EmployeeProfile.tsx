@@ -29,8 +29,10 @@ function EmployeeProfileContent() {
   const { id } = useParams<{ id: string }>();
   const [employeeProfiles] = useAtom(employeeProfilesAtom);
   const [user] = useAtom(userAtom);
+  const [onboardingTasks] = useAtom(onboardingChecklistsAtom);
   
   const profile = id ? employeeProfiles[id] : null;
+  const employeeOnboarding = onboardingTasks.find(task => task.employeeId === id);
 
   if (!profile) {
     return <LoadingSpinner />;
@@ -64,6 +66,24 @@ function EmployeeProfileContent() {
         </span>
       </div>
 
+      {employeeOnboarding && (
+        <div className="mb-6 bg-blue-50 p-4 rounded-lg">
+          <h3 className="text-lg font-medium text-blue-900">Onboarding Status</h3>
+          <div className="mt-2">
+            <div className="flex items-center">
+              <div className="w-full bg-blue-200 rounded-full h-2.5">
+                <div 
+                  className="bg-blue-600 h-2.5 rounded-full" 
+                  style={{ width: `${(employeeOnboarding.completedTasks / employeeOnboarding.totalTasks) * 100}%` }}
+                ></div>
+              </div>
+              <span className="ml-2 text-sm text-blue-900">
+                {Math.round((employeeOnboarding.completedTasks / employeeOnboarding.totalTasks) * 100)}%
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="bg-white shadow-sm rounded-lg overflow-hidden">
         <EmployeeProfileNav employeeId={id} />
         
