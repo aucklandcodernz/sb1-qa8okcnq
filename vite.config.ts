@@ -6,13 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
-    port: 3000,
-    hmr: {
-      protocol: 'wss',
-      host: '0.0.0.0',
-      clientPort: 443,
-      port: 443
-    }
+    port: 3000
   },
   build: {
     chunkSizeWarningLimit: 1000,
@@ -23,8 +17,5 @@ export default defineConfig({
         }
       }
     }
-  },
-  optimizeDeps: {
-    exclude: ['@replit/database']
   }
 });
