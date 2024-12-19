@@ -12,6 +12,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const { firstName, lastName, email, position, department, organizationId } = req.body;
 
+    if (!firstName || !lastName || !email || !position || !department || !organizationId) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
+
     const employee = await prisma.employee.create({
       data: {
         firstName,
@@ -37,9 +41,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
     });
 
-    res.status(201).json(employee);
+    return res.status(201).json({ success: true, data: employee });
   } catch (error) {
     console.error('Error creating employee:', error);
-    res.status(500).json({ message: 'Failed to create employee' });
+    return res.status(500).json({ success: false, message: 'Failed to create employee' });
   }
 }
