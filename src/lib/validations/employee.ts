@@ -7,10 +7,7 @@ export const employeeSchema = z.object({
   email: z.string().email('Invalid email format'),
   position: z.string().min(2, 'Position must be at least 2 characters'),
   employmentType: z.enum(['FULL_TIME', 'PART_TIME', 'CONTRACT', 'TEMPORARY']),
-  departmentId: z.string().optional(),
-  startDate: z.date(),
-  status: z.enum(['ACTIVE', 'INACTIVE', 'ON_LEAVE', 'TERMINATED']),
-  version: z.number().optional()
+  version: z.number().optional(),
 });
 
 export const employeeUpdateSchema = employeeSchema.partial().extend({

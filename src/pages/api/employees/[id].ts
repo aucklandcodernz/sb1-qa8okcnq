@@ -36,13 +36,11 @@ export async function updateEmployee(req: Request, res: Response) {
         tx.employee.update({
           where: { 
             id,
-            version: validatedData.version
+            version: validatedData.version 
           },
           data: {
             ...validatedData,
-            version: {
-              increment: 1
-            },
+            version: { increment: 1 },
             lastModifiedBy: userId
           }
         })
