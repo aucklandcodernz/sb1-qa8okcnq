@@ -61,11 +61,6 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Create
       // Handle error appropriately
     }
   });
-      firstName: data.firstName,
-      lastName: data.lastName,
-      role: data.role as Role,
-      organizationId,
-      departmentId: data.departmentId,
     };
 
     setOrganizationDetails({
