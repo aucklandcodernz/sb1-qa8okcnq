@@ -29,7 +29,7 @@ export default function CreateEmployeeForm({ onSubmit: onSuccess, onCancel }) {
     defaultValues: {
       employmentType: 'FULL_TIME',
       status: 'ACTIVE',
-      salary: { currency: 'USD', amount: 0 },
+      salary: { currency: 'NZD', amount: 0 },
       bankDetails: {
         accountName: '',
         accountNumber: '',
@@ -46,7 +46,10 @@ export default function CreateEmployeeForm({ onSubmit: onSuccess, onCancel }) {
         body: JSON.stringify(data)
       });
       
-      if (!response.ok) throw new Error('Failed to create employee');
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to create employee');
+      }
       
       reset();
       onSuccess?.();

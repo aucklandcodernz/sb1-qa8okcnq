@@ -1,17 +1,26 @@
-
 import { Request, Response } from 'express';
 import { prisma } from '../../lib/db';
-import { employeeSchema } from '../../lib/validations/employee';
+import { employeeSchema, employeeUpdateSchema } from '../../lib/validations/employee';
 import { z } from 'zod';
 
 export async function createEmployee(req: Request, res: Response) {
   try {
     const validatedData = employeeSchema.parse(req.body);
     
+    // Check for duplicate email
+    const existingEmployee = await prisma.employee.findUnique({
+      where: { email: validatedData.email }
+    });
+    
+    if (existingEmployee) {
+      return res.status(409).json({ error: 'Employee with this email already exists' });
+    }
+
     const employee = await prisma.employee.create({
       data: {
         ...validatedData,
         createdById: req.user?.id,
+        version: 1,
       }
     });
     
@@ -28,13 +37,26 @@ export async function createEmployee(req: Request, res: Response) {
 export async function updateEmployee(req: Request, res: Response) {
   try {
     const { id } = req.params;
-    const validatedData = employeeSchema.partial().parse(req.body);
+    const validatedData = employeeUpdateSchema.parse(req.body);
     
+    const currentEmployee = await prisma.employee.findUnique({ 
+      where: { id }
+    });
+
+    if (!currentEmployee) {
+      return res.status(404).json({ error: 'Employee not found' });
+    }
+
+    if (currentEmployee.version !== validatedData.version) {
+      return res.status(409).json({ error: 'Employee data has been modified' });
+    }
+
     const employee = await prisma.employee.update({
       where: { id },
       data: {
         ...validatedData,
         updatedById: req.user?.id,
+        version: currentEmployee.version + 1,
       }
     });
     
