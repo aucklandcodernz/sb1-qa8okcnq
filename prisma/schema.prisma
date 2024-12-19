@@ -308,8 +308,23 @@ model SkillAssessment {
   assessedBy  String
   notes       String?
   employee    Employee @relation(fields: [employeeId], references: [id])
+  history     SkillLevelHistory[]
 
   @@index([employeeId])
+  @@index([skillName])
+}
+
+model SkillLevelHistory {
+  id                String         @id @default(cuid())
+  skillAssessmentId String
+  previousLevel     Int
+  newLevel         Int
+  changedAt        DateTime       @default(now())
+  changedBy        String
+  reason           String?
+  skillAssessment  SkillAssessment @relation(fields: [skillAssessmentId], references: [id])
+
+  @@index([skillAssessmentId])
 }
 
 enum EmployeeStatus {

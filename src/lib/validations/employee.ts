@@ -5,6 +5,15 @@ export const skillAssessmentSchema = z.object({
   skillName: z.string().min(2, 'Skill name must be at least 2 characters'),
   level: z.number().min(1).max(5),
   notes: z.string().optional(),
+  reason: z.string().optional(),
+  assessedBy: z.string().min(1, 'Assessor is required'),
+});
+
+export const skillHistorySchema = z.object({
+  previousLevel: z.number().min(1).max(5),
+  newLevel: z.number().min(1).max(5),
+  reason: z.string().optional(),
+  changedBy: z.string().min(1, 'Assessor is required'),
 });
 
 export const employeeSchema = z.object({
