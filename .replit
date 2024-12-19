@@ -1,6 +1,7 @@
 
 run = "npm run dev"
 entrypoint = "src/App.tsx"
+modules = ["postgresql-16"]
 
 [nix]
 channel = "stable-23_11"
@@ -10,7 +11,7 @@ PATH = "/home/runner/$REPL_SLUG/.config/npm/node_global/bin:/home/runner/$REPL_S
 npm_config_prefix = "/home/runner/$REPL_SLUG/.config/npm/node_global"
 
 [deployment]
-run = ["sh", "-c", "npm run dev"]
+run = ["sh", "-c", "npm run build && npm run preview"]
 deploymentTarget = "cloudrun"
 
 [[ports]]
