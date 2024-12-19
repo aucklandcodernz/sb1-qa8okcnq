@@ -1,4 +1,12 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { startTransition } from 'react';
+
+const router = createBrowserRouter([/* routes */], {
+  future: {
+    v7_startTransition: true,
+    v7_relativeSplatPath: true
+  }
+});
 import Reports from './pages/Reports';
 import Settings from './pages/Settings';
 import Recruitment from './pages/Recruitment';

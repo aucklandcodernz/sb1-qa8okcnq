@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { reviewSchema } from '../../lib/validations/review';
 import { FormField } from '../ui/FormField';
-import { Button } from '../ui/Button';
+import Button from '../ui/Button';
 import { Toast } from '../ui/Toast';
 
 const createReview = async (data: any) => {
