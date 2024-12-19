@@ -8,8 +8,6 @@ import { useAtom } from 'jotai';
 import { employeeProfilesAtom } from '../../lib/employees';
 import { userAtom } from '../../atoms/user';
 import LoadingSpinner from '../ui/LoadingSpinner';
-import { toast } from 'react-hot-toast'; // Assuming react-hot-toast is used for toasts
-
 
 const editEmployeeSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
@@ -77,7 +75,8 @@ export default function EditEmployeeForm() {
 
       if (response.status === 409) {
         // Handle version conflict
-        toast.error('Someone else has updated this record. Please refresh and try again.');
+        const error = await response.json();
+        toast.error(error.message);
         return;
       }
 
@@ -95,7 +94,6 @@ export default function EditEmployeeForm() {
     } catch (error) {
       console.error('Error saving employee:', error);
       // Handle error appropriately, e.g., display error message to user
-      toast.error(error.message); //Show error message using toast
     } finally {
       setIsSaving(false);
     }

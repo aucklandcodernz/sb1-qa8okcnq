@@ -37,10 +37,6 @@ model Employee {
   email          String    @unique @db.VarChar(255)
   position       String    @db.VarChar(100)
   employmentType String    @default("FULL_TIME")
-  version        Int       @default(1)
-  lastModifiedBy String?
-  lastModifiedAt DateTime  @updatedAt
-  auditLog       AuditLog[]
   startDate      DateTime  @default(now())
   endDate        DateTime?
   status         String    @default("ACTIVE")
