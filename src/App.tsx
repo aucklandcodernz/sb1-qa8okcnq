@@ -1,29 +1,24 @@
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Suspense } from 'react';
-import Reports from './pages/Reports';
-import Settings from './pages/Settings';
-import Recruitment from './pages/Recruitment';
-import Safety from './pages/Safety';
-import Layout from './components/layout/Layout';
-import LeaveManagement from './pages/LeaveManagement';
 import Login from './pages/Login';
+import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard';
 import Organizations from './pages/Organizations';
-import TimeAndAttendance from './pages/TimeAndAttendance';
 import OrganizationDetails from './pages/OrganizationDetails';
 import Payroll from './pages/Payroll';
+import Recruitment from './pages/Recruitment';
+import Safety from './pages/Safety';
+import TimeAndAttendance from './pages/TimeAndAttendance';
+import LeaveManagement from './pages/LeaveManagement';
+import Team from './pages/Team';
 import Performance from './pages/Performance';
 import Training from './pages/Training';
 import Documents from './pages/Documents';
-import LoadingSpinner from './components/ui/LoadingSpinner';
-import Team from './pages/Team';
+import Reports from './pages/Reports';
+import Settings from './pages/Settings';
 import EmployeeProfile from './pages/EmployeeProfile';
-import EditEmployeeForm from './components/employees/EditEmployeeForm';
-import EmployeeDocuments from './pages/employee/EmployeeDocuments';
-import EmployeeAttendance from './pages/employee/EmployeeAttendance';
-import EmployeeQualifications from './pages/employee/EmployeeQualifications';
-import EmployeeTraining from './pages/employee/EmployeeTraining';
+import LoadingSpinner from './components/ui/LoadingSpinner';
 import CreateEmployeeForm from './components/organizations/CreateEmployeeForm';
 
 const router = createBrowserRouter([
@@ -45,7 +40,12 @@ const router = createBrowserRouter([
       { path: 'attendance', element: <TimeAndAttendance /> },
       { path: 'leave', element: <LeaveManagement /> },
       { path: 'team', element: <Team /> },
-      { path: 'employees/create', element: <CreateEmployeeForm organizationId="1" onSuccess={() => window.location.href = '/team'} /> },
+      { path: 'employees/create', 
+        element: <CreateEmployeeForm 
+          organizationId="1" 
+          onSuccess={() => window.location.href = '/team'} 
+        /> 
+      },
       { path: 'performance', element: <Performance /> },
       { path: 'training', element: <Training /> },
       { path: 'documents', element: <Documents /> },
@@ -55,16 +55,20 @@ const router = createBrowserRouter([
         path: 'employees/:id',
         element: <EmployeeProfile />,
         children: [
-          { path: 'documents', element: <EmployeeDocuments /> },
-          { path: 'attendance', element: <EmployeeAttendance /> },
-          { path: 'qualifications', element: <EmployeeQualifications /> },
-          { path: 'training', element: <EmployeeTraining employeeId="emp1" /> },
-          { path: 'edit', element: <EditEmployeeForm /> }
+          { path: 'documents', element: <EmployeeProfile /> },
+          { path: 'attendance', element: <EmployeeProfile /> },
+          { path: 'qualifications', element: <EmployeeProfile /> },
+          { path: 'training', element: <EmployeeProfile /> }
         ]
       }
     ]
   }
-]);
+], {
+  future: {
+    v7_startTransition: true,
+    v7_relativeSplatPath: true
+  }
+});
 
 export default function App() {
   return (
