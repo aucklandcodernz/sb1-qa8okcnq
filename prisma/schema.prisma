@@ -32,7 +32,8 @@ model Organization {
 
 model Onboarding {
   id              String    @id @default(cuid())
-  employeeId      String
+  employeeId      String    @unique
+  organizationId  String
   templateId      String
   startDate       DateTime
   status          OnboardingStatus @default(NOT_STARTED)
@@ -41,10 +42,15 @@ model Onboarding {
   currentPhase    String
   tasks           OnboardingTask[]
   employee        Employee  @relation(fields: [employeeId], references: [id])
+  organization    Organization @relation(fields: [organizationId], references: [id])
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+  completedAt     DateTime?
+  lastUpdatedBy   String?
+  notes           String?
 
   @@index([employeeId])
+  @@index([organizationId])
   @@index([status])
   @@index([startDate])
 }

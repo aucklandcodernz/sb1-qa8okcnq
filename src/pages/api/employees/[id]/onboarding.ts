@@ -1,18 +1,25 @@
 
 import { PrismaClient } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { onboardingSchema } from '../../../../lib/validations/onboarding';
 
 const prisma = new PrismaClient();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { id } = req.query;
 
-  if (req.method === 'GET') {
-    try {
-      const onboarding = await prisma.onboarding.findFirst({
+  try {
+    if (req.method === 'GET') {
+      const onboarding = await prisma.onboarding.findUnique({
         where: { employeeId: id as string },
         include: {
           tasks: true,
+          organization: {
+            select: {
+              id: true,
+              name: true
+            }
+          }
         }
       });
 
@@ -21,27 +28,38 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
 
       return res.status(200).json(onboarding);
-    } catch (error) {
-      console.error('Error fetching onboarding:', error);
-      return res.status(500).json({ error: 'Failed to fetch onboarding' });
     }
-  }
 
-  if (req.method === 'PATCH') {
-    try {
-      const { taskId, status } = req.body;
+    if (req.method === 'PATCH') {
+      const validatedData = onboardingSchema.parse(req.body);
       
-      const updatedTask = await prisma.onboardingTask.update({
-        where: { id: taskId },
-        data: { status }
+      const updatedOnboarding = await prisma.onboarding.update({
+        where: { employeeId: id as string },
+        data: {
+          ...validatedData,
+          completedAt: validatedData.status === 'COMPLETED' ? new Date() : null,
+          lastUpdatedBy: req.body.userId
+        },
+        include: {
+          tasks: true,
+          organization: {
+            select: {
+              id: true,
+              name: true
+            }
+          }
+        }
       });
 
-      return res.status(200).json(updatedTask);
-    } catch (error) {
-      console.error('Error updating onboarding task:', error);
-      return res.status(500).json({ error: 'Failed to update task' });
+      return res.status(200).json(updatedOnboarding);
     }
-  }
 
-  return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed' });
+  } catch (error) {
+    console.error('Onboarding API error:', error);
+    if (error.name === 'ZodError') {
+      return res.status(400).json({ error: 'Invalid data format', details: error.issues });
+    }
+    return res.status(500).json({ error: 'Internal server error' });
+  }
 }
