@@ -35,7 +35,7 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Create
     employees: []
   };
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = handleSubmit((data) => {
     const newEmployee = {
       id: Math.random().toString(36).substr(2, 9),
       email: data.email,
@@ -55,10 +55,10 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Create
     });
 
     onSuccess();
-  };
+  });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={onSubmit} className="space-y-6">
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
