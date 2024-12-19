@@ -26,6 +26,16 @@ export async function login(email: string, password: string): Promise<LoginRespo
   return authService.login({ email, password });
 }
 
+export async function quickLogin(role: string): Promise<LoginResponse> {
+  const user = TEST_USERS[role];
+  if (!user) {
+    throw new Error('Invalid role');
+  }
+  const mockToken = 'mock-token-' + Date.now();
+  localStorage.setItem('token', mockToken);
+  return { user, token: mockToken };
+}
+
 export async function register(data: {
   organizationName: string;
   adminEmail: string;

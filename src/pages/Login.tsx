@@ -30,13 +30,16 @@ export default function Login() {
     }
   }
 
-  const handleQuickLogin = (role: string) => {
-    const user = TEST_USERS[role];
-    if (user) {
-      const mockToken = 'mock-token-' + Date.now();
-      localStorage.setItem('token', mockToken);
-      setUser(user);
+  const handleQuickLogin = async (role: string) => {
+    try {
+      setLoading(true);
+      const response = await quickLogin(role);
+      setUser(response.user);
       navigate('/dashboard');
+    } catch (err) {
+      setError('Failed to quick login');
+    } finally {
+      setLoading(false);
     }
   };
 
