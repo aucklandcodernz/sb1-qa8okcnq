@@ -14,6 +14,12 @@ export const departmentHistorySchema = z.object({
   reason: z.string().optional()
 });
 
+export const auditLogSchema = z.object({
+  action: z.string(),
+  details: z.record(z.unknown()),
+  performedBy: z.string()
+});
+
 export const employeeSchema = z.object({
   firstName: z.string().min(2).max(50),
   lastName: z.string().min(2).max(50),

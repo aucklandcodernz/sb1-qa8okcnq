@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -32,16 +31,16 @@ const departments = [
 ];
 
 export default function EditEmployeeForm() {
-  const { id } = useParams();
+  const { id: employeeId } = useParams();
   const navigate = useNavigate();
-  const [user] = useAtom(userAtom);
+  const [user, currentUser] = useAtom(userAtom);
   const [isSaving, setIsSaving] = useState(false);
   
   if (!user) {
-    return <Navigate to="/login" state={{ from: `/employees/${id}/edit` }} />;
+    return <Navigate to="/login" state={{ from: `/employees/${employeeId}/edit` }} />;
   }
   const [employeeProfiles, setEmployeeProfiles] = useAtom(employeeProfilesAtom);
-  const employee = employeeProfiles[id];
+  const employee = employeeProfiles[employeeId];
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(editEmployeeSchema),
@@ -62,17 +61,29 @@ export default function EditEmployeeForm() {
   const onSubmit = async (data) => {
     try {
       setIsSaving(true);
+      const response = await fetch(`/api/employees/${employeeId}`, {
+        method: 'PUT',
+        headers: { 
+          'Content-Type': 'application/json',
+          'user-id': currentUser.id 
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to update employee');
+      }
+
+      const updatedEmployee = await response.json();
       setEmployeeProfiles(prev => ({
         ...prev,
-        [id]: {
-          ...prev[id],
-          ...data
-        }
+        [employeeId]: updatedEmployee
       }));
-      await new Promise(resolve => setTimeout(resolve, 500)); // Simulate API call
       navigate('/team');
     } catch (error) {
       console.error('Error saving employee:', error);
+      // Handle error appropriately, e.g., display error message to user
     } finally {
       setIsSaving(false);
     }

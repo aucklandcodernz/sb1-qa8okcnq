@@ -42,6 +42,9 @@ model Employee {
   status         String    @default("ACTIVE")
   statusHistory  EmployeeStatusHistory[]
   departmentHistory DepartmentHistory[]
+  auditLogs      AuditLog[]
+  lastModifiedBy String?
+  lastModifiedAt DateTime  @updatedAt
   lastStatusUpdate DateTime @default(now())
   salary         Decimal?  @db.Decimal(10, 2)
   taxId          String?   @db.VarChar(50)
@@ -261,4 +264,16 @@ model DepartmentHistory {
   reason      String?
   employee    Employee  @relation(fields: [employeeId], references: [id])
   department  Department @relation(fields: [departmentId], references: [id])
+}
+model AuditLog {
+  id          String   @id @default(cuid())
+  employeeId  String
+  action      String
+  details     Json
+  performedBy String
+  timestamp   DateTime @default(now())
+  employee    Employee @relation(fields: [employeeId], references: [id])
+
+  @@index([employeeId])
+  @@index([timestamp])
 }
