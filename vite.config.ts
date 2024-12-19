@@ -7,18 +7,13 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 3000,
-    strictPort: true
+    strictPort: true,
+    hmr: {
+      clientPort: 443
+    }
   },
   preview: {
     host: '0.0.0.0',
     port: 3000
-  },
-  optimizeDeps: {
-    include: ['socket.io-client']
-  },
-  resolve: {
-    alias: {
-      'socket.io-client': 'socket.io-client/dist/socket.io.js'
-    }
   }
 });
