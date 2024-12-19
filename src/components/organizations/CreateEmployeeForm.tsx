@@ -37,9 +37,30 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Create
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-    const newEmployee = {
-      id: Math.random().toString(36).substr(2, 9),
-      email: data.email,
+      const newEmployee = {
+        id: Math.random().toString(36).substr(2, 9),
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        role: data.role,
+        organizationId,
+        departmentId: data.departmentId,
+      };
+
+      setOrganizationDetails({
+        ...organizationDetails,
+        [organizationId]: {
+          ...organization,
+          employees: [...organization.employees, newEmployee],
+        },
+      });
+
+      onSuccess();
+    } catch (error) {
+      console.error('Error creating employee:', error);
+      // Handle error appropriately
+    }
+  });
       firstName: data.firstName,
       lastName: data.lastName,
       role: data.role as Role,
