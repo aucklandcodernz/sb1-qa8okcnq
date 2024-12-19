@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { employeeProfilesAtom } from '../../lib/employees';
 import EmployeeDocumentsComponent from '../../components/employees/EmployeeDocuments';
+import DocumentStatusManager from '../../components/employees/DocumentStatusManager'; // Added import
 
 export default function EmployeeDocuments() {
   const { id } = useParams();
@@ -25,6 +25,7 @@ export default function EmployeeDocuments() {
         profile={profile}
         onUpload={handleUpload}
       />
+      <DocumentStatusManager employeeId={id} /> {/* Added DocumentStatusManager component */}
     </div>
   );
 }

@@ -1,5 +1,10 @@
-
 import { z } from 'zod';
+
+export const documentStatusSchema = z.object({
+  documentType: z.string().min(1, 'Document type is required'),
+  status: z.enum(['PENDING', 'APPROVED', 'EXPIRED']),
+  expiryDate: z.date().optional(),
+});
 
 export const skillAssessmentSchema = z.object({
   skillName: z.string().min(2, 'Skill name must be at least 2 characters'),
@@ -27,6 +32,7 @@ export const employeeSchema = z.object({
   status: z.enum(['ACTIVE', 'INACTIVE', 'ON_LEAVE', 'TERMINATED']),
   skills: z.array(skillAssessmentSchema).optional(),
   version: z.number().optional(),
+  documents: z.array(documentStatusSchema).optional(),
 });
 
 export const employeeUpdateSchema = employeeSchema.partial().extend({
