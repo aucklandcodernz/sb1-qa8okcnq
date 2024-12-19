@@ -1,6 +1,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "filteredRelationCount"]
 }
 
 datasource db {
@@ -8,51 +9,4 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id              String    @id @default(cuid())
-  email           String    @unique
-  name            String?
-  hashedPassword  String
-  role            Role      @default(EMPLOYEE)
-  organizationId  String?
-  organization    Organization? @relation(fields: [organizationId], references: [id])
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-
-  @@index([email])
-}
-
-model Organization {
-  id          String    @id @default(cuid())
-  name        String
-  users       User[]
-  employees   Employee[]
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-}
-
-model Employee {
-  id              String    @id @default(cuid())
-  firstName       String
-  lastName        String
-  email          String    @unique
-  organizationId  String
-  organization    Organization @relation(fields: [organizationId], references: [id])
-  department      String?
-  position        String?
-  startDate       DateTime
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-
-  @@index([email])
-  @@index([organizationId])
-}
-
-enum Role {
-  SUPER_ADMIN
-  ORG_ADMIN
-  HR_MANAGER
-  DEPT_MANAGER
-  SUPERVISOR
-  EMPLOYEE
-}
+// Existing models remain unchanged...

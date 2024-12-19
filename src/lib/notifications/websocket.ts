@@ -1,16 +1,20 @@
 
 import { io, Socket } from 'socket.io-client';
 import { z } from 'zod';
+import { queryClient } from '../query/queryClient';
 
 const notificationSchema = z.object({
   type: z.enum(['INFO', 'WARNING', 'ERROR']),
   message: z.string(),
   data: z.any().optional(),
+  timestamp: z.string().datetime(),
 });
 
 export class WebSocketService {
   private socket: Socket | null = null;
   private static instance: WebSocketService;
+  private reconnectAttempts = 0;
+  private maxReconnectAttempts = 5;
 
   private constructor() {
     if (typeof window === 'undefined') return;
@@ -32,31 +36,47 @@ export class WebSocketService {
         query: { userId },
         transports: ['websocket'],
         reconnection: true,
-        reconnectionAttempts: 5
+        reconnectionAttempts: this.maxReconnectAttempts,
+        reconnectionDelay: 1000,
       });
 
-      this.socket.on('connect', () => {
-        console.log('WebSocket connected');
-      });
-
-      this.socket.on('disconnect', () => {
-        console.log('WebSocket disconnected');
-      });
-
-      this.socket.on('connect_error', (error) => {
-        console.error('Connection error:', error);
-      });
+      this.setupEventHandlers();
     } catch (error) {
       console.error('WebSocket initialization error:', error);
     }
   }
 
-  subscribe(event: string, callback: (data: any) => void) {
+  private setupEventHandlers() {
     if (!this.socket) return;
+
+    this.socket.on('connect', () => {
+      console.log('WebSocket connected');
+      this.reconnectAttempts = 0;
+      queryClient.invalidateQueries(['notifications']);
+    });
+
+    this.socket.on('disconnect', () => {
+      console.log('WebSocket disconnected');
+    });
+
+    this.socket.on('connect_error', (error) => {
+      console.error('Connection error:', error);
+      this.reconnectAttempts++;
+      
+      if (this.reconnectAttempts >= this.maxReconnectAttempts) {
+        this.socket?.close();
+      }
+    });
+  }
+
+  subscribe<T>(event: string, callback: (data: T) => void) {
+    if (!this.socket) return;
+    
     this.socket.on(event, (data) => {
       try {
         const validatedData = notificationSchema.parse(data);
-        callback(validatedData);
+        callback(validatedData as T);
+        queryClient.invalidateQueries(['notifications']);
       } catch (error) {
         console.error('Invalid notification format:', error);
       }
@@ -68,7 +88,7 @@ export class WebSocketService {
     this.socket.off(event);
   }
 
-  emit(event: string, data: any) {
+  emit(event: string, data: unknown) {
     if (!this.socket) return;
     try {
       const validatedData = notificationSchema.parse(data);
@@ -76,6 +96,11 @@ export class WebSocketService {
     } catch (error) {
       console.error('Invalid notification format:', error);
     }
+  }
+
+  disconnect() {
+    this.socket?.close();
+    this.socket = null;
   }
 }
 
