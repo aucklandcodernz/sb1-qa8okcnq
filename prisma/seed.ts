@@ -1,6 +1,6 @@
 
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
 
 async function main() {
   // Create test organization
@@ -14,9 +14,9 @@ async function main() {
         ]
       }
     }
-  })
+  });
 
-  console.log('Seeded test data successfully')
+  console.log('Seeded test data successfully');
 }
 
 main()
@@ -26,4 +26,4 @@ main()
   })
   .finally(async () => {
     await prisma.$disconnect()
-  })
+  });
