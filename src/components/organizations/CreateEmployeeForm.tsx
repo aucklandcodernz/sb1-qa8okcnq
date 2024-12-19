@@ -1,16 +1,5 @@
 
 import React, { useState } from 'react';
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-
-const employeeSchema = z.object({
-  firstName: z.string().min(2),
-  lastName: z.string().min(2),
-  email: z.string().email(),
-  position: z.string().min(2),
-  department: z.string().min(2)
-});
 
 interface CreateEmployeeFormProps {
   organizationId: string;
@@ -18,107 +7,126 @@ interface CreateEmployeeFormProps {
 }
 
 export default function CreateEmployeeForm({ organizationId, onSuccess }: CreateEmployeeFormProps) {
-  const [error, setError] = useState<string>('');
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: zodResolver(employeeSchema)
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    position: '',
+    department: ''
   });
 
-  const onSubmit = async (data: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
-      setError('');
       const response = await fetch('/api/employees', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          ...data,
+          ...formData,
           organizationId
-        }),
+        })
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Failed to create employee');
-      }
-
-      const result = await response.json();
-      if (result.success) {
-        onSuccess();
-      } else {
-        throw new Error(result.message || 'Failed to create employee');
-      }
-    } catch (err: any) {
-      console.error('Error creating employee:', err);
-      setError(err.message || 'Failed to create employee');
-    }
-  };
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...data,
-          organizationId
-        }),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || 'Failed to create employee');
-      }
-
-      if (!result.success) {
-        throw new Error(result.message || 'Failed to create employee');
+        throw new Error('Failed to create employee');
       }
 
       onSuccess();
-    } catch (err: any) {
-      console.error('Error creating employee:', err);
-      setError(err.message || 'Failed to create employee');
+    } catch (error) {
+      console.error('Error creating employee:', error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {error && (
-        <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded">
-          {error}
-        </div>
-      )}
-
+    <form onSubmit={handleSubmit} className="space-y-4 p-4">
       <div>
-        <label className="block text-sm font-medium text-gray-700">First Name</label>
-        <input {...register('firstName')} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
-        {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName.message as string}</p>}
+        <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+          First Name
+        </label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          required
+        />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Last Name</label>
-        <input {...register('lastName')} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
-        {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName.message as string}</p>}
+        <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+          Last Name
+        </label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          required
+        />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Email</label>
-        <input {...register('email')} type="email" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
-        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message as string}</p>}
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          required
+        />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Position</label>
-        <input {...register('position')} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
-        {errors.position && <p className="text-red-500 text-sm mt-1">{errors.position.message as string}</p>}
+        <label htmlFor="position" className="block text-sm font-medium text-gray-700">
+          Position
+        </label>
+        <input
+          type="text"
+          id="position"
+          name="position"
+          value={formData.position}
+          onChange={handleChange}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          required
+        />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Department</label>
-        <input {...register('department')} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
-        {errors.department && <p className="text-red-500 text-sm mt-1">{errors.department.message as string}</p>}
+        <label htmlFor="department" className="block text-sm font-medium text-gray-700">
+          Department
+        </label>
+        <input
+          type="text"
+          id="department"
+          name="department"
+          value={formData.department}
+          onChange={handleChange}
+          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+          required
+        />
       </div>
 
-      <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+      <button
+        type="submit"
+        className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      >
         Create Employee
       </button>
     </form>
