@@ -1,49 +1,23 @@
 
 import { PrismaClient } from '@prisma/client'
-import { Pool } from 'pg'
 
-const globalForPrisma = globalThis as unknown as { 
-  prisma: PrismaClient,
-  pool: Pool 
+const prismaClientConfig = {
+  log: [
+    { level: 'query', emit: 'event' },
+    { level: 'error', emit: 'event' },
+    { level: 'warn', emit: 'event' }
+  ],
 }
 
-// Initialize Prisma with error handling
-export const prisma = globalForPrisma.prisma || new PrismaClient({
-  log: ['error', 'warn'],
-  errorFormat: 'pretty',
-});
+const prisma = new PrismaClient(prismaClientConfig)
 
-// Test database connection
-async function testConnection() {
-  try {
-    await prisma.$connect();
-    console.log('Database connection successful');
-    return true;
-  } catch (error) {
-    console.error('Database connection failed:', error);
-    return false;
-  }
-}
-
-testConnection();
-
-// Initialize connection pool
-const pool = globalForPrisma.pool || new Pool({
-  connectionString: process.env.DATABASE_URL?.replace('.us-east-2', '-pooler.us-east-2'),
-  max: 10
+prisma.$on('query', (e) => {
+  console.log('Query: ' + e.query)
+  console.log('Duration: ' + e.duration + 'ms')
 })
 
-if (process.env.NODE_ENV !== 'production') {
-  globalForPrisma.prisma = prisma
-  globalForPrisma.pool = pool
-}
+prisma.$on('error', (e) => {
+  console.error('Prisma Error:', e.message)
+})
 
-export { pool }
 export default prisma
-import { PrismaClient } from '@prisma/client';
-
-const globalForPrisma = global as unknown as { prisma: PrismaClient };
-
-export const prisma = globalForPrisma.prisma || new PrismaClient();
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
