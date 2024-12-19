@@ -1,57 +1,65 @@
 
-import { NextApiRequest, NextApiResponse } from 'next'
-import { verify, JwtPayload } from 'jsonwebtoken'
-import prisma from '../db'
+import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
+import { prisma } from '../db';
 
-export interface AuthenticatedRequest extends NextApiRequest {
-  user?: any;
-  token?: string;
+export interface AuthRequest extends Request {
+  user?: {
+    id: string;
+    email: string;
+    role: string;
+    organizationId?: string;
+  };
 }
 
-export const authMiddleware = async (
-  req: AuthenticatedRequest,
-  res: NextApiResponse,
-  next: () => void
-) => {
+export async function authMiddleware(
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) {
   try {
-    const token = req.headers.authorization?.split(' ')[1]
+    const token = req.headers.authorization?.replace('Bearer ', '');
     
     if (!token) {
-      return res.status(401).json({ message: 'Authentication required' })
+      return res.status(401).json({ error: 'No token provided' });
     }
 
-    const decoded = verify(token, process.env.JWT_SECRET!) as JwtPayload
-    
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as {
+      id: string;
+      email: string;
+    };
+
     const user = await prisma.user.findUnique({
-      where: { id: decoded.sub as string },
+      where: { id: decoded.id },
       select: {
         id: true,
         email: true,
         role: true,
-        organizationId: true
-      }
-    })
+        organizationId: true,
+      },
+    });
 
     if (!user) {
-      return res.status(401).json({ message: 'User not found' })
+      return res.status(401).json({ error: 'User not found' });
     }
 
-    req.user = user
-    req.token = token
-    next()
+    req.user = user;
+    next();
   } catch (error) {
-    if (error instanceof Error) {
-      return res.status(401).json({ message: error.message })
-    }
-    return res.status(401).json({ message: 'Authentication failed' })
+    res.status(401).json({ error: 'Invalid token' });
   }
 }
 
-export const requireRole = (roles: string[]) => {
-  return (req: AuthenticatedRequest, res: NextApiResponse, next: () => void) => {
-    if (!roles.includes(req.user?.role)) {
-      return res.status(403).json({ message: 'Insufficient permissions' })
+export function requireRole(roles: string[]) {
+  return (req: AuthRequest, res: Response, next: NextFunction) => {
+    if (!req.user) {
+      return res.status(401).json({ error: 'Not authenticated' });
     }
-    next()
-  }
+
+    if (!roles.includes(req.user.role)) {
+      return res.status(403).json({ error: 'Insufficient permissions' });
+    }
+
+    next();
+  };
 }
