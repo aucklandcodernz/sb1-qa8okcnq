@@ -33,19 +33,25 @@ model Organization {
 
 model Employee {
   id             String    @id @default(cuid())
-  firstName      String
-  lastName       String
-  email          String    @unique
-  position       String
+  firstName      String    @db.VarChar(50)
+  lastName       String    @db.VarChar(50)
+  email          String    @unique @db.VarChar(255)
+  position       String    @db.VarChar(100)
   employmentType String    @default("FULL_TIME")
   startDate      DateTime  @default(now())
+  endDate        DateTime?
   status         String    @default("ACTIVE")
+  salary         Decimal?  @db.Decimal(10, 2)
+  taxId          String?   @db.VarChar(50)
   organizationId String
   departmentId   String?
+  managerId      String?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   organization   Organization @relation(fields: [organizationId], references: [id])
   department     Department?  @relation(fields: [departmentId], references: [id])
+  manager        Employee?    @relation("EmployeeToManager", fields: [managerId], references: [id])
+  directReports  Employee[]   @relation("EmployeeToManager")
   documents      Document[]
   attendance     Attendance[]
   leaves         Leave[]
@@ -53,6 +59,10 @@ model Employee {
   training       TrainingRecord[]
   skills         EmployeeSkill[]
   history        EmploymentHistory[]
+
+  @@index([organizationId])
+  @@index([departmentId])
+  @@index([email])
 }
 
 model EmployeeSkill {
