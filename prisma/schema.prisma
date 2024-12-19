@@ -9,4 +9,110 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  name           String?
+  role           String    @default("USER")
+  organizationId String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+}
+
+model Organization {
+  id        String    @id @default(cuid())
+  name      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  users     User[]
+  employees Employee[]
+  documents Document[]
+  departments Department[]
+}
+
+model Employee {
+  id             String    @id @default(cuid())
+  firstName      String
+  lastName       String
+  email          String    @unique
+  organizationId String
+  departmentId   String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  department     Department?  @relation(fields: [departmentId], references: [id])
+  documents      Document[]
+  attendance     Attendance[]
+  leaves         Leave[]
+  performance    PerformanceReview[]
+  training       TrainingRecord[]
+}
+
+model Department {
+  id             String    @id @default(cuid())
+  name           String
+  organizationId String
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  employees      Employee[]
+}
+
+model Document {
+  id             String    @id @default(cuid())
+  title          String
+  url            String
+  organizationId String
+  employeeId     String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  employee       Employee?    @relation(fields: [employeeId], references: [id])
+}
+
+model Attendance {
+  id          String    @id @default(cuid())
+  employeeId  String
+  checkIn     DateTime
+  checkOut    DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+}
+
+model Leave {
+  id          String    @id @default(cuid())
+  employeeId  String
+  startDate   DateTime
+  endDate     DateTime
+  type        String
+  status      String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+}
+
+model PerformanceReview {
+  id          String    @id @default(cuid())
+  employeeId  String
+  reviewDate  DateTime
+  rating      Int
+  comments    String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+}
+
+model TrainingRecord {
+  id          String    @id @default(cuid())
+  employeeId  String
+  courseName  String
+  completedAt DateTime
+  status      String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+}
+
 // Existing models remain unchanged...
