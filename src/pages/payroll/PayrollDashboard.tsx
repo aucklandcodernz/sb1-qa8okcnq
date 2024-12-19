@@ -1,6 +1,6 @@
 
 import { useQuery } from '@tanstack/react-query';
-import { LoadingSpinner } from '../../components/ui/LoadingSpinner';
+import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import { Card } from '../../components/ui/Card';
 import PayrollStats from '../../components/payroll/PayrollStats';
 import PayrollSummary from '../../components/payroll/PayrollSummary';
