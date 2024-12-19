@@ -20,3 +20,13 @@ export const employeeSchema = z.object({
 });
 
 export const employeeUpdateSchema = employeeSchema.partial();
+export const employeeQualificationSchema = z.object({
+  qualificationId: z.string().optional(),
+  title: z.string().min(2, 'Qualification title is required'),
+  institution: z.string().min(2, 'Institution name is required'),
+  dateObtained: z.string().transform(str => new Date(str)),
+  expiryDate: z.string().optional().transform(str => str ? new Date(str) : null),
+  verificationStatus: z.enum(['PENDING', 'VERIFIED', 'REJECTED']).default('PENDING'),
+  notes: z.string().optional(),
+  attachments: z.array(z.string()).optional()
+});

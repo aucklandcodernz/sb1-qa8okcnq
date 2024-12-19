@@ -29,20 +29,38 @@ model Department {
 }
 
 model Employee {
-  id             String       @id @default(cuid())
-  email          String       @unique
+  id             String                 @id @default(cuid())
+  email          String                 @unique
   name           String
   position       String
   organizationId String
   departmentId   String?
-  organization   Organization @relation(fields: [organizationId], references: [id])
-  department     Department?  @relation(fields: [departmentId], references: [id])
+  organization   Organization           @relation(fields: [organizationId], references: [id])
+  department     Department?            @relation(fields: [departmentId], references: [id])
   onboarding     Onboarding?
   documents      Document[]
   attendance     Attendance[]
   leaves         Leave[]
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
+  qualifications EmployeeQualification[]
+  createdAt      DateTime               @default(now())
+  updatedAt      DateTime               @updatedAt
+}
+
+model EmployeeQualification {
+  id                 String    @id @default(cuid())
+  employeeId         String
+  employee           Employee  @relation(fields: [employeeId], references: [id])
+  title              String
+  institution        String
+  dateObtained       DateTime
+  expiryDate         DateTime?
+  verificationStatus String    @default("PENDING")
+  notes              String?
+  attachments        String[]
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  @@index([employeeId])
 }
 
 model Onboarding {
