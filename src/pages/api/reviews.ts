@@ -14,7 +14,8 @@ export async function createReview(req: Request, res: Response) {
         lastReminderSent: null,
         competencies: validatedData.competencies || {},
         developmentPlans: validatedData.developmentPlans || {},
-        achievements: validatedData.achievements || {}
+        achievements: validatedData.achievements || {},
+        status: 'DRAFT'
       },
       include: {
         employee: true,
@@ -36,24 +37,43 @@ export async function createReview(req: Request, res: Response) {
 export async function getReviews(req: Request, res: Response) {
   try {
     const { employeeId, status, department } = req.query;
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = parseInt(req.query.limit as string) || 10;
+    const skip = (page - 1) * limit;
     
-    const reviews = await prisma.performanceReview.findMany({
-      where: {
-        employeeId: employeeId as string,
-        status: status as string,
-        department: department as string,
-      },
-      include: {
-        employee: true,
-        reviewer: true,
-        feedback: true
-      },
-      orderBy: {
-        reviewDate: 'desc',
-      },
+    const [reviews, total] = await Promise.all([
+      prisma.performanceReview.findMany({
+        where: {
+          employeeId: employeeId as string,
+          status: status as string,
+          department: department as string,
+        },
+        include: {
+          employee: true,
+          reviewer: true,
+          feedback: true
+        },
+        orderBy: { reviewDate: 'desc' },
+        skip,
+        take: limit,
+      }),
+      prisma.performanceReview.count({
+        where: {
+          employeeId: employeeId as string,
+          status: status as string,
+          department: department as string,
+        }
+      })
+    ]);
+    
+    res.json({
+      reviews,
+      pagination: {
+        total,
+        pages: Math.ceil(total / limit),
+        current: page
+      }
     });
-    
-    res.json(reviews);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch reviews' });
   }
