@@ -1,3 +1,4 @@
+
 import React, { forwardRef } from 'react';
 import { cn } from '../../lib/utils';
 
@@ -54,4 +55,5 @@ const FormField = forwardRef<HTMLInputElement | HTMLTextAreaElement, FormFieldPr
 
 FormField.displayName = 'FormField';
 
-export default FormField;
+export { FormField };
+export type { FormFieldProps };
