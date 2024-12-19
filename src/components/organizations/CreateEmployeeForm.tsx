@@ -11,7 +11,13 @@ interface Props {
 
 export default function CreateEmployeeForm({ organizationId, onSuccess }: Props) {
   const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: zodResolver(employeeSchema)
+    resolver: zodResolver(employeeSchema),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      position: ''
+    }
   });
 
   const onSubmit = async (data: any) => {

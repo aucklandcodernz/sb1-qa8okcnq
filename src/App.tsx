@@ -55,10 +55,10 @@ const router = createBrowserRouter([
         path: 'employees/:id',
         element: <EmployeeProfile />,
         children: [
-          { path: 'documents', element: <EmployeeProfile /> },
-          { path: 'attendance', element: <EmployeeProfile /> },
-          { path: 'qualifications', element: <EmployeeProfile /> },
-          { path: 'training', element: <EmployeeProfile /> }
+          { path: 'documents', element: <EmployeeDocuments /> },
+          { path: 'attendance', element: <EmployeeAttendance /> },
+          { path: 'qualifications', element: <EmployeeQualifications /> },
+          { path: 'training', element: <EmployeeTraining /> }
         ]
       }
     ]
@@ -66,7 +66,8 @@ const router = createBrowserRouter([
 ], {
   future: {
     v7_startTransition: true,
-    v7_relativeSplatPath: true
+    v7_relativeSplatPath: true,
+    v7_normalizeFormMethod: true
   }
 });
 
