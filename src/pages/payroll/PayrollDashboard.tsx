@@ -1,87 +1,100 @@
-import React from 'react';
-import { useAtom } from 'jotai';
-import { DollarSign, TrendingUp, Clock, Users } from 'lucide-react';
-import { payrollItemsAtom } from '../../lib/payroll';
-import { userAtom } from '../../lib/auth';
-import PayrollStats from '../../components/payroll/PayrollStats';
-import PayrollSummary from '../../components/payroll/PayrollSummary';
-import PayParityChart from '../../components/payroll/PayParityChart';
-import MinimumWageAlert from '../../components/payroll/MinimumWageAlert';
-import MinimumWageUpdatesCard from '../../components/payroll/MinimumWageUpdatesCard';
-import PayrollCalculator from '../../components/payroll/PayrollCalculator';
-import KiwiSaverCalculator from '../../components/payroll/KiwiSaverCalculator';
+
+import React, { useState } from 'react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { createPayrollPeriod, processPayrollPeriod } from '../../lib/payroll/api';
+import { Button } from '../../components/ui/Button';
+import { Card } from '../../components/ui/Card';
+import LoadingSpinner from '../../components/ui/LoadingSpinner';
+import { useParams } from 'react-router-dom';
 
 export default function PayrollDashboard() {
-  const [user] = useAtom(userAtom);
-  const [payrollItems] = useAtom(payrollItemsAtom);
+  const { id: organizationId } = useParams();
+  const queryClient = useQueryClient();
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+
+  const { data: payrollPeriods, isLoading } = useQuery(
+    ['payrollPeriods', organizationId],
+    async () => {
+      const response = await fetch(`/api/payroll/periods?organizationId=${organizationId}`);
+      if (!response.ok) throw new Error('Failed to fetch payroll periods');
+      return response.json();
+    }
+  );
+
+  const createMutation = useMutation(createPayrollPeriod, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['payrollPeriods']);
+      setStartDate('');
+      setEndDate('');
+    },
+  });
+
+  const processMutation = useMutation(processPayrollPeriod, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['payrollPeriods']);
+    },
+  });
+
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 space-y-6">
-          <PayrollStats employeeId={user?.id} />
-          <PayrollSummary employeeId={user?.id} />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-lg font-medium mb-4">Payroll Calculator</h3>
-              <PayrollCalculator />
+      <Card className="p-6">
+        <h2 className="text-xl font-semibold mb-4">Create New Pay Run</h2>
+        <div className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Start Date</label>
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+              />
             </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-lg font-medium mb-4">KiwiSaver Calculator</h3>
-              <KiwiSaverCalculator />
+            <div>
+              <label className="block text-sm font-medium text-gray-700">End Date</label>
+              <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+              />
             </div>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow text-center">
-            {payrollItems.length === 0 ? (
-              <div className="py-8 text-gray-500">
-                <p className="mb-2">No payroll information available</p>
-                <p className="text-sm">Start by adding employees or processing payroll</p>
+          <Button
+            onClick={() => createMutation.mutate({ startDate, endDate, organizationId: organizationId! })}
+            disabled={createMutation.isLoading}
+          >
+            {createMutation.isLoading ? 'Creating...' : 'Create Pay Run'}
+          </Button>
+        </div>
+      </Card>
+
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Recent Pay Runs</h2>
+        {payrollPeriods?.map((period: any) => (
+          <Card key={period.id} className="p-4">
+            <div className="flex justify-between items-center">
+              <div>
+                <p className="font-medium">
+                  {new Date(period.startDate).toLocaleDateString()} - 
+                  {new Date(period.endDate).toLocaleDateString()}
+                </p>
+                <p className="text-sm text-gray-500">Status: {period.status}</p>
               </div>
-            ) : null}
-          </div>
-          
-          <PayParityChart 
-            analysis={{
-              id: '1',
-              organizationId: '1',
-              role: 'Software Engineer',
-              department: 'Engineering',
-              averageSalary: 85000,
-              medianSalary: 82000,
-              salaryRange: { min: 70000, max: 120000 },
-              distribution: [
-                { range: '70k-80k', count: 5, percentage: 20 },
-                { range: '80k-90k', count: 10, percentage: 40 },
-                { range: '90k-100k', count: 7, percentage: 28 },
-                { range: '100k-110k', count: 2, percentage: 8 },
-                { range: '110k-120k', count: 1, percentage: 4 },
-              ],
-              disparityFactors: [
-                { factor: 'Experience', impact: 0.15, description: 'Years of experience accounts for 15% of salary variation' },
-                { factor: 'Skills', impact: 0.12, description: 'Technical skill set contributes to 12% of salary differences' },
-              ],
-              recommendations: [
-                'Review experience-based pay progression',
-                'Implement clear skill-based salary bands',
-                'Conduct regular market rate reviews',
-              ],
-              createdAt: new Date().toISOString(),
-            }}
-          />
-        </div>
-        <div className="space-y-6">
-          <MinimumWageAlert
-            check={{
-              isCompliant: false,
-              actualRate: 20,
-              requiredRate: 22.70,
-              shortfall: 2.70,
-              effectiveDate: '2024-04-01',
-            }}
-          />
-          <MinimumWageUpdatesCard />
-        </div>
+              {period.status === 'DRAFT' && (
+                <Button
+                  onClick={() => processMutation.mutate(period.id)}
+                  disabled={processMutation.isLoading}
+                >
+                  Process Payroll
+                </Button>
+              )}
+            </div>
+          </Card>
+        ))}
       </div>
     </div>
   );
