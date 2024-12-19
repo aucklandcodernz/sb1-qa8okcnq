@@ -24,9 +24,15 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Create
   
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(createEmployeeSchema),
+    defaultValues: {
+      role: 'EMPLOYEE'
+    }
   });
 
-  const organization = organizationDetails[organizationId];
+  const organization = organizationDetails[organizationId] || {
+    departments: [{ id: 'd1', name: 'Engineering' }],
+    employees: []
+  };
 
   const onSubmit = (data: any) => {
     const newEmployee = {
