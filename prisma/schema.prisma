@@ -43,9 +43,12 @@ model Employee {
   statusHistory  EmployeeStatusHistory[]
   departmentHistory DepartmentHistory[]
   auditLogs      AuditLog[]
-  lastModifiedBy String?
-  lastModifiedAt DateTime  @updatedAt
-  lastStatusUpdate DateTime @default(now())
+  lastModifiedBy String?   @map("modified_by")
+  lastModifiedAt DateTime  @updatedAt @map("modified_at")
+  lastStatusUpdate DateTime @default(now()) @map("status_update")
+  version        Int       @default(1)
+  
+  @@map("employees")
   salary         Decimal?  @db.Decimal(10, 2)
   taxId          String?   @db.VarChar(50)
   phoneNumber    String?   @db.VarChar(20)

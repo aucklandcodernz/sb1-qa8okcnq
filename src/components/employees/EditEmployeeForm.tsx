@@ -67,8 +67,18 @@ export default function EditEmployeeForm() {
           'Content-Type': 'application/json',
           'user-id': currentUser.id 
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+          ...data,
+          version: employee.version
+        })
       });
+
+      if (response.status === 409) {
+        // Handle version conflict
+        const error = await response.json();
+        toast.error(error.message);
+        return;
+      }
 
       if (!response.ok) {
         const errorData = await response.json();
