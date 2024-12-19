@@ -14,6 +14,7 @@ model User {
   name           String?
   role           String    @default("USER")
   organizationId String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
 }
@@ -21,6 +22,19 @@ model User {
 model Organization {
   id        String   @id @default(cuid())
   name      String
+  users     User[]
+  employees Employee[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Employee {
+  id             String    @id @default(cuid())
+  firstName      String
+  lastName       String
+  email         String    @unique
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }
