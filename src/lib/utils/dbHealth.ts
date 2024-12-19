@@ -1,20 +1,14 @@
 
-import { prisma } from '../db';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export async function checkDatabaseHealth() {
   try {
+    // Try to query the database
     await prisma.$queryRaw`SELECT 1`;
-    return true;
+    return { status: 'healthy', message: 'Database connection successful' };
   } catch (error) {
-    console.error('Database health check failed:', error);
-    return false;
-  }
-}
-
-export async function reconnectIfNeeded() {
-  try {
-    await prisma.$connect();
-  } catch (error) {
-    console.error('Database reconnection failed:', error);
+    return { status: 'error', message: error.message };
   }
 }

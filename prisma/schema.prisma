@@ -9,21 +9,83 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id             String    @id @default(cuid())
-  email          String    @unique
-  name           String?
-  role           String    @default("USER")
-  organizationId String?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-  organization   Organization? @relation(fields: [organizationId], references: [id])
+model Organization {
+  id          String      @id @default(cuid())
+  name        String
+  employees   Employee[]
+  departments Department[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
 }
 
-model Organization {
-  id        String    @id @default(cuid())
-  name      String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  users     User[]
+model Department {
+  id             String       @id @default(cuid())
+  name           String
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  employees      Employee[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Employee {
+  id             String       @id @default(cuid())
+  email          String       @unique
+  name           String
+  position       String
+  organizationId String
+  departmentId   String?
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  department     Department?  @relation(fields: [departmentId], references: [id])
+  onboarding     Onboarding?
+  documents      Document[]
+  attendance     Attendance[]
+  leaves         Leave[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Onboarding {
+  id           String    @id @default(cuid())
+  employeeId   String    @unique
+  employee     Employee  @relation(fields: [employeeId], references: [id])
+  status       String    @default("PENDING")
+  startDate    DateTime
+  completedAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Document {
+  id           String    @id @default(cuid())
+  title        String
+  fileUrl      String
+  employeeId   String
+  employee     Employee  @relation(fields: [employeeId], references: [id])
+  type         String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Attendance {
+  id         String    @id @default(cuid())
+  employeeId String
+  employee   Employee  @relation(fields: [employeeId], references: [id])
+  date       DateTime  @db.Date
+  clockIn    DateTime
+  clockOut   DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Leave {
+  id         String    @id @default(cuid())
+  employeeId String
+  employee   Employee  @relation(fields: [employeeId], references: [id])
+  type       String
+  startDate  DateTime  @db.Date
+  endDate    DateTime  @db.Date
+  status     String    @default("PENDING")
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
