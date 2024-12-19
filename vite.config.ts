@@ -12,6 +12,10 @@ export default defineConfig({
       host: '0.0.0.0',
       clientPort: 443,
       port: 443
+    },
+    watch: {
+      usePolling: true,
+      interval: 1000
     }
   },
   build: {
@@ -25,6 +29,11 @@ export default defineConfig({
     }
   },
   optimizeDeps: {
-    exclude: ['@replit/database']
+    exclude: ['@replit/database'],
+    force: true
+  },
+  esbuild: {
+    logLimit: 0,
+    logLevel: 'error'
   }
 });
