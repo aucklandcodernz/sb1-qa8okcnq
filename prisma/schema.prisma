@@ -40,6 +40,9 @@ model Employee {
   startDate      DateTime  @default(now())
   endDate        DateTime?
   status         String    @default("ACTIVE")
+  statusHistory  Json[]    @default([])
+  departmentHistory Json[] @default([])
+  lastStatusUpdate DateTime @default(now())
   salary         Decimal?  @db.Decimal(10, 2)
   taxId          String?   @db.VarChar(50)
   phoneNumber    String?   @db.VarChar(20)
