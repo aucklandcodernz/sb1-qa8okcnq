@@ -24,6 +24,8 @@ export class NotificationService {
 
 export const notificationService = new NotificationService()
 import { io, Socket } from 'socket.io-client';
+import { prisma } from '../db';
+import type { Notification } from '@prisma/client';
 
 class WebSocketService {
   private socket: Socket | null = null;
