@@ -1,35 +1,13 @@
 
-export class NotificationService {
-  private ws: WebSocket | null = null
-  private subscribers: Set<(data: any) => void> = new Set()
-
-  connect() {
-    this.ws = new WebSocket(`ws://${window.location.hostname}:8080`)
-    
-    this.ws.onmessage = (event) => {
-      const data = JSON.parse(event.data)
-      this.subscribers.forEach(subscriber => subscriber(data))
-    }
-
-    this.ws.onclose = () => {
-      setTimeout(() => this.connect(), 1000)
-    }
-  }
-
-  subscribe(callback: (data: any) => void) {
-    this.subscribers.add(callback)
-    return () => this.subscribers.delete(callback)
-  }
-}
-
-export const notificationService = new NotificationService()
 import { io, Socket } from 'socket.io-client';
 
-class WebSocketService {
+export class WebSocketService {
   private socket: Socket | null = null;
   private static instance: WebSocketService;
 
-  private constructor() {}
+  private constructor() {
+    if (typeof window === 'undefined') return;
+  }
 
   static getInstance(): WebSocketService {
     if (!WebSocketService.instance) {
@@ -39,9 +17,14 @@ class WebSocketService {
   }
 
   connect(userId: string) {
+    if (this.socket?.connected) return;
+    if (typeof window === 'undefined') return;
+
     this.socket = io(import.meta.env.VITE_WS_URL || 'ws://0.0.0.0:3001', {
       query: { userId },
-      transports: ['websocket']
+      transports: ['websocket'],
+      reconnection: true,
+      reconnectionAttempts: 5
     });
 
     this.socket.on('connect', () => {
@@ -66,13 +49,6 @@ class WebSocketService {
   emit(event: string, data: any) {
     if (!this.socket) return;
     this.socket.emit(event, data);
-  }
-
-  disconnect() {
-    if (this.socket) {
-      this.socket.disconnect();
-      this.socket = null;
-    }
   }
 }
 

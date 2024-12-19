@@ -1,37 +1,34 @@
 
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { Employee } from '@prisma/client'
-import { atom, useAtom } from 'jotai'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { prisma } from '../db';
 
-export const selectedEmployeeAtom = atom<Employee | null>(null)
-
-export function useEmployees() {
+export function useEmployees(organizationId: string) {
   return useQuery({
-    queryKey: ['employees'],
+    queryKey: ['employees', organizationId],
     queryFn: async () => {
-      const res = await fetch('/api/employees')
-      if (!res.ok) throw new Error('Failed to fetch employees')
-      return res.json()
+      const response = await fetch(`/api/organizations/${organizationId}/employees`);
+      if (!response.ok) throw new Error('Failed to fetch employees');
+      return response.json();
     },
-    staleTime: 1000 * 60 * 5 // 5 minutes
-  })
+    staleTime: 5 * 60 * 1000,
+  });
 }
 
 export function useCreateEmployee() {
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
   
   return useMutation({
-    mutationFn: async (employee: Omit<Employee, 'id'>) => {
-      const res = await fetch('/api/employees', {
+    mutationFn: async (employeeData: any) => {
+      const response = await fetch('/api/employees', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(employee)
-      })
-      if (!res.ok) throw new Error('Failed to create employee')
-      return res.json()
+        body: JSON.stringify(employeeData),
+      });
+      if (!response.ok) throw new Error('Failed to create employee');
+      return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['employees'] })
-    }
-  })
+      queryClient.invalidateQueries({ queryKey: ['employees'] });
+    },
+  });
 }
