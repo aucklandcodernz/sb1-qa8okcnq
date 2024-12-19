@@ -53,33 +53,17 @@ model Employee {
 }
 
 model User {
-  id             String         @id @default(cuid())
-  email          String         @unique
+  id             String       @id @default(cuid())
+  email          String       @unique
   hashedPassword String
   firstName      String?
   lastName       String?
-  role           String         @default("USER")
+  role           String       @default("USER")
   organizationId String?
-  organization   Organization?  @relation(fields: [organizationId], references: [id])
-  notifications  Notification[]
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime       @updatedAt
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 
   @@index([email])
   @@index([organizationId])
-}
-
-model Notification {
-  id        String   @id @default(cuid())
-  type      String
-  title     String
-  message   String
-  read      Boolean  @default(false)
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-  @@index([type])
 }
