@@ -1,41 +1,9 @@
+
 import { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../atoms/user';
 import { webSocketService } from '../lib/notifications/websocket';
 import { getUserNotifications, markAsRead as markNotificationAsRead, deleteNotification } from '../lib/notifications/handlers';
-
-export const useNotifications = () => {
-  const [notifications] = useAtom(notificationsAtom);
-
-  const unreadCount = notifications.filter(n => !n.read).length;
-
-  const getNotificationsByType = (type: NotificationType) => 
-    notifications.filter(n => n.type === type);
-
-  const getUnreadByType = (type: NotificationType) =>
-    notifications.filter(n => n.type === type && !n.read).length;
-
-  const markAsRead = (notificationId: string) => {
-    markNotificationAsRead(notificationId);
-  };
-
-  const markAllRead = () => {
-    markAllAsRead();
-  };
-
-  return {
-    notifications,
-    unreadCount,
-    getNotificationsByType,
-    getUnreadByType,
-    markAsRead,
-    markAllRead,
-  };
-};
-import { useEffect, useState } from 'react';
-import { useAtom } from 'jotai';
-import { userAtom } from '../atoms/user';
-import { webSocketService } from '../lib/notifications/websocket';
 
 export type Notification = {
   id: string;
@@ -63,12 +31,21 @@ export function useNotifications() {
     };
   }, [currentUser?.id]);
 
+  const unreadCount = notifications.filter(n => !n.read).length;
+
+  const getNotificationsByType = (type: string) => 
+    notifications.filter(n => n.type === type);
+
+  const getUnreadByType = (type: string) =>
+    notifications.filter(n => n.type === type && !n.read).length;
+
   const markAsRead = (notificationId: string) => {
     setNotifications(prev =>
       prev.map(notif =>
         notif.id === notificationId ? { ...notif, read: true } : notif
       )
     );
+    markNotificationAsRead(notificationId);
   };
 
   const clearNotifications = () => {
@@ -77,6 +54,9 @@ export function useNotifications() {
 
   return {
     notifications,
+    unreadCount,
+    getNotificationsByType,
+    getUnreadByType,
     markAsRead,
     clearNotifications,
   };
