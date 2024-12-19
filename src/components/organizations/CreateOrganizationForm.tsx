@@ -27,7 +27,9 @@ export default function CreateOrganizationForm({ onSuccess }: { onSuccess: () =>
       createdAt: new Date(),
       updatedAt: new Date(),
     }]);
-    onSuccess();
+    if (typeof onSuccess === 'function') {
+      onSuccess();
+    }
   };
 
   return (

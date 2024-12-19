@@ -14,7 +14,7 @@ import EmployeePayroll from './employee/EmployeePayroll';
 import EmployeeTraining from './employee/EmployeeTraining';
 import EmployeeVisa from './employee/EmployeeVisa';
 import EditEmployeeForm from '../components/employees/EditEmployeeForm'; // Added import
-
+import LoadingSpinner from '../components/ui/LoadingSpinner'; // Added import
 import { ErrorBoundary } from '../components/layout/ErrorBoundary';
 
 export default function EmployeeProfile() {
