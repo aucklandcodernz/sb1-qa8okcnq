@@ -3,6 +3,7 @@ import { useParams, Outlet, Routes, Route, Navigate } from 'react-router-dom';
 import { useAtom } from 'jotai';
 import { employeeProfilesAtom } from '../lib/employees';
 import { userAtom } from '../lib/auth';
+import { onboardingChecklistsAtom } from '../lib/onboarding'; // Added import
 import EmployeeProfileNav from '../components/employees/EmployeeProfileNav';
 import EmployeeOverview from './employee/EmployeeOverview';
 import EmployeeDocuments from './employee/EmployeeDocuments';
@@ -16,6 +17,8 @@ import EmployeeVisa from './employee/EmployeeVisa';
 import EditEmployeeForm from '../components/employees/EditEmployeeForm'; // Added import
 import LoadingSpinner from '../components/ui/LoadingSpinner'; // Added import
 import { ErrorBoundary } from '../components/layout/ErrorBoundary';
+import OnboardingTaskList from '../components/onboarding/OnboardingTaskList'; // Added import
+
 
 export default function EmployeeProfile() {
   return (
@@ -54,6 +57,11 @@ function EmployeeProfileContent() {
   // Check if user has payroll access
   const hasPayrollAccess = ['SUPER_ADMIN', 'ORG_ADMIN', 'HR_MANAGER'].includes(user?.role || '');
 
+  const handleOnboardingStatusUpdate = (taskId, newStatus) => {
+    //Implementation for updating onboarding status.  This is a placeholder.
+    console.log(`Task ${taskId} updated to status ${newStatus}`);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -67,37 +75,14 @@ function EmployeeProfileContent() {
       </div>
 
       {employeeOnboarding && (
-        <div className="mb-6 bg-blue-50 p-6 rounded-lg">
-          <div className="flex justify-between items-center">
-            <h3 className="text-lg font-medium text-blue-900">Onboarding Status</h3>
-            <span className="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">
-              {employeeOnboarding.currentPhase}
-            </span>
-          </div>
-          <div className="mt-4">
-            <div className="flex items-center mb-2">
-              <div className="w-full bg-blue-200 rounded-full h-2.5 mr-2">
-                <div 
-                  className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" 
-                  style={{ width: `${(employeeOnboarding.completedTasks / employeeOnboarding.totalTasks) * 100}%` }}
-                ></div>
-              </div>
-              <span className="text-sm font-medium text-blue-900">
-                {Math.round((employeeOnboarding.completedTasks / employeeOnboarding.totalTasks) * 100)}%
-              </span>
-            </div>
-            <div className="mt-4 grid grid-cols-2 gap-4">
-              <div className="bg-white p-4 rounded-md shadow-sm">
-                <span className="text-sm text-gray-500">Completed Tasks</span>
-                <p className="text-2xl font-semibold text-blue-600">{employeeOnboarding.completedTasks}</p>
-              </div>
-              <div className="bg-white p-4 rounded-md shadow-sm">
-                <span className="text-sm text-gray-500">Remaining Tasks</span>
-                <p className="text-2xl font-semibold text-orange-600">
-                  {employeeOnboarding.totalTasks - employeeOnboarding.completedTasks}
-                </p>
-              </div>
-            </div>
+        <div className="bg-white shadow-sm rounded-lg overflow-hidden">
+          <div className="px-4 py-5 sm:p-6">
+            <OnboardingTaskList 
+              tasks={employeeOnboarding.tasks}
+              employeeId={id}
+              organizationId={profile.organizationId}
+              onUpdateStatus={handleOnboardingStatusUpdate}
+            />
           </div>
         </div>
       )}

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -13,25 +12,42 @@ interface Props {
 }
 
 const onboardingTemplates = [
-  {
-    id: 'standard',
-    name: 'Standard Onboarding',
-    duration: '2 weeks',
-    description: 'Basic onboarding process for new employees'
-  },
-  {
-    id: 'technical',
-    name: 'Technical Role Onboarding',
-    duration: '3 weeks',
-    description: 'Specialized onboarding for technical positions'
-  },
-  {
-    id: 'management',
-    name: 'Management Onboarding',
-    duration: '4 weeks',
-    description: 'Comprehensive onboarding for management roles'
-  }
-];
+    { 
+      id: 'standard',
+      name: 'Standard Onboarding',
+      duration: '2 weeks',
+      tasks: [
+        { title: 'Complete Personal Information', category: 'Documentation' },
+        { title: 'Review Company Policies', category: 'Compliance' },
+        { title: 'IT System Access Setup', category: 'Setup' },
+        { title: 'Department Introduction', category: 'Integration' }
+      ]
+    },
+    { 
+      id: 'technical',
+      name: 'Technical Role Onboarding',
+      duration: '3 weeks',
+      tasks: [
+        { title: 'Complete Personal Information', category: 'Documentation' },
+        { title: 'Technical Stack Overview', category: 'Training' },
+        { title: 'Development Environment Setup', category: 'Setup' },
+        { title: 'Code Repository Access', category: 'Setup' },
+        { title: 'Team Project Introduction', category: 'Integration' }
+      ]
+    },
+    { 
+      id: 'management',
+      name: 'Management Onboarding',
+      duration: '4 weeks',
+      tasks: [
+        { title: 'Complete Personal Information', category: 'Documentation' },
+        { title: 'Leadership Training', category: 'Training' },
+        { title: 'Team Overview', category: 'Integration' },
+        { title: 'KPI Review', category: 'Goals' },
+        { title: 'Budget Overview', category: 'Training' }
+      ]
+    }
+  ];
 
 export default function CreateEmployeeForm({ organizationId, onSuccess }: Props) {
   const [organizations] = useAtom(organizationsAtom);
