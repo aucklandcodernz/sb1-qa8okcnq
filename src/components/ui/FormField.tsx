@@ -57,3 +57,4 @@ FormField.displayName = 'FormField';
 
 export { FormField };
 export type { FormFieldProps };
+export default FormField;
