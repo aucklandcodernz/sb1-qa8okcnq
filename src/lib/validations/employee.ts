@@ -20,23 +20,3 @@ export const employeeSchema = z.object({
 });
 
 export const employeeUpdateSchema = employeeSchema.partial();
-import { z } from 'zod';
-
-export const employeeSchema = z.object({
-  firstName: z.string().min(2, 'First name must be at least 2 characters'),
-  lastName: z.string().min(2, 'Last name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
-  position: z.string().min(2, 'Position is required'),
-  departmentId: z.string().optional(),
-  organizationId: z.string(),
-  employmentType: z.enum(['FULL_TIME', 'PART_TIME', 'CONTRACT', 'TEMPORARY']),
-  status: z.enum(['ACTIVE', 'PROBATION', 'ON_LEAVE', 'TERMINATED', 'SUSPENDED']),
-  taxCode: z.enum(['M', 'ME', 'SB', 'S', 'SH', 'ST', 'SA']).optional(), // NZ tax codes
-  kiwiSaverContribution: z.number().min(0).max(0.10).optional(), // 0-10%
-  bankAccountNumber: z.string().optional(),
-});
-
-export const employeeUpdateSchema = employeeSchema.partial();
-
-export type Employee = z.infer<typeof employeeSchema>;
-export type EmployeeUpdate = z.infer<typeof employeeUpdateSchema>;
