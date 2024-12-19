@@ -11,7 +11,10 @@ export async function createReview(req: Request, res: Response) {
     const review = await prisma.performanceReview.create({
       data: {
         ...validatedData,
-        lastReminderSent: null
+        lastReminderSent: null,
+        competencies: validatedData.competencies || {},
+        developmentPlans: validatedData.developmentPlans || {},
+        achievements: validatedData.achievements || {}
       },
       include: {
         employee: true,

@@ -172,11 +172,18 @@ model PerformanceReview {
   reviewCycle String?
   department  String?
   overallPerformance String?
+  competencies Json?
+  developmentPlans Json?
+  achievements Json?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   employee    Employee  @relation(fields: [employeeId], references: [id])
   reviewer    Employee  @relation("ReviewerRelation", fields: [reviewerId], references: [id])
   feedback    Feedback[]
+
+  @@index([employeeId, reviewDate])
+  @@index([status])
+  @@index([department])
 
   @@index([employeeId, reviewDate])
   @@index([status])

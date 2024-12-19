@@ -19,7 +19,10 @@ export const performanceReviewSchema = z.object({
   department: z.string().optional(),
   overallPerformance: z.enum(["EXCELLENT", "GOOD", "SATISFACTORY", "NEEDS_IMPROVEMENT", "UNSATISFACTORY"]).optional(),
   reviewCycle: z.string().optional(),
-  score: z.number().min(0).max(5).optional()
+  score: z.number().min(0).max(5).optional(),
+  competencies: z.record(z.any()).optional(),
+  developmentPlans: z.record(z.any()).optional(),
+  achievements: z.record(z.any()).optional()
 });
 
 export type CreateReviewInput = z.infer<typeof performanceReviewSchema>;
