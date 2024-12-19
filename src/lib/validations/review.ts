@@ -16,6 +16,9 @@ export const performanceReviewSchema = z.object({
   metrics: z.record(z.any()).optional(),
   acknowledgement: z.boolean().default(false),
   discussionNotes: z.string().optional(),
+  department: z.string().optional(),
+  overallPerformance: z.enum(["EXCELLENT", "GOOD", "SATISFACTORY", "NEEDS_IMPROVEMENT", "UNSATISFACTORY"]).optional(),
+  reviewCycle: z.string().optional(),
   score: z.number().min(0).max(5).optional()
 });
 

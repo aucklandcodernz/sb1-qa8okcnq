@@ -9,10 +9,14 @@ export async function createReview(req: Request, res: Response) {
     const validatedData = performanceReviewSchema.parse(req.body);
     
     const review = await prisma.performanceReview.create({
-      data: validatedData,
+      data: {
+        ...validatedData,
+        lastReminderSent: null
+      },
       include: {
         employee: true,
         reviewer: true,
+        feedback: true
       },
     });
     
@@ -28,16 +32,18 @@ export async function createReview(req: Request, res: Response) {
 
 export async function getReviews(req: Request, res: Response) {
   try {
-    const { employeeId, status } = req.query;
+    const { employeeId, status, department } = req.query;
     
     const reviews = await prisma.performanceReview.findMany({
       where: {
         employeeId: employeeId as string,
         status: status as string,
+        department: department as string,
       },
       include: {
         employee: true,
         reviewer: true,
+        feedback: true
       },
       orderBy: {
         reviewDate: 'desc',
@@ -61,6 +67,7 @@ export async function updateReview(req: Request, res: Response) {
       include: {
         employee: true,
         reviewer: true,
+        feedback: true
       },
     });
     

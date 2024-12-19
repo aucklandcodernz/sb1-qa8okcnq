@@ -168,6 +168,10 @@ model PerformanceReview {
   metrics     Json?     @default("{}")
   acknowledgement Boolean @default(false)
   discussionNotes String?
+  lastReminderSent DateTime?
+  reviewCycle String?
+  department  String?
+  overallPerformance String?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   employee    Employee  @relation(fields: [employeeId], references: [id])
@@ -176,9 +180,7 @@ model PerformanceReview {
 
   @@index([employeeId, reviewDate])
   @@index([status])
-
-  @@index([employeeId, reviewDate])
-  @@index([status])
+  @@index([department])
 }
 
 model Feedback {
