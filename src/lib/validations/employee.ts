@@ -1,6 +1,19 @@
 
 import { z } from 'zod';
 
+export const statusHistorySchema = z.object({
+  status: z.enum(["ACTIVE", "INACTIVE", "ON_LEAVE", "TERMINATED"]),
+  reason: z.string().optional(),
+  effectiveDate: z.date()
+});
+
+export const departmentHistorySchema = z.object({
+  departmentId: z.string(),
+  startDate: z.date(),
+  endDate: z.date().optional(),
+  reason: z.string().optional()
+});
+
 export const employeeSchema = z.object({
   firstName: z.string().min(2).max(50),
   lastName: z.string().min(2).max(50),
@@ -11,17 +24,5 @@ export const employeeSchema = z.object({
   endDate: z.date().optional(),
   status: z.enum(["ACTIVE", "INACTIVE", "ON_LEAVE", "TERMINATED"]),
   departmentId: z.string().optional(),
-  managerId: z.string().optional(),
-  statusHistory: z.array(z.object({
-    status: z.string(),
-    date: z.date(),
-    reason: z.string().optional()
-  })).optional(),
-  departmentHistory: z.array(z.object({
-    departmentId: z.string(),
-    startDate: z.date(),
-    endDate: z.date().optional()
-  })).optional()
+  managerId: z.string().optional()
 });
-
-export type CreateEmployeeInput = z.infer<typeof employeeSchema>;

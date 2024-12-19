@@ -40,8 +40,8 @@ model Employee {
   startDate      DateTime  @default(now())
   endDate        DateTime?
   status         String    @default("ACTIVE")
-  statusHistory  Json[]    @default([])
-  departmentHistory Json[] @default([])
+  statusHistory  EmployeeStatusHistory[]
+  departmentHistory DepartmentHistory[]
   lastStatusUpdate DateTime @default(now())
   salary         Decimal?  @db.Decimal(10, 2)
   taxId          String?   @db.VarChar(50)
@@ -241,4 +241,24 @@ model TrainingRecord {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   employee    Employee  @relation(fields: [employeeId], references: [id])
+}
+model EmployeeStatusHistory {
+  id          String    @id @default(cuid())
+  employeeId  String
+  status      String
+  reason      String?
+  effectiveDate DateTime
+  createdAt   DateTime  @default(now())
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+}
+
+model DepartmentHistory {
+  id          String    @id @default(cuid())
+  employeeId  String
+  departmentId String
+  startDate   DateTime
+  endDate     DateTime?
+  reason      String?
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+  department  Department @relation(fields: [departmentId], references: [id])
 }
