@@ -57,3 +57,26 @@ export async function createEmployee(req: Request, res: Response) {
     }
   }
 }
+
+export async function updateEmployee(req: Request, res: Response) {
+  try {
+    const { id } = req.params;
+    const validatedData = employeeSchema.partial().parse(req.body);
+    
+    const employee = await prisma.employee.update({
+      where: { id },
+      data: validatedData,
+      include: {
+        department: true,
+        manager: true,
+      },
+    });
+    res.json(employee);
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      res.status(400).json({ error: error.errors });
+    } else {
+      res.status(500).json({ error: 'Failed to update employee' });
+    }
+  }
+}
