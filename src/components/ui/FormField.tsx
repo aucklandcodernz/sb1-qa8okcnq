@@ -14,7 +14,7 @@ interface FormFieldProps extends React.InputHTMLAttributes<HTMLInputElement | HT
 const FormField = forwardRef<HTMLInputElement | HTMLTextAreaElement, FormFieldProps>(
   ({ label, error, hint, leftIcon, component = 'input', className, rows = 3, ...props }, ref) => {
     const Component = component as any;
-
+    
     return (
       <div className="w-full">
         {label && (
