@@ -1,87 +1,85 @@
 
-import { NextApiRequest, NextApiResponse } from 'next';
+import { Request, Response } from 'express';
 import { prisma } from '../../lib/db';
-import { handleError } from '../../lib/middleware/errorHandler';
+import { performanceReviewSchema } from '../../lib/validations/review';
 import { z } from 'zod';
 
-const reviewSchema = z.object({
-  employeeId: z.string(),
-  reviewerId: z.string(),
-  reviewDate: z.string(),
-  rating: z.number().min(1).max(5),
-  comments: z.string().optional(),
-  goals: z.object({}).passthrough().optional(),
-  metrics: z.object({}).passthrough().optional(),
-});
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function createReview(req: Request, res: Response) {
   try {
-    if (req.method === 'POST') {
-      const data = reviewSchema.parse(req.body);
-      const review = await prisma.performanceReview.create({
-        data: {
-          ...data,
-          reviewDate: new Date(data.reviewDate),
-          status: 'DRAFT'
-        },
-        include: {
-          employee: true,
-          reviewer: true
-        }
-      });
-      return res.status(201).json(review);
-    }
-
-    if (req.method === 'GET') {
-      const reviews = await prisma.performanceReview.findMany({
-        include: {
-          employee: true,
-          reviewer: true
-        },
-        orderBy: {
-          reviewDate: 'desc'
-        }
-      });
-      return res.status(200).json(reviews);
-    }
-
-    return res.status(405).json({ error: 'Method not allowed' });
+    const validatedData = performanceReviewSchema.parse(req.body);
+    
+    const review = await prisma.performanceReview.create({
+      data: {
+        ...validatedData,
+        lastReminderSent: null,
+        competencies: validatedData.competencies || {},
+        developmentPlans: validatedData.developmentPlans || {},
+        achievements: validatedData.achievements || {}
+      },
+      include: {
+        employee: true,
+        reviewer: true,
+        feedback: true
+      },
+    });
+    
+    res.status(201).json(review);
   } catch (error) {
-    handleError(error, res);
+    if (error instanceof z.ZodError) {
+      res.status(400).json({ error: error.errors });
+    } else {
+      res.status(500).json({ error: 'Failed to create review' });
+    }
   }
 }
-import { NextApiRequest, NextApiResponse } from 'next'
-import { prisma } from '../../lib/db'
-import { reviewSchema } from '../../lib/validations/review'
-import { getServerSession } from 'next-auth'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export async function getReviews(req: Request, res: Response) {
   try {
-    const session = await getServerSession(req, res)
-    if (!session) return res.status(401).json({ error: 'Unauthorized' })
-
-    switch (req.method) {
-      case 'POST': {
-        const data = reviewSchema.parse(req.body)
-        const review = await prisma.performanceReview.create({ data })
-        return res.status(201).json(review)
-      }
-
-      case 'GET': {
-        const { employeeId } = req.query
-        const reviews = await prisma.performanceReview.findMany({
-          where: { employeeId: employeeId as string },
-          orderBy: { date: 'desc' }
-        })
-        return res.json(reviews)
-      }
-
-      default:
-        res.setHeader('Allow', ['GET', 'POST'])
-        return res.status(405).end(`Method ${req.method} Not Allowed`)
-    }
+    const { employeeId, status, department } = req.query;
+    
+    const reviews = await prisma.performanceReview.findMany({
+      where: {
+        employeeId: employeeId as string,
+        status: status as string,
+        department: department as string,
+      },
+      include: {
+        employee: true,
+        reviewer: true,
+        feedback: true
+      },
+      orderBy: {
+        reviewDate: 'desc',
+      },
+    });
+    
+    res.json(reviews);
   } catch (error) {
-    console.error(error)
-    return res.status(500).json({ error: 'Internal Server Error' })
+    res.status(500).json({ error: 'Failed to fetch reviews' });
+  }
+}
+
+export async function updateReview(req: Request, res: Response) {
+  try {
+    const { id } = req.params;
+    const validatedData = performanceReviewSchema.partial().parse(req.body);
+    
+    const review = await prisma.performanceReview.update({
+      where: { id },
+      data: validatedData,
+      include: {
+        employee: true,
+        reviewer: true,
+        feedback: true
+      },
+    });
+    
+    res.json(review);
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      res.status(400).json({ error: error.errors });
+    } else {
+      res.status(500).json({ error: 'Failed to update review' });
+    }
   }
 }

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -11,13 +12,7 @@ interface Props {
 
 export default function CreateEmployeeForm({ organizationId, onSuccess }: Props) {
   const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: zodResolver(employeeSchema),
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      position: ''
-    }
+    resolver: zodResolver(employeeSchema)
   });
 
   const onSubmit = async (data: any) => {

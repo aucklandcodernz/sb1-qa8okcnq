@@ -42,6 +42,21 @@ model Employee {
   department     Department?    @relation(fields: [departmentId], references: [id])
   departmentId   String?
   position       String    @db.VarChar(100)
+  
+enum EmploymentType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  TEMPORARY
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  PROBATION
+  ON_LEAVE
+  TERMINATED
+  SUSPENDED
+}
   profileImage   String?
   dateOfBirth    DateTime?
   gender         String?
@@ -69,6 +84,7 @@ model Employee {
   lastModifiedAt DateTime  @updatedAt @map("modified_at")
   lastStatusUpdate DateTime @default(now()) @map("status_update")
   version        Int       @default(1)
+  
   @@map("employees")
   salary         Decimal?  @db.Decimal(10, 2)
   taxId          String?   @db.VarChar(50)
@@ -172,93 +188,112 @@ model Leave {
 }
 
 model PerformanceReview {
-  id          String      @id @default(cuid())
+  id          String    @id @default(cuid())
   employeeId  String
   reviewerId  String
-  date        DateTime
+  reviewDate  DateTime
   rating      Int
-  feedback    String
-  goals       String[]
-  status      ReviewStatus
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  employee    Employee    @relation(fields: [employeeId], references: [id])
+  comments    String?
+  goals       Json?
+  skillAssessments Json?
+  status      String    @default("DRAFT")
+  nextReviewDate DateTime?
+  completedAt DateTime?
+  category    String    @default("ANNUAL")
+  score       Decimal   @default(0) @db.Decimal(3,2)
+  improvement String[]
+  metrics     Json?     @default("{}")
+  acknowledgement Boolean @default(false)
+  discussionNotes String?
+  lastReminderSent DateTime?
+  reviewCycle String?
+  department  String?
+  overallPerformance String?
+  competencies Json?
+  developmentPlans Json?
+  achievements Json?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+  reviewer    Employee  @relation("ReviewerRelation", fields: [reviewerId], references: [id])
+  feedback    Feedback[]
 
-  @@index([employeeId])
+  @@index([employeeId, reviewDate])
+  @@index([status])
+  @@index([department])
+
+  @@index([employeeId, reviewDate])
+  @@index([status])
+  @@index([department])
+}
+
+model Feedback {
+  id          String    @id @default(cuid())
+  reviewId    String
+  providerId  String
+  content     String
+  rating      Int?
+  createdAt   DateTime  @default(now())
+  review      PerformanceReview @relation(fields: [reviewId], references: [id])
+  provider    Employee  @relation(fields: [providerId], references: [id])
+}
+
+model SafetyIncident {
+  id          String    @id @default(cuid())
+  reporterId  String
+  type        String
+  severity    String
+  description String
+  location    String
+  dateOccurred DateTime
+  status      String    @default("OPEN")
+  resolution  String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  reporter    Employee  @relation(fields: [reporterId], references: [id])
+
+  @@index([status])
+  @@index([dateOccurred])
+}
+
+model TrainingCertification {
+  id          String    @id @default(cuid())
+  employeeId  String
+  courseId    String
+  certificationNumber String?
+  issueDate   DateTime
+  expiryDate  DateTime?
+  status      String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+  course      TrainingCourse @relation(fields: [courseId], references: [id])
+
+  @@index([employeeId, status])
+  @@index([expiryDate])
+}
+
+model TrainingCourse {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  duration    Int
+  required    Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  certifications TrainingCertification[]
 }
 
 model TrainingRecord {
   id          String    @id @default(cuid())
   employeeId  String
-  courseId    String
-  startDate   DateTime
-  endDate     DateTime?
+  courseName  String
+  completedAt DateTime
   status      String
-  completion  Int       @default(0)
-  certificate String?
-  employee    Employee  @relation(fields: [employeeId], references: [id])
-  course      Course    @relation(fields: [courseId], references: [id])
-
-  @@index([employeeId])
-  @@index([courseId])
-}
-
-model Course {
-  id          String           @id @default(cuid())
-  title       String
-  description String
-  duration    Int
-  records     TrainingRecord[]
-}
-
-model SafetyIncident {
-  id          String    @id @default(cuid())
-  employeeId  String?
-  type        String
-  severity    String
-  description String
-  location    String
-  date        DateTime
-  status      String
-  employee    Employee? @relation(fields: [employeeId], references: [id])
-
-  @@index([employeeId])
-  @@index([date])
-}
-
-enum ReviewStatus {
-  PENDING
-  IN_PROGRESS
-  COMPLETED
-}
-
-enum EmployeeStatus {
-  ACTIVE
-  INACTIVE
-  ON_LEAVE
-  TERMINATED
-}
-
-enum ReviewStatus {
-  DRAFT
-  PENDING
-  COMPLETED
-  ARCHIVED
-}
-model DocumentStatus {
-  id          String    @id @default(cuid())
-  employeeId  String
-  documentType String
-  status      String
-  expiryDate  DateTime?
-  uploadedAt  DateTime  @default(now())
+  createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   employee    Employee  @relation(fields: [employeeId], references: [id])
-
-  @@index([employeeId])
-  @@index([documentType])
 }
-
 model EmployeeStatusHistory {
   id          String    @id @default(cuid())
   employeeId  String
@@ -317,4 +352,24 @@ model SkillLevelHistory {
   skillAssessment  SkillAssessment @relation(fields: [skillAssessmentId], references: [id])
 
   @@index([skillAssessmentId])
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  INACTIVE
+  ON_LEAVE
+  TERMINATED
+}
+model DocumentStatus {
+  id          String    @id @default(cuid())
+  employeeId  String
+  documentType String
+  status      String
+  expiryDate  DateTime?
+  uploadedAt  DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  employee    Employee  @relation(fields: [employeeId], references: [id])
+
+  @@index([employeeId])
+  @@index([documentType])
 }

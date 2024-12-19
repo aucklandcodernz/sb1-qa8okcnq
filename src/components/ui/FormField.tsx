@@ -1,4 +1,3 @@
-
 import React, { forwardRef } from 'react';
 import { cn } from '../../lib/utils';
 
@@ -14,7 +13,7 @@ interface FormFieldProps extends React.InputHTMLAttributes<HTMLInputElement | HT
 const FormField = forwardRef<HTMLInputElement | HTMLTextAreaElement, FormFieldProps>(
   ({ label, error, hint, leftIcon, component = 'input', className, rows = 3, ...props }, ref) => {
     const Component = component as any;
-    
+
     return (
       <div className="w-full">
         {label && (
@@ -55,6 +54,4 @@ const FormField = forwardRef<HTMLInputElement | HTMLTextAreaElement, FormFieldPr
 
 FormField.displayName = 'FormField';
 
-export { FormField };
-export type { FormFieldProps };
 export default FormField;
