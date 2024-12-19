@@ -9,10 +9,12 @@ export default defineConfig({
     port: 3000,
     hmr: {
       protocol: 'ws',
-      host: '0.0.0.0'
+      host: '0.0.0.0',
+      clientPort: 443
     }
   },
   build: {
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -20,5 +22,8 @@ export default defineConfig({
         }
       }
     }
+  },
+  optimizeDeps: {
+    exclude: ['@replit/database']
   }
 });
