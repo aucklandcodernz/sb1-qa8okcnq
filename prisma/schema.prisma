@@ -88,21 +88,6 @@ model Employee {
   department     Department?    @relation(fields: [departmentId], references: [id])
   departmentId   String?
   position       String    @db.VarChar(100)
-  
-enum EmploymentType {
-  FULL_TIME
-  PART_TIME
-  CONTRACT
-  TEMPORARY
-}
-
-enum EmployeeStatus {
-  ACTIVE
-  PROBATION
-  ON_LEAVE
-  TERMINATED
-  SUSPENDED
-}
   profileImage   String?
   dateOfBirth    DateTime?
   gender         String?
@@ -130,7 +115,7 @@ enum EmployeeStatus {
   lastModifiedAt DateTime  @updatedAt @map("modified_at")
   lastStatusUpdate DateTime @default(now()) @map("status_update")
   version        Int       @default(1)
-  
+
   @@map("employees")
   salary         Decimal?  @db.Decimal(10, 2)
   taxId          String?   @db.VarChar(50)
