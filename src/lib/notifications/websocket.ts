@@ -6,7 +6,9 @@ class WebSocketService {
   private socket: Socket | null = null;
   private static instance: WebSocketService;
 
-  private constructor() {}
+  private constructor() {
+    if (typeof window === 'undefined') return;
+  }
 
   static getInstance(): WebSocketService {
     if (!WebSocketService.instance) {
@@ -17,6 +19,7 @@ class WebSocketService {
 
   connect(userId: string) {
     if (this.socket?.connected) return;
+    if (typeof window === 'undefined') return;
 
     this.socket = io(import.meta.env.VITE_WS_URL || 'ws://0.0.0.0:3001', {
       query: { userId },
