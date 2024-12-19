@@ -35,7 +35,8 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Create
     employees: []
   };
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit(async (data) => {
+    try {
     const newEmployee = {
       id: Math.random().toString(36).substr(2, 9),
       email: data.email,
