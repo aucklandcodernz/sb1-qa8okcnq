@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react';
 import { useAtom } from 'jotai';
-import { notificationsAtom, markAllAsRead, markNotificationAsRead } from '../lib/notifications';
-import { NotificationType } from '../types/notifications';
+import { userAtom } from '../atoms/user';
+import { webSocketService } from '../lib/notifications/websocket';
+import { getUserNotifications, markAsRead as markNotificationAsRead, deleteNotification } from '../lib/notifications/handlers';
 
 export const useNotifications = () => {
   const [notifications] = useAtom(notificationsAtom);
