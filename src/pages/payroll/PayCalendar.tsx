@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import './PayCalendar.css';
+import '../../components/payroll/PayCalendar.css';
 import { format, addMonths, subMonths, isSaturday, isSunday } from 'date-fns';
 
 export default function PayCalendar() {
