@@ -37,7 +37,16 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/organizations" element={<Organizations />} />
           <Route path="/organizations/:id" element={<OrganizationDetails />} />
-          <Route path="/organizations/:id/payroll/*" element={<Payroll />} />
+          <Route path="/organizations/:id/payroll" element={<Payroll />}>
+            <Route index element={<PayrollDashboard />} />
+            <Route path="processing" element={<PayProcessing />} />
+            <Route path="employees" element={<EmployeePay />} />
+            <Route path="compliance" element={<PayrollCompliance />} />
+            <Route path="calculators" element={<PayrollCalculators />} />
+            <Route path="reports" element={<PayrollReports />} />
+            <Route path="calendar" element={<PayCalendar />} />
+            <Route path="settings" element={<PayrollSettings />} />
+          </Route>
           <Route path="/organizations/:id/recruitment/*" element={<Recruitment />} />
           <Route path="/organizations/:id/safety/*" element={<Safety />} />
           <Route path="/attendance" element={<TimeAndAttendance />} />
