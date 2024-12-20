@@ -11,26 +11,27 @@ export default async function handler(
     switch (req.method) {
       case 'GET':
         const employees = await dbUtils.findMany('employee');
-        return res.status(200).json(employees);
+        return res.status(200).json({ data: employees });
 
       case 'POST':
         const newEmployee = await dbUtils.create('employee', req.body);
-        return res.status(201).json(newEmployee);
+        return res.status(201).json({ data: newEmployee });
 
       case 'PUT':
         const { id, ...data } = req.body;
         const updatedEmployee = await dbUtils.update('employee', id, data);
-        return res.status(200).json(updatedEmployee);
+        return res.status(200).json({ data: updatedEmployee });
 
       case 'DELETE':
         const deletedEmployee = await dbUtils.delete('employee', req.query.id as string);
-        return res.status(200).json(deletedEmployee);
+        return res.status(200).json({ data: deletedEmployee });
 
       default:
         res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
-        return res.status(405).end(`Method ${req.method} Not Allowed`);
+        return res.status(405).json({ error: 'Method not allowed' });
     }
   } catch (error) {
-    handleError(error, res);
+    console.error('API Error:', error);
+    return res.status(500).json({ error: error.message || 'Internal server error' });
   }
 }

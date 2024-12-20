@@ -92,15 +92,17 @@ export default function CreateEmployeeForm({ organizationId, onSuccess }: Props)
         })
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        throw new Error('Failed to create employee');
+        throw new Error(result.error || 'Failed to create employee');
       }
       
       toast.success('Employee created successfully');
       onSuccess();
     } catch (error) {
       console.error('Create employee error:', error);
-      toast.error('Failed to create employee');
+      toast.error(error.message || 'Failed to create employee');
     }
   };
 
