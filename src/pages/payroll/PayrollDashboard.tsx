@@ -2,49 +2,48 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
+import ErrorMessage from '../../components/ui/ErrorMessage';
 import PayrollStats from '../../components/payroll/PayrollStats';
 import PayrollSummary from '../../components/payroll/PayrollSummary';
 import PayrollWorkflow from '../../components/payroll/PayrollWorkflow';
-
-interface PayrollPeriod {
-  id: string;
-  startDate: string;
-  endDate: string;
-  status: 'DRAFT' | 'PROCESSING' | 'COMPLETED';
-}
-
-interface PayrollData {
-  stats: {
-    totalProcessed: number;
-    totalPending: number;
-    totalAmount: number;
-  };
-  summary: {
-    currentPeriod: PayrollPeriod;
-    totalEmployees: number;
-  };
-  items: PayrollPeriod[];
-}
+import type { PayrollData } from '../../types/payroll';
 
 export default function PayrollDashboard() {
-  const { data: payrollData, isLoading, error } = useQuery<PayrollData>({
+  const { data, isLoading, error } = useQuery<PayrollData>({
     queryKey: ['payroll'],
     queryFn: async () => {
-      const response = await fetch('/api/payroll/periods');
-      if (!response.ok) throw new Error('Failed to fetch payroll data');
-      return response.json();
-    }
+      const response = await fetch('/api/payroll/periods', {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Failed to fetch payroll data: ${errorText}`);
+      }
+      
+      const responseData = await response.json();
+      if (!responseData) {
+        throw new Error('No payroll data received');
+      }
+      return responseData;
+    },
+    retry: 1,
+    retryDelay: 1000,
+    staleTime: 30000
   });
 
   if (isLoading) return <LoadingSpinner />;
-  if (error) return <div className="text-red-500">Error loading payroll data</div>;
-  if (!payrollData) return null;
+  if (error) return <ErrorMessage message={error instanceof Error ? error.message : 'Error loading payroll data'} />;
+  if (!data) return <ErrorMessage message="No payroll data available" />;
 
   return (
     <div className="space-y-6">
-      <PayrollStats data={payrollData.stats} />
-      <PayrollSummary data={payrollData.summary} />
-      <PayrollWorkflow items={payrollData.items} />
+      <PayrollStats data={data.stats} />
+      <PayrollSummary data={data.summary} />
+      <PayrollWorkflow items={data.items} />
     </div>
   );
 }
