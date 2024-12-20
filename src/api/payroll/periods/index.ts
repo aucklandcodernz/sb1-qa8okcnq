@@ -3,52 +3,46 @@ import { prisma } from '../../../lib/db';
 
 export async function GET() {
   try {
-    const currentPeriod = await prisma.payrollPeriod.findFirst({
-      where: {
-        endDate: {
-          gte: new Date()
-        }
+    const periods = await prisma.payrollPeriod.findMany({
+      include: {
+        payslips: true,
+        transactions: true
       },
       orderBy: {
-        startDate: 'asc'
+        startDate: 'desc'
       }
     });
 
-    const totalProcessed = await prisma.payrollPeriod.count({
-      where: { status: 'COMPLETED' }
-    });
-
-    const totalPending = await prisma.payrollPeriod.count({
-      where: { status: 'PENDING' }
-    });
+    const totalProcessed = periods.filter(p => p.status === 'COMPLETED').length;
+    const totalPending = periods.filter(p => p.status === 'PENDING').length;
+    const totalAmount = periods.reduce((sum, p) => sum + (p.totalAmount || 0), 0);
 
     const payrollData = {
       stats: {
         totalProcessed,
         totalPending,
-        totalAmount: 0
+        totalAmount
       },
       summary: {
-        currentPeriod: currentPeriod || {
-          startDate: new Date(),
-          endDate: new Date(),
+        currentPeriod: periods[0] || {
+          startDate: new Date().toISOString(),
+          endDate: new Date().toISOString(),
           status: 'PENDING'
         },
         totalEmployees: await prisma.employee.count()
       },
-      items: await prisma.payrollPeriod.findMany({
-        take: 5,
-        orderBy: { startDate: 'desc' }
-      })
+      items: periods
     };
 
     return new Response(JSON.stringify(payrollData), {
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      status: 200
     });
   } catch (error) {
+    console.error('Payroll API Error:', error);
     return new Response(JSON.stringify({ error: 'Failed to fetch payroll data' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      status: 500
     });
   }
 }
