@@ -9,10 +9,11 @@ export default function SystemHealthCheck() {
       const response = await fetch('/api/health');
       return response.json();
     },
-    refetchInterval: 30000,
-    retry: 3,
+    refetchInterval: 15000,
+    retry: 5,
     onError: (error) => {
       console.error('Health check failed:', error);
+      notifyAdminChannel('system-health', error);
     },
     staleTime: 15000,
     cacheTime: 300000,
@@ -21,6 +22,7 @@ export default function SystemHealthCheck() {
     refetchOnWindowFocus: true,
     refetchOnReconnect: true,
     refetchOnMount: true,
+    refetchInterval: 30000,
     retry: 3,
     retryDelay: 1000,
     refetchOnWindowFocus: true,
