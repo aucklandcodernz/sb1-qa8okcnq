@@ -1,42 +1,35 @@
 
-import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import ErrorMessage from '../../components/ui/ErrorMessage';
 import PayrollStats from '../../components/payroll/PayrollStats';
-import PayrollSummary from '../../components/payroll/PayrollSummary';
 import PayrollWorkflow from '../../components/payroll/PayrollWorkflow';
-import type { PayrollData } from '../../types/payroll';
+import ComplianceMonitor from '../../components/payroll/ComplianceMonitor';
 
 export default function PayrollDashboard() {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['payroll-periods'],
+    queryKey: ['payroll-dashboard'],
     queryFn: async () => {
-      try {
-        const response = await fetch('/api/payroll/periods');
-        if (!response.ok) {
-          throw new Error('Failed to fetch payroll data');
-        }
-        const data = await response.json();
-        return data;
-      } catch (err) {
-        console.error('Payroll fetch error:', err);
-        throw err;
+      const response = await fetch('/api/payroll/dashboard');
+      if (!response.ok) {
+        throw new Error('Failed to fetch payroll data');
       }
+      return response.json();
     },
-    retry: 2,
-    staleTime: 30000
+    staleTime: 60000,
+    cacheTime: 300000,
+    retry: 2
   });
 
   if (isLoading) return <LoadingSpinner />;
   if (error) return <ErrorMessage message="Error loading payroll data" />;
-  if (!data) return <ErrorMessage message="No payroll data available" />;
 
   return (
-    <div className="space-y-6">
-      <PayrollStats data={data.stats} />
-      <PayrollSummary data={data.summary} />
-      <PayrollWorkflow items={data.workflow} />
+    <div className="space-y-6 p-6">
+      <h1 className="text-2xl font-bold mb-6">Payroll Dashboard</h1>
+      <PayrollStats data={data?.stats} />
+      <ComplianceMonitor items={data?.compliance} />
+      <PayrollWorkflow items={data?.workflow} />
     </div>
   );
 }
