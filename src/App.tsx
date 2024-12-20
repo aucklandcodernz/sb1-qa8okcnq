@@ -45,7 +45,7 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/organizations" element={<Organizations />} />
           <Route path="/organizations/:id" element={<OrganizationDetails />} />
-          <Route path="/organizations/:id/payroll" element={<Payroll />}>
+          <Route path="/organizations/:id/payroll/*" element={<Payroll />}>
             <Route index element={<PayrollDashboard />} />
             <Route path="processing" element={<PayProcessing />} />
             <Route path="employees" element={<EmployeePay />} />
