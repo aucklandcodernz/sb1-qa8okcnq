@@ -1,0 +1,61 @@
+[plugin:vite:react-babel] /home/runner/sb1-qa8okcnq-2/src/components/organizations/CreateEmployeeForm.tsx: Missing semicolon. (65:14)
+  68 |       departmentId: data.departmentId,
+/home/runner/sb1-qa8okcnq-2/src/components/organizations/CreateEmployeeForm.tsx:65:14
+63 |    });
+64 |        firstName: data.firstName,
+65 |        lastName: data.lastName,
+   |                ^
+66 |        role: data.role as Role,
+67 |        organizationId,
+    at constructor (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:359:19)
+    at TypeScriptParserMixin.raise (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:3266:19)
+    at TypeScriptParserMixin.semicolon (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:3592:10)
+    at TypeScriptParserMixin.parseExpressionStatement (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12779:10)
+    at TypeScriptParserMixin.parseExpressionStatement (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:9247:26)
+    at TypeScriptParserMixin.parseStatementContent (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12394:19)
+    at TypeScriptParserMixin.parseStatementContent (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:9163:18)
+    at TypeScriptParserMixin.parseStatementLike (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12257:17)
+    at TypeScriptParserMixin.parseStatement (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12250:17)
+    at TypeScriptParserMixin.parseLabeledStatement (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12772:95)
+    at TypeScriptParserMixin.parseStatementContent (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12392:19)
+    at TypeScriptParserMixin.parseStatementContent (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:9163:18)
+    at TypeScriptParserMixin.parseStatementLike (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12257:17)
+    at TypeScriptParserMixin.parseStatementListItem (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12237:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12810:61)
+    at TypeScriptParserMixin.parseBlockBody (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12803:10)
+    at TypeScriptParserMixin.parseBlock (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12791:10)
+    at TypeScriptParserMixin.parseFunctionBody (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:11634:24)
+    at TypeScriptParserMixin.parseFunctionBodyAndFinish (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:11620:10)
+    at TypeScriptParserMixin.parseFunctionBodyAndFinish (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:8904:18)
+    at /home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12935:12
+    at TypeScriptParserMixin.withSmartMixTopicForbiddingContext (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:11928:14)
+    at TypeScriptParserMixin.parseFunction (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12934:10)
+    at TypeScriptParserMixin.parseExportDefaultExpression (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:13389:19)
+    at TypeScriptParserMixin.parseExportDefaultExpression (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:9127:18)
+    at TypeScriptParserMixin.parseExport (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:13315:25)
+    at TypeScriptParserMixin.parseExport (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:9110:20)
+    at TypeScriptParserMixin.parseStatementContent (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12370:27)
+    at TypeScriptParserMixin.parseStatementContent (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:9163:18)
+    at TypeScriptParserMixin.parseStatementLike (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12257:17)
+    at TypeScriptParserMixin.parseModuleItem (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12234:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12810:36)
+    at TypeScriptParserMixin.parseBlockBody (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12803:10)
+    at TypeScriptParserMixin.parseProgram (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12131:10)
+    at TypeScriptParserMixin.parseTopLevel (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12121:25)
+    at TypeScriptParserMixin.parse (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:13929:10)
+    at TypeScriptParserMixin.parse (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:9777:18)
+    at parse (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:13963:38)
+    at parser (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/parser/index.js:41:34)
+    at parser.next (<anonymous>)
+    at normalizeFile (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+    at normalizeFile.next (<anonymous>)
+    at run (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/transformation/index.js:22:50)
+    at run.next (<anonymous>)
+    at transform (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/transform.js:22:33)
+    at transform.next (<anonymous>)
+    at step (/home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:261:32)
+    at /home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:223:11)
+    at /home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:189:28
+Click outside, press Esc key, or fix the code to dismiss.
+You can also disable this overlay by setting server.hmr.overlay to false in vite.config.ts.

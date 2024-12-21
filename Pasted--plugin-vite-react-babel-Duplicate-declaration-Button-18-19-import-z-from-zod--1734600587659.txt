@@ -1,0 +1,45 @@
+[plugin:vite:react-babel] Duplicate declaration "Button"
+  18 | };
+  19 | import { z } from 'zod';
+> 20 | import { Button } from '../ui/Button';
+     |          ^^^^^^
+  21 | import { FormField } from '../ui/FormField';
+  22 | import { toast } from 'react-hot-toast';
+  23 |
+/home/runner/sb1-qa8okcnq-2/src/components/performance/CreateReviewForm.tsx
+    at File.buildCodeFrameError (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/transformation/file/file.js:195:12)
+    at Scope.checkBlockScopedCollisions (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/scope/index.js:395:27)
+    at Scope.registerBinding (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/scope/index.js:494:16)
+    at Scope.registerDeclaration (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/scope/index.js:456:14)
+    at Object.ImportDeclaration (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/scope/index.js:201:12)
+    at NodePath._call (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/path/context.js:49:20)
+    at NodePath.call (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/path/context.js:39:18)
+    at NodePath.visit (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/path/context.js:88:31)
+    at TraversalContext.visitQueue (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/context.js:90:16)
+    at TraversalContext.visitMultiple (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/context.js:62:17)
+    at TraversalContext.visit (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/context.js:111:19)
+    at traverseNode (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/traverse-node.js:22:17)
+    at traverse (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/index.js:53:34)
+    at NodePath.traverse (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/path/index.js:120:24)
+    at Scope.crawl (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/scope/index.js:654:10)
+    at Scope.init (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/scope/index.js:625:12)
+    at NodePath.setScope (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/path/context.js:126:53)
+    at NodePath.setContext (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/traverse/lib/path/context.js:138:12)
+    at new File (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/transformation/file/file.js:90:8)
+    at normalizeFile (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/transformation/normalize-file.js:98:10)
+    at normalizeFile.next (<anonymous>)
+    at run (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/transformation/index.js:22:50)
+    at run.next (<anonymous>)
+    at transform (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/transform.js:22:33)
+    at transform.next (<anonymous>)
+    at step (/home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:261:32)
+    at /home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:223:11)
+    at /home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:189:28
+    at /home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+    at /home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:113:33
+    at step (/home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:287:14)
+    at /home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:223:11
+Click outside, press Esc key, or fix the code to dismiss.
+You can also disable this overlay by setting server.hmr.overlay to false in vite.config.ts.

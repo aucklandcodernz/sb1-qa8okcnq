@@ -7,7 +7,7 @@ interface PayrollStatsProps {
   className?: string;
 }
 
-export default function PayrollStats({ employeeId, className }: PayrollStatsProps) {
+function PayrollStats({ employeeId, className }: PayrollStatsProps) {
   // Mock data - in a real app, this would come from your state management
   const stats = [
     {
@@ -78,3 +78,6 @@ export default function PayrollStats({ employeeId, className }: PayrollStatsProp
     </div>
   );
 }
+
+export { PayrollStats };
+export default PayrollStats;

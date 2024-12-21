@@ -1,0 +1,24 @@
+Based on our current progress and the roadmap for our comprehensive HR Management System, can you provide the next actionable steps and detailed examples for implementing the following improvements?
+
+Database Enhancements & Persistence:
+
+Outline the specific schema updates and Prisma migrations needed to ensure all newly introduced models (e.g., performance reviews, training records, attendance, safety/hazard reports) are fully integrated.
+Show how to add indexing, foreign keys, and validation rules to maintain data integrity and improve performance.
+API and Frontend Integration:
+
+Detail how to update or create new API endpoints to support these refined models.
+Provide code snippets for connecting frontend forms and components to these endpoints so that all UI elements read from and write to the persistent PostgreSQL database correctly.
+Include examples of using React Query or similar state management tools to keep the frontend in sync with backend changes.
+Validation and Error Handling:
+
+Demonstrate how to incorporate Zod or a similar validation library to prevent invalid data from hitting the database.
+Show standardized error handling patterns and user-friendly error messages in both the API responses and the frontend UI.
+Testing and Verification:
+
+Recommend strategies for writing integration and end-to-end tests to ensure that recent schema and endpoint changes are working as intended.
+Include examples of test code and instructions for running these tests in a CI/CD pipeline.
+Continuous Improvement and Alignment with Goals:
+
+Provide guidance on continuously enhancing the app’s features, user experience, and performance, while ensuring that every new component or module stays aligned with our overall objective—building a robust, production-ready HR Management System.
+Suggest best practices for code reviews, incremental refactoring, and documentation to keep the codebase maintainable and scalable.
+After listing these detailed instructions and examples, please also highlight best practices, potential pitfalls, and any additional recommendations to ensure the database and entire application stack evolve cohesively, delivering a consistent and reliable experience to end-users.

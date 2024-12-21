@@ -17,7 +17,7 @@ interface PayrollNavProps {
   organizationId: string;
 }
 
-export default function PayrollNav({ organizationId }: PayrollNavProps) {
+function PayrollNav({ organizationId }: PayrollNavProps) {
   const location = useLocation();
   const [user] = useAtom(userAtom);
   
@@ -114,3 +114,6 @@ export default function PayrollNav({ organizationId }: PayrollNavProps) {
     </div>
   );
 }
+
+export { PayrollNav };
+export default PayrollNav;

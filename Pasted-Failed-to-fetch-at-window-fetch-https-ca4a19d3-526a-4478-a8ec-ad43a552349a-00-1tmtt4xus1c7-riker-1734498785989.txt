@@ -1,0 +1,115 @@
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/@vite/client:557:7)

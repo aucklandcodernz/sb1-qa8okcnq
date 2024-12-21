@@ -1,0 +1,71 @@
+The above error occurred in the <input> component:
+
+    at input
+    at div
+    at div
+    at _c (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/components/ui/FormField.tsx:20:11)
+    at form
+    at CreateReviewForm (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/components/performance/CreateReviewForm.tsx:23:44)
+    at div
+    at div
+    at PerformanceReviews (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/pages/performance/PerformanceReviews.tsx:30:47)
+    at RenderedRoute (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4069:5)
+    at Routes (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4539:5)
+    at div
+    at div
+    at div
+    at Performance (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/pages/Performance.tsx:27:18)
+    at RenderedRoute (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4069:5)
+    at Outlet (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4475:26)
+    at div
+    at main
+    at div
+    at div
+    at Layout (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/components/layout/Layout.tsx:26:18)
+    at RenderedRoute (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4069:5)
+    at Routes (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4539:5)
+    at Suspense
+    at App
+    at Router (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4482:15)
+    at BrowserRouter (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:5228:5)
+    at QueryClientProvider (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-KT43TYN6.js?v=32f69d44:2796:3)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+at input
+at div
+at div
+at _c (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/components/ui/FormField.tsx:20:11)
+at form
+at CreateReviewForm (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/components/performance/CreateReviewForm.tsx:23:44)
+at div
+at div
+at PerformanceReviews (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/pages/performance/PerformanceReviews.tsx:30:47)
+at RenderedRoute (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4069:5)
+at Routes (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4539:5)
+at div
+at div
+at div
+at Performance (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/pages/Performance.tsx:27:18)
+at RenderedRoute (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4069:5)
+at Outlet (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4475:26)
+at div
+at main
+at div
+at div
+at Layout (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/components/layout/Layout.tsx:26:18)
+at RenderedRoute (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4069:5)
+at Routes (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4539:5)
+at Suspense
+at App
+at Router (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:4482:15)
+at BrowserRouter (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=32f69d44:5228:5)
+at QueryClientProvider (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-KT43TYN6.js?v=32f69d44:2796:3)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400

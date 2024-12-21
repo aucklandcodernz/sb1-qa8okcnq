@@ -1,0 +1,57 @@
+[plugin:vite:react-babel] /home/runner/sb1-qa8okcnq-2/src/components/organizations/CreateEmployeeForm.tsx: Unexpected token (75:2)
+  78 |     <form onSubmit={onSubmit} className="space-y-6">
+/home/runner/sb1-qa8okcnq-2/src/components/organizations/CreateEmployeeForm.tsx:75:2
+73 |  
+74 |      onSuccess();
+75 |    });
+   |    ^
+76 |  
+77 |    return (
+    at constructor (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:359:19)
+    at TypeScriptParserMixin.raise (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:3266:19)
+    at TypeScriptParserMixin.unexpected (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:3286:16)
+    at TypeScriptParserMixin.parseExprAtom (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:10983:16)
+    at TypeScriptParserMixin.parseExprAtom (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:6818:20)
+    at TypeScriptParserMixin.parseExprSubscripts (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:10615:23)
+    at TypeScriptParserMixin.parseUpdate (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:10600:21)
+    at TypeScriptParserMixin.parseMaybeUnary (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:10580:23)
+    at TypeScriptParserMixin.parseMaybeUnary (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:9489:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:10434:61)
+    at TypeScriptParserMixin.parseExprOps (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:10439:23)
+    at TypeScriptParserMixin.parseMaybeConditional (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:10416:23)
+    at TypeScriptParserMixin.parseMaybeAssign (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:10379:21)
+    at TypeScriptParserMixin.parseMaybeAssign (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:9438:20)
+    at TypeScriptParserMixin.parseExpressionBase (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:10333:23)
+    at /home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:10329:39
+    at TypeScriptParserMixin.allowInAnd (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:11946:16)
+    at TypeScriptParserMixin.parseExpression (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:10329:17)
+    at TypeScriptParserMixin.parseStatementContent (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12390:23)
+    at TypeScriptParserMixin.parseStatementContent (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:9163:18)
+    at TypeScriptParserMixin.parseStatementLike (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12257:17)
+    at TypeScriptParserMixin.parseModuleItem (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12234:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12810:36)
+    at TypeScriptParserMixin.parseBlockBody (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12803:10)
+    at TypeScriptParserMixin.parseProgram (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12131:10)
+    at TypeScriptParserMixin.parseTopLevel (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:12121:25)
+    at TypeScriptParserMixin.parse (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:13929:10)
+    at TypeScriptParserMixin.parse (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:9777:18)
+    at parse (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/parser/lib/index.js:13963:38)
+    at parser (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/parser/index.js:41:34)
+    at parser.next (<anonymous>)
+    at normalizeFile (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+    at normalizeFile.next (<anonymous>)
+    at run (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/transformation/index.js:22:50)
+    at run.next (<anonymous>)
+    at transform (/home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/transform.js:22:33)
+    at transform.next (<anonymous>)
+    at step (/home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:261:32)
+    at /home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:223:11)
+    at /home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:189:28
+    at /home/runner/sb1-qa8okcnq-2/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+    at /home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:113:33
+    at step (/home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:287:14)
+    at /home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/home/runner/sb1-qa8okcnq-2/node_modules/gensync/index.js:223:11
+Click outside, press Esc key, or fix the code to dismiss.
+You can also disable this overlay by setting server.hmr.overlay to false in vite.config.ts.

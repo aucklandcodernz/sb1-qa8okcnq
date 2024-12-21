@@ -1,0 +1,56 @@
+[vite] connecting...
+[vite] connected.
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+EditEmployeeForm is not defined
+at EmployeeProfile (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/src/pages/EmployeeProfile.tsx:91:87)
+at renderWithHooks (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:11548:26)
+at mountIndeterminateComponent (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:14926:21)
+at beginWork (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:15914:22)
+at HTMLUnknownElement.callCallback2 (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:3674:22)
+at Object.invokeGuardedCallbackDev (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:3699:24)
+at invokeGuardedCallback (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:3733:39)
+at beginWork$1 (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:19765:15)
+at performUnitOfWork (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:19198:20)
+at workLoopSync (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:19137:13)
+EditEmployeeForm is not defined
+at EmployeeProfile (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/src/pages/EmployeeProfile.tsx:91:87)
+at renderWithHooks (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:11548:26)
+at mountIndeterminateComponent (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:14926:21)
+at beginWork (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:15914:22)
+at HTMLUnknownElement.callCallback2 (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:3674:22)
+at Object.invokeGuardedCallbackDev (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:3699:24)
+at invokeGuardedCallback (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:3733:39)
+at beginWork$1 (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:19765:15)
+at performUnitOfWork (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:19198:20)
+at workLoopSync (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:19137:13)
+The above error occurred in the <EmployeeProfile> component:
+
+    at EmployeeProfile (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/src/pages/EmployeeProfile.tsx:34:18)
+    at RenderedRoute (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=df1e82b9:4069:5)
+    at Outlet (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=df1e82b9:4475:26)
+    at div
+    at main
+    at div
+    at div
+    at Layout (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/src/components/layout/Layout.tsx:26:18)
+    at RenderedRoute (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=df1e82b9:4069:5)
+    at Routes (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=df1e82b9:4539:5)
+    at Suspense
+    at App
+    at Router (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=df1e82b9:4482:15)
+    at BrowserRouter (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=df1e82b9:5228:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+EditEmployeeForm is not defined
+at EmployeeProfile (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/src/pages/EmployeeProfile.tsx:91:87)
+at renderWithHooks (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:11548:26)
+at mountIndeterminateComponent (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:14926:21)
+at beginWork (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:15914:22)
+at beginWork$1 (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:19753:22)
+at performUnitOfWork (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:19198:20)
+at workLoopSync (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:19137:13)
+at renderRootSync (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:19116:15)
+at recoverFromConcurrentError (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:18736:28)
+at performSyncWorkOnRoot (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=df1e82b9:18879:28)

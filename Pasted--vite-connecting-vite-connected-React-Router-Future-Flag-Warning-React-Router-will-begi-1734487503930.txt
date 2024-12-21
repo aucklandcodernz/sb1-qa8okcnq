@@ -1,0 +1,48 @@
+[vite] connecting...
+[vite] connected.
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+Plus is not defined
+at Team (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/pages/Team.tsx:112:36)
+at renderWithHooks (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:11548:26)
+at mountIndeterminateComponent (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:14926:21)
+at beginWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:15914:22)
+at HTMLUnknownElement.callCallback2 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3674:22)
+at Object.invokeGuardedCallbackDev (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3699:24)
+at invokeGuardedCallback (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3733:39)
+at beginWork$1 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19765:15)
+at performUnitOfWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19198:20)
+at workLoopSync (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19137:13)
+Plus is not defined
+at Team (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/pages/Team.tsx:112:36)
+at renderWithHooks (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:11548:26)
+at mountIndeterminateComponent (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:14926:21)
+at beginWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:15914:22)
+at HTMLUnknownElement.callCallback2 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3674:22)
+at Object.invokeGuardedCallbackDev (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3699:24)
+at invokeGuardedCallback (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3733:39)
+at beginWork$1 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19765:15)
+at performUnitOfWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19198:20)
+at workLoopSync (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19137:13)
+The above error occurred in the <Team> component:
+
+    at Team (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/pages/Team.tsx:29:18)
+    at Suspense
+    at RenderedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4069:5)
+    at Outlet (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4475:26)
+    at div
+    at main
+    at div
+    at div
+    at Layout (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/components/layout/Layout.tsx:26:18)
+    at AuthenticatedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/App.tsx:40:31)
+    at RenderedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4069:5)
+    at Routes (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4539:5)
+    at Suspense
+    at App
+    at Router (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4482:15)
+    at BrowserRouter (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:5228:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+Plus is not defined

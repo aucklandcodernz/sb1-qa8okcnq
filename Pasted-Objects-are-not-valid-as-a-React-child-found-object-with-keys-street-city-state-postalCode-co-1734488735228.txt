@@ -1,0 +1,56 @@
+Objects are not valid as a React child (found: object with keys {street, city, state, postalCode, country}). If you meant to render a collection of children, use an array instead.
+at throwOnInvalidObjectType (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:9934:17)
+at createChild (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:10110:15)
+at reconcileChildrenArray (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:10282:33)
+at reconcileChildFibers2 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:10559:24)
+at reconcileChildren (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:14290:37)
+at updateHostComponent (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:14807:11)
+at beginWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:15935:22)
+at HTMLUnknownElement.callCallback2 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3674:22)
+at Object.invokeGuardedCallbackDev (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3699:24)
+at invokeGuardedCallback (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3733:39)
+The above error occurred in the <div> component:
+
+    at div
+    at div
+    at div
+    at div
+    at div
+    at EmployeeHeader (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/components/employees/EmployeeHeader.tsx:19:42)
+    at div
+    at EmployeeOverview (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/pages/employee/EmployeeOverview.tsx:19:44)
+    at RenderedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4069:5)
+    at Routes (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4539:5)
+    at div
+    at div
+    at div
+    at EmployeeProfile (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/pages/EmployeeProfile.tsx:34:18)
+    at Suspense
+    at RenderedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4069:5)
+    at Outlet (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4475:26)
+    at div
+    at main
+    at div
+    at div
+    at Layout (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/components/layout/Layout.tsx:26:18)
+    at AuthenticatedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/App.tsx:42:31)
+    at RenderedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4069:5)
+    at Routes (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4539:5)
+    at Suspense
+    at App
+    at Router (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4482:15)
+    at BrowserRouter (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:5228:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+Objects are not valid as a React child (found: object with keys {street, city, state, postalCode, country}). If you meant to render a collection of children, use an array instead.
+at throwOnInvalidObjectType (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:9934:17)
+at createChild (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:10110:15)
+at reconcileChildrenArray (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:10282:33)
+at reconcileChildFibers2 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:10559:24)
+at reconcileChildren (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:14290:37)
+at updateHostComponent (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:14807:11)
+at beginWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:15935:22)
+at beginWork$1 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19753:22)
+at performUnitOfWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19198:20)
+at workLoopSync (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19137:13)

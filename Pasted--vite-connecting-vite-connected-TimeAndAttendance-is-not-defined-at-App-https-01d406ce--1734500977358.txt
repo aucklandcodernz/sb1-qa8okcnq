@@ -1,0 +1,54 @@
+[vite] connecting...
+[vite] connected.
+TimeAndAttendance is not defined
+at App (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/src/App.tsx:95:92)
+at renderWithHooks (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:11548:26)
+at mountIndeterminateComponent (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:14926:21)
+at beginWork (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:15914:22)
+at HTMLUnknownElement.callCallback2 (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:3674:22)
+at Object.invokeGuardedCallbackDev (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:3699:24)
+at invokeGuardedCallback (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:3733:39)
+at beginWork$1 (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:19765:15)
+at performUnitOfWork (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:19198:20)
+at workLoopSync (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:19137:13)
+TimeAndAttendance is not defined
+at App (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/src/App.tsx:95:92)
+at renderWithHooks (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:11548:26)
+at mountIndeterminateComponent (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:14926:21)
+at beginWork (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:15914:22)
+at HTMLUnknownElement.callCallback2 (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:3674:22)
+at Object.invokeGuardedCallbackDev (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:3699:24)
+at invokeGuardedCallback (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:3733:39)
+at beginWork$1 (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:19765:15)
+at performUnitOfWork (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:19198:20)
+at workLoopSync (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:19137:13)
+The above error occurred in the <App> component:
+
+    at App (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/src/App.tsx:95:92)
+    at Router (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=41100555:4482:15)
+    at BrowserRouter (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=41100555:5228:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+at App (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/src/App.tsx:95:92)
+at Router (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=41100555:4482:15)
+at BrowserRouter (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=41100555:5228:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+at t.value (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
+TimeAndAttendance is not defined
+at App (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/src/App.tsx:95:92)
+at renderWithHooks (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:11548:26)
+at mountIndeterminateComponent (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:14926:21)
+at beginWork (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:15914:22)
+at beginWork$1 (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:19753:22)
+at performUnitOfWork (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:19198:20)
+at workLoopSync (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:19137:13)
+at renderRootSync (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:19116:15)
+at recoverFromConcurrentError (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:18736:28)
+at performConcurrentWorkOnRoot (https://01d406ce-6299-433a-b6a2-e80861db0d33-00-50bgdc2rl5ef.kirk.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=41100555:18684:30)

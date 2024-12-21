@@ -1,0 +1,71 @@
+[vite] connecting...
+[vite] connected.
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+Cannot read properties of undefined (reading 'firstName')
+at EditEmployeeForm (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/components/employees/EditEmployeeForm.tsx:34:27)
+at renderWithHooks (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:11548:26)
+at mountIndeterminateComponent (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:14926:21)
+at beginWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:15914:22)
+at HTMLUnknownElement.callCallback2 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3674:22)
+at Object.invokeGuardedCallbackDev (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3699:24)
+at invokeGuardedCallback (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3733:39)
+at beginWork$1 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19765:15)
+at performUnitOfWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19198:20)
+at workLoopSync (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19137:13)
+Cannot read properties of undefined (reading 'firstName')
+at EditEmployeeForm (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/components/employees/EditEmployeeForm.tsx:34:27)
+at renderWithHooks (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:11548:26)
+at mountIndeterminateComponent (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:14926:21)
+at beginWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:15914:22)
+at HTMLUnknownElement.callCallback2 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3674:22)
+at Object.invokeGuardedCallbackDev (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3699:24)
+at invokeGuardedCallback (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3733:39)
+at beginWork$1 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19765:15)
+at performUnitOfWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19198:20)
+at workLoopSync (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19137:13)
+The above error occurred in the <EditEmployeeForm> component:
+
+    at EditEmployeeForm (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/components/employees/EditEmployeeForm.tsx:29:44)
+    at Suspense
+    at RenderedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4069:5)
+    at Outlet (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4475:26)
+    at div
+    at main
+    at div
+    at div
+    at Layout (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/components/layout/Layout.tsx:26:18)
+    at AuthenticatedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/App.tsx:42:31)
+    at RenderedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4069:5)
+    at Routes (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4539:5)
+    at Suspense
+    at App
+    at Router (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4482:15)
+    at BrowserRouter (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:5228:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+
+at EditEmployeeForm (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/components/employees/EditEmployeeForm.tsx:29:44)
+at Suspense
+at RenderedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4069:5)
+at Outlet (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4475:26)
+at div
+at main
+at div
+at div
+at Layout (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/components/layout/Layout.tsx:26:18)
+at AuthenticatedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/App.tsx:42:31)
+at RenderedRoute (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4069:5)
+at Routes (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4539:5)
+at Suspense
+at App
+at Router (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4482:15)
+at BrowserRouter (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:5228:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+at t.value (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400

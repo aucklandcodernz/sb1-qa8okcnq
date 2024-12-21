@@ -1,0 +1,64 @@
+  VITE v5.4.11  ready in 167 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://172.31.196.20:3000/
+  ➜  press h + enter to show help
+2:15:49 AM [vite] vite.config.ts changed, restarting server...
+2:15:49 AM [vite] server restarted.
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x2)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x3)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x4)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x5)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x6)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x7)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x8)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x9)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x10)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x11)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x12)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x13)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x14)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x15)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x16)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x17)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x18)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x19)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x20)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x21)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x22)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x23)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x24)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x25)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x26)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x27)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x28)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x29)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x30)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x31)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x32)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x33)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x34)
+2:15:51 AM [vite] Pre-transform error: The service was stopped: write EPIPE (x35)
+2:15:52 AM [vite] Pre-transform error: The service is no longer running: write EPIPE (x45)
+/home/runner/sb1-qa8okcnq-2/node_modules/esbuild/lib/main.js:677
+      else callback(null, packet.value);
+           ^
+
+TypeError: callback is not a function
+    at handleIncomingPacket (/home/runner/sb1-qa8okcnq-2/node_modules/esbuild/lib/main.js:677:12)
+    at Socket.readFromStdout (/home/runner/sb1-qa8okcnq-2/node_modules/esbuild/lib/main.js:600:7)
+    at Socket.emit (node:events:517:28)
+    at addChunk (node:internal/streams/readable:368:12)
+    at readableAddChunk (node:internal/streams/readable:341:9)
+    at Readable.push (node:internal/streams/readable:278:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+
+Node.js v18.19.1
+ 
+
+  VITE v5.4.11  ready in 224 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://172.31.196.20:3000/
+  ➜  press h + enter to show help

@@ -1,0 +1,30 @@
+Considering our goal of creating a fully integrated, production-ready HR Management System, please provide a stage-by-stage plan with actionable steps, code examples, and best practices for each of the following phases:
+
+Stage 1: Database and Schema Enhancements
+
+Specify the exact schema changes required for supporting performance reviews, training records, attendance, and safety/hazard data.
+Show example schema.prisma updates, including new models, fields, foreign keys, and indexing.
+Provide migration commands and explain how to run and verify them.
+Stage 2: API Integration and Endpoints
+
+Demonstrate how to create or update API endpoints to handle CRUD operations for the newly introduced data models.
+Include code snippets for these endpoints, illustrating the use of Prisma queries and proper error handling.
+Suggest patterns for organizing and documenting these endpoints.
+Stage 3: Frontend Integration and State Management
+
+Explain how to connect React components and forms to the updated API endpoints so that all reads/writes flow through the persistent PostgreSQL database.
+Provide examples showing how to incorporate React Query (or a similar tool) to manage server-state, caching, and refetching, ensuring the frontend remains in sync with the backend.
+Stage 4: Validation, Error Handling, and User Feedback
+
+Show how to integrate Zod or another validation library into both the API routes and the frontend forms, preventing invalid data from reaching the database.
+Include standardized error handling patterns and meaningful UI feedback mechanisms.
+Stage 5: Testing and Verification
+
+Outline integration and end-to-end testing approaches, including sample test cases and how to run them.
+Suggest how to incorporate these tests into a CI/CD pipeline for ongoing reliability.
+Stage 6: Continuous Refinement and Scalability
+
+Provide guidance on incrementally improving features, performance, and user experience as the system grows.
+Highlight best practices for code reviews, incremental refactoring, and documentation updates.
+Identify potential pitfalls (e.g., large-scale data handling, complex transactions, multi-tenant setups) and how to address them preemptively.
+By breaking down the tasks into these stages and providing detailed instructions, examples, and considerations at each step, help me ensure that the database is persistent, all components are well-connected, and the application continuously evolves towards a stable, scalable, and user-friendly HR Management System.

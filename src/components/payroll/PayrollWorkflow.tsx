@@ -13,7 +13,7 @@ interface WorkflowStep {
   assignedTo?: string;
 }
 
-export default function PayrollWorkflow() {
+export function PayrollWorkflow() {
   const [payrollItems] = useAtom(payrollItemsAtom);
 
   // Mock workflow steps - in a real app these would be dynamic

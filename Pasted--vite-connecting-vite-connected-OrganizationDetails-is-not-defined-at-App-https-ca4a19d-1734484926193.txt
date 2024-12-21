@@ -1,0 +1,43 @@
+[vite] connecting...
+[vite] connected.
+OrganizationDetails is not defined
+at App (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/App.tsx:73:98)
+at renderWithHooks (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:11548:26)
+at mountIndeterminateComponent (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:14926:21)
+at beginWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:15914:22)
+at HTMLUnknownElement.callCallback2 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3674:22)
+at Object.invokeGuardedCallbackDev (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3699:24)
+at invokeGuardedCallback (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3733:39)
+at beginWork$1 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19765:15)
+at performUnitOfWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19198:20)
+at workLoopSync (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19137:13)
+OrganizationDetails is not defined
+at App (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/App.tsx:73:98)
+at renderWithHooks (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:11548:26)
+at mountIndeterminateComponent (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:14926:21)
+at beginWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:15914:22)
+at HTMLUnknownElement.callCallback2 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3674:22)
+at Object.invokeGuardedCallbackDev (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3699:24)
+at invokeGuardedCallback (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:3733:39)
+at beginWork$1 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19765:15)
+at performUnitOfWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19198:20)
+at workLoopSync (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19137:13)
+The above error occurred in the <App> component:
+
+    at App (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/App.tsx:73:98)
+    at Router (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:4482:15)
+    at BrowserRouter (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=46b14747:5228:5)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+OrganizationDetails is not defined
+at App (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/src/App.tsx:73:98)
+at renderWithHooks (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:11548:26)
+at mountIndeterminateComponent (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:14926:21)
+at beginWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:15914:22)
+at beginWork$1 (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19753:22)
+at performUnitOfWork (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19198:20)
+at workLoopSync (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19137:13)
+at renderRootSync (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:19116:15)
+at recoverFromConcurrentError (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:18736:28)
+at performConcurrentWorkOnRoot (https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/node_modules/.vite/deps/chunk-TYILIMWK.js?v=46b14747:18684:30)

@@ -1,0 +1,58 @@
+[vite] connecting...
+[vite] connected.
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+LoadingSpinner is not defined
+at EmployeeProfileContent (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/pages/EmployeeProfile.tsx:53:35)
+at renderWithHooks (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:11548:26)
+at mountIndeterminateComponent (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:14926:21)
+at beginWork (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:15914:22)
+at HTMLUnknownElement.callCallback2 (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:3674:22)
+at Object.invokeGuardedCallbackDev (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:3699:24)
+at invokeGuardedCallback (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:3733:39)
+at beginWork$1 (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:19765:15)
+at performUnitOfWork (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:19198:20)
+at workLoopSync (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:19137:13)
+LoadingSpinner is not defined
+at EmployeeProfileContent (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/pages/EmployeeProfile.tsx:53:35)
+at renderWithHooks (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:11548:26)
+at mountIndeterminateComponent (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:14926:21)
+at beginWork (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:15914:22)
+at HTMLUnknownElement.callCallback2 (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:3674:22)
+at Object.invokeGuardedCallbackDev (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:3699:24)
+at invokeGuardedCallback (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:3733:39)
+at beginWork$1 (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:19765:15)
+at performUnitOfWork (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:19198:20)
+at workLoopSync (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-PJEEZAML.js?v=27c17be2:19137:13)
+The above error occurred in the <EmployeeProfileContent> component:
+
+    at EmployeeProfileContent (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/pages/EmployeeProfile.tsx:48:18)
+    at ErrorBoundary (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/components/layout/ErrorBoundary.tsx:5:8)
+    at EmployeeProfile
+    at RenderedRoute (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=27c17be2:4069:5)
+    at Outlet (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=27c17be2:4475:26)
+    at div
+    at main
+    at div
+    at div
+    at Layout (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/components/layout/Layout.tsx:26:18)
+    at RenderedRoute (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=27c17be2:4069:5)
+    at Routes (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=27c17be2:4539:5)
+    at Suspense
+    at App
+    at Router (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=27c17be2:4482:15)
+    at BrowserRouter (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=27c17be2:5228:5)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+ErrorBoundary caught an error: 
+ReferenceError {}
+ 
+Object {componentStack: "↵    at EmployeeProfileContent…"}
+
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
+onSuccess is not a function
+at onSubmit (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/components/organizations/CreateOrganizationForm.tsx:42:5)
+at https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-L7S3ZXBS.js?v=27c17be2:1681:15

@@ -1,0 +1,98 @@
+Here's a comprehensive prompt for Replit to implement PostgreSQL while analyzing existing implementation:
+
+```bash
+/implement postgresql
+
+# 1. Analysis Phase
+Please check:
+- Existing database configuration if any
+- Current schema definitions
+- Installed packages
+- Environment variables
+- Connection configurations
+
+# 2. Report Status
+Show status of:
+- PostgreSQL installation
+- Prisma setup
+- Database URL configuration
+- Schema definitions
+- Existing migrations
+
+# 3. Implementation Needs
+Based on analysis:
+- Install missing packages
+- Configure missing elements
+- Update existing configurations
+- Add required schemas
+- Setup new connections
+
+# 4. Current Application Check
+Analyze:
+- Current data structures
+- State management
+- API endpoints
+- Data relationships
+- Type definitions
+
+# 5. Required Changes
+Implement missing:
+- Database connections
+- Schema definitions
+- Migrations
+- Error handling
+- Type updates
+
+Current Features to Check & Persist:
+1. User Management
+   - Authentication
+   - Authorization
+   - User profiles
+
+2. Organization Data
+   - Company details
+   - Departments
+   - Settings
+
+3. Employee Records
+   - Personal info
+   - Employment details
+   - Documents
+
+4. Leave Management
+   - Leave requests
+   - Approvals
+   - Balance tracking
+
+5. Team Structure
+   - Team composition
+   - Reporting lines
+   - Roles
+
+Please:
+1. Check existing implementation
+2. Report current status
+3. Show what's missing
+4. Implement required changes
+5. Verify functionality
+
+Requirements:
+- Maintain existing features
+- Ensure data persistence
+- Handle migrations correctly
+- Add proper error handling
+- Include type safety
+```
+
+This prompt asks Replit to:
+1. First analyze what's already implemented
+2. Report the current status
+3. Identify gaps
+4. Implement missing pieces
+5. Verify everything works together
+
+Would you like me to:
+1. Add more specific checks for any area?
+2. Include more detailed implementation requirements?
+3. Add validation steps?
+4. Expand the analysis criteria?

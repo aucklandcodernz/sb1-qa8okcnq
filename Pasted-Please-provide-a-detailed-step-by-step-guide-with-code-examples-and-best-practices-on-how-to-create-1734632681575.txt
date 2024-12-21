@@ -1,0 +1,36 @@
+Please provide a detailed, step-by-step guide—with code examples and best practices—on how to create an integrated payroll system within my existing HR Management System. The system currently uses PostgreSQL for persistent storage, Prisma as the ORM, and a React (Next.js) frontend. In particular, I need you to:
+
+Database & Schema Design:
+
+Show how to extend or update the Prisma schema.prisma file to include payroll-related models, fields, and relationships (e.g., Employee, PayrollPeriod, Payslip, Deductions, Allowances, TaxRates).
+Explain how these database changes will support necessary operations like calculating gross pay, applying NZ-specific tax codes, KiwiSaver contributions, and leave deductions.
+Provide sample migration commands and confirm that the schema aligns with the HR and payroll integration goals.
+Backend Logic & API Endpoints:
+
+Demonstrate how to implement or update CRUD API endpoints that handle:
+Creating a payroll period and generating payslips for all employees.
+Calculating and storing net pay, taxes, and deductions for each employee.
+Fetching payroll history, payslips, and tax information when requested.
+Incorporate validation (e.g., with Zod) and robust error handling to ensure data integrity and clear feedback on API errors.
+Payroll Calculation Logic:
+
+Include utility functions or service modules that compute gross, net pay, and required NZ-specific deductions (PAYE tax, KiwiSaver, etc.).
+Show how these functions integrate with the database to store computed results and retrieve necessary data (employee base pay, tax codes, allowances, overtime).
+Frontend Integration & UI Components:
+
+Provide code examples for integrating the new payroll API endpoints into the frontend.
+Show how to build or update React components (e.g., a Payroll Dashboard) that display payslip details, allow administrators to run new payroll cycles, and let employees view their pay history.
+Include best practices for loading states, error handling, and syncing data with React Query or a similar state management library.
+Testing & Verification:
+
+Suggest strategies and example test cases (using Jest or another testing framework) for verifying that the payroll calculations are correct, that CRUD operations work as intended, and that the UI updates properly when new payroll data is generated.
+Include both unit tests (e.g., testing the payroll calculation logic) and integration tests (e.g., creating a payroll period and verifying that payslips appear in the UI).
+Performance, Security & Compliance:
+
+Offer recommendations on indexing frequently queried fields, optimizing queries, and ensuring secure handling of sensitive payroll data (e.g., encrypting certain fields, restricting access to payroll data via role-based access control).
+Address compliance with NZ payroll regulations, ensuring that the logic for tax deductions and benefits is up-to-date and legally compliant.
+Continuous Improvement & Documentation:
+
+Provide guidelines for regularly reviewing and updating the payroll logic as regulations change.
+Suggest ways to document code, communicate changes to the team, and maintain a scalable architecture that can handle a growing number of employees and evolving payroll needs.
+By following these instructions, I want to have a fully integrated, production-ready payroll system connected seamlessly with the HR Management System’s employees and organizations, tailored for the NZ market, and supported by robust validation, error handling, and testing.

@@ -1,0 +1,43 @@
+Failed to fetch
+at window.fetch (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/@vite/client:745:13)
+at WebSocket.<anonymous> (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/@vite/client:557:13)
+Failed to fetch
+at window.fetch (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+at window.fetch (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:218642)
+at ping (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/@vite/client:732:13)
+at waitForSuccessfulPing (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/@vite/client:751:17)
+at async WebSocket.<anonymous> (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/@vite/client:557:7)
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch
+Failed to fetch

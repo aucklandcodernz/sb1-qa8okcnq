@@ -1,0 +1,27 @@
+With the aim of building a robust, production-ready HR Management System, can you provide a detailed, step-by-step set of actions—complete with code examples—for the next phase of implementation? Specifically, please address:
+
+Database Enhancements and Persistence:
+
+Which Prisma schema updates and migrations do I need to apply to fully support performance reviews, training records, attendance tracking, and safety/hazard modules?
+How should I add indexing, foreign keys, and data validation constraints to ensure data integrity and improve query performance?
+Show example schema.prisma snippets and associated migration commands.
+API and Frontend Integration:
+
+How should I update or add new API endpoints so that all these new and existing models are correctly read and written to the persistent PostgreSQL database?
+Provide code examples for integrating frontend forms and React components with the updated API routes.
+Demonstrate best practices for using React Query (or a similar state management solution) to keep the UI and database in sync, ensuring that changes to one are immediately reflected in the other.
+Validation and Error Handling:
+
+Show how to integrate Zod or another validation library in both API routes and frontend forms to prevent invalid data from reaching the database.
+Include patterns for standardized error handling, meaningful error messages, and user-friendly UI feedback.
+
+Testing and Verification:
+
+Suggest approaches for integration and end-to-end testing that confirm the correctness of database operations, API logic, and frontend interactions.
+Include example test cases and scripts to run these tests in a CI/CD pipeline.
+Continuous Improvement and Alignment with Overall Goals:
+
+Offer guidance on progressively refining features, performance, and user experience as we evolve the application.
+Recommend best practices for code reviews, incremental refactoring, and adding documentation so that the codebase remains maintainable, scalable, and aligned with the HR Management System’s objectives.
+Identify potential pitfalls to watch out for as the system grows (e.g., handling large datasets, complex transactions, and multi-tenant scenarios).
+By responding to these points in detail—and illustrating how each piece fits together to maintain persistent data, ensure all components and modules remain connected, and continuously improve the codebase—help me keep building towards a fully integrated, high-quality HR Management System.

@@ -1,0 +1,93 @@
+Payroll fetch error: 
+SyntaxError {}
+message: "Unexpected token '<', "<!doctype "... is not valid JSON"
+stack: "SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON"
+get stack: ƒ ()
+set stack: ƒ ()
+[[Prototype]]: Object
+
+Payroll fetch error: 
+SyntaxError {}
+message: "Unexpected token '<', "<!doctype "... is not valid JSON"
+stack: "SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON"
+get stack: ƒ ()
+set stack: ƒ ()
+[[Prototype]]: Object
+
+Payroll fetch error: 
+SyntaxError {}
+message: "Unexpected token '<', "<!doctype "... is not valid JSON"
+stack: "SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON"
+get stack: ƒ ()
+set stack: ƒ ()
+[[Prototype]]: Object
+
+Payroll fetch error: 
+SyntaxError {}
+message: "Unexpected token '<', "<!doctype "... is not valid JSON"
+stack: "SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON"
+get stack: ƒ ()
+set stack: ƒ ()
+[[Prototype]]: Object
+
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
+Payroll fetch error: 
+SyntaxError {}
+message: "Unexpected token '<', "<!doctype "... is not valid JSON"
+stack: "SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON"
+get stack: ƒ ()
+set stack: ƒ ()
+[[Prototype]]: Object
+
+Payroll fetch error: 
+TypeError {}
+
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
+Payroll fetch error: 
+TypeError {}
+
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
+Payroll fetch error: 
+TypeError {}
+
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
+Payroll fetch error: 
+TypeError {}
+
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
+Payroll fetch error: 
+TypeError {}
+
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
+Payroll fetch error: 
+TypeError {}
+
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
+Payroll fetch error: 
+TypeError {}
+
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400

@@ -1,0 +1,151 @@
+what does this error means my friend
+bash.svg:1 
+        
+        
+       Failed to load resource: net::ERR_NAME_NOT_RESOLVEDUnderstand this errorAI
+40Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1Understand this errorAI
+ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Ar14n%3A:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.Understand this errorAI
+ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Ar14o%3A:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.Understand this errorAI
+ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Ar14n%3A:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.Understand this errorAI
+ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/__replco/workspace_iframe.html?initialPath=%2F&id=%3Ar14o%3A:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1
+(anonymous) @ framework-07d2b1a933243248.js:1
+uO @ framework-07d2b1a933243248.js:1
+uD @ framework-07d2b1a933243248.js:1
+(anonymous) @ framework-07d2b1a933243248.js:1
+uI @ framework-07d2b1a933243248.js:1
+ux @ framework-07d2b1a933243248.js:1
+C @ framework-07d2b1a933243248.js:1
+z @ framework-07d2b1a933243248.js:1Understand this errorAI
+framework-07d2b1a933243248.js:1 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.
+_ @ framework-07d2b1a933243248.js:1
+(anonymous) @ framework-07d2b1a933243248.js:1
+uO @ framework-07d2b1a933243248.js:1
+uD @ framework-07d2b1a933243248.js:1
+(anonymous) @ framework-07d2b1a933243248.js:1
+uI @ framework-07d2b1a933243248.js:1
+ux @ framework-07d2b1a933243248.js:1
+C @ framework-07d2b1a933243248.js:1
+z @ framework-07d2b1a933243248.js:1Understand this errorAI
+workspace_iframe.html:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.Understand this errorAI
+workspace_iframe.html:32 Error while parsing the 'sandbox' attribute: 'allow-downloads-without-user-activation' is an invalid sandbox flag.Understand this errorAI
+image.png:1 
+        
+        
+       Failed to load resource: the server responded with a status of 404 ()Understand this errorAI
+sb1-qa8okcnq:1 Error in event handler: TypeError: Cannot read properties of null (reading 'disconnect')
+    at ResourceTracker.stop (chrome-extension://acfkledaichkaimkfcnbkipemjbbaeke/js/content/track-resources.js:285:15)
+    at ResourcesPortCS.onDisconnect (chrome-extension://acfkledaichkaimkfcnbkipemjbbaeke/js/content/track-resources.js:374:15)
+    at chrome-extension://acfkledaichkaimkfcnbkipemjbbaeke/js/content/track-resources.js:19:14Understand this errorAI
+eruda.js:2 
+        
+        
+       GET https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/ 502 (Bad Gateway)
+window.fetch @ eruda.js:2
+ping @ client:732
+waitForSuccessfulPing @ client:745
+(anonymous) @ client:557Understand this errorAI
+eruda.js:2 
+        
+        
+       GET https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/ 502 (Bad Gateway)
+window.fetch @ eruda.js:2
+ping @ client:732
+waitForSuccessfulPing @ client:745
+(anonymous) @ client:557Understand this errorAI
+client:558 
+        
+        
+       GET https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/team 502 (Bad Gateway)
+(anonymous) @ client:558Understand this errorAI
+VM20273 eruda.js:2 
+        
+        
+       GET https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/ 503 (Service Unavailable)
+window.fetch @ VM20273 eruda.js:2
+ping @ VM20283 client:732
+waitForSuccessfulPing @ VM20283 client:745
+(anonymous) @ VM20283 client:557Understand this errorAI
+VM20281 eruda.js:2 
+        
+        
+       GET https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/ 503 (Service Unavailable)
+window.fetch @ VM20281 eruda.js:2
+ping @ VM20309 client:732
+waitForSuccessfulPing @ VM20309 client:745
+(anonymous) @ VM20309 client:557Understand this errorAI
+VM20283 client:558 
+        
+        
+       GET https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/dashboard 503 (Service Unavailable)
+(anonymous) @ VM20283 client:558Understand this errorAI
+VM20309 client:558 
+        
+        
+       GET https://ca4a19d3-526a-4478-a8ec-ad43a552349a-00-1tmtt4xus1c7.riker.replit.dev/login 503 (Service Unavailable)
+(anonymous) @ VM20309 client:558Understand this errorAI

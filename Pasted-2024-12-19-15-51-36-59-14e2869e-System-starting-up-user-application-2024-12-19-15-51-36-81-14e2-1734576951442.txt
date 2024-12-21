@@ -1,0 +1,129 @@
+2024-12-19 15:51:36.59
+14e2869e
+System
+starting up user application
+2024-12-19 15:51:36.81
+14e2869e
+System
+forwarding local port 3000 to external port 80
+2024-12-19 15:51:38.79
+14e2869e
+User
+> ask-your-hr@0.0.0 build
+2024-12-19 15:51:38.79
+14e2869e
+User
+> tsc && vite build
+2024-12-19 15:51:39.71
+14e2869e
+User
+vite v5.4.11 building for production...
+2024-12-19 15:51:40.99
+14e2869e
+User
+transforming...
+2024-12-19 15:51:46.88
+14e2869e
+User
+✓ 2041 modules transformed.
+2024-12-19 15:51:47.17
+14e2869e
+User
+rendering chunks...
+2024-12-19 15:51:47.32
+14e2869e
+User
+computing gzip size...
+2024-12-19 15:51:47.36
+14e2869e
+User
+dist/index.html 0.54 kB │ gzip: 0.33 kB
+2024-12-19 15:51:47.36
+14e2869e
+User
+dist/assets/index-BdxmnR0t.css 43.85 kB │ gzip: 7.75 kB
+2024-12-19 15:51:47.36
+14e2869e
+User
+dist/assets/vendor-DXgOK3nl.js 162.91 kB │ gzip: 53.17 kB
+2024-12-19 15:51:47.36
+14e2869e
+User
+dist/assets/index-DN8WNN4v.js 650.01 kB │ gzip: 138.10 kB
+2024-12-19 15:51:47.36
+14e2869e
+User
+✓ built in 6.42s
+2024-12-19 15:51:47.41
+14e2869e
+User
+npm
+2024-12-19 15:51:47.41
+14e2869e
+User
+notice
+2024-12-19 15:51:47.41
+14e2869e
+User
+npm
+2024-12-19 15:51:47.41
+14e2869e
+User
+2024-12-19 15:51:47.41
+14e2869e
+User
+notice New major version of npm available! 10.2.4 -> 11.0.0
+2024-12-19 15:51:47.41
+14e2869e
+User
+npm
+2024-12-19 15:51:47.41
+14e2869e
+User
+notice Changelog:
+2024-12-19 15:51:47.41
+14e2869e
+User
+npm
+2024-12-19 15:51:47.41
+14e2869e
+User
+notice
+2024-12-19 15:51:47.41
+14e2869e
+User
+Run `npm install -g npm@11.0.0` to update!
+2024-12-19 15:51:47.41
+14e2869e
+User
+npm
+2024-12-19 15:51:47.41
+14e2869e
+User
+2024-12-19 15:51:47.41
+14e2869e
+User
+notice
+2024-12-19 15:51:47.41
+14e2869e
+User
+2024-12-19 15:51:47.91
+14e2869e
+User
+> ask-your-hr@0.0.0 preview
+2024-12-19 15:51:47.91
+14e2869e
+User
+> vite preview
+2024-12-19 15:51:48.24
+14e2869e
+User
+➜ Local: http://localhost:3000/
+2024-12-19 15:51:48.24
+14e2869e
+User
+➜ Network: http://169.254.8.1:3000/
+2024-12-19 15:51:48.24
+14e2869e
+User
+➜ Network: http://169.254.169.1:3000/

@@ -1,0 +1,53 @@
+[plugin:vite:react-babel] /home/runner/sb1-qa8okcnq/src/components/ui/LoadingSpinner.tsx: Identifier 'React' has already been declared. (51:7)
+  54 |   return (
+/home/runner/sb1-qa8okcnq/src/components/ui/LoadingSpinner.tsx:51:7
+49 |    );
+50 |  }
+51 |  import React from 'react';
+   |         ^
+52 |  
+53 |  export default function LoadingSpinner() {
+    at constructor (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:359:19)
+    at TypeScriptParserMixin.raise (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:3266:19)
+    at TypeScriptScopeHandler.checkRedeclarationInScope (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:1502:19)
+    at TypeScriptScopeHandler.declareName (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:1468:12)
+    at TypeScriptScopeHandler.declareName (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:6934:11)
+    at TypeScriptParserMixin.declareNameFromIdentifier (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:7357:16)
+    at TypeScriptParserMixin.checkIdentifier (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:7353:12)
+    at TypeScriptParserMixin.checkLVal (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:7294:12)
+    at TypeScriptParserMixin.finishImportSpecifier (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:13748:10)
+    at TypeScriptParserMixin.parseImportSpecifierLocal (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:13745:31)
+    at TypeScriptParserMixin.maybeParseDefaultImportSpecifier (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:13851:12)
+    at TypeScriptParserMixin.parseImportSpecifiersAndAfter (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:13722:29)
+    at TypeScriptParserMixin.parseImport (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:13718:17)
+    at TypeScriptParserMixin.parseImport (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:9079:26)
+    at TypeScriptParserMixin.parseStatementContent (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:12365:27)
+    at TypeScriptParserMixin.parseStatementContent (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:9163:18)
+    at TypeScriptParserMixin.parseStatementLike (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:12257:17)
+    at TypeScriptParserMixin.parseModuleItem (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:12234:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:12810:36)
+    at TypeScriptParserMixin.parseBlockBody (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:12803:10)
+    at TypeScriptParserMixin.parseProgram (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:12131:10)
+    at TypeScriptParserMixin.parseTopLevel (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:12121:25)
+    at TypeScriptParserMixin.parse (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:13929:10)
+    at TypeScriptParserMixin.parse (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:9777:18)
+    at parse (/home/runner/sb1-qa8okcnq/node_modules/@babel/parser/lib/index.js:13963:38)
+    at parser (/home/runner/sb1-qa8okcnq/node_modules/@babel/core/lib/parser/index.js:41:34)
+    at parser.next (<anonymous>)
+    at normalizeFile (/home/runner/sb1-qa8okcnq/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+    at normalizeFile.next (<anonymous>)
+    at run (/home/runner/sb1-qa8okcnq/node_modules/@babel/core/lib/transformation/index.js:22:50)
+    at run.next (<anonymous>)
+    at transform (/home/runner/sb1-qa8okcnq/node_modules/@babel/core/lib/transform.js:22:33)
+    at transform.next (<anonymous>)
+    at step (/home/runner/sb1-qa8okcnq/node_modules/gensync/index.js:261:32)
+    at /home/runner/sb1-qa8okcnq/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/home/runner/sb1-qa8okcnq/node_modules/gensync/index.js:223:11)
+    at /home/runner/sb1-qa8okcnq/node_modules/gensync/index.js:189:28
+    at /home/runner/sb1-qa8okcnq/node_modules/@babel/core/lib/gensync-utils/async.js:67:7
+    at /home/runner/sb1-qa8okcnq/node_modules/gensync/index.js:113:33
+    at step (/home/runner/sb1-qa8okcnq/node_modules/gensync/index.js:287:14)
+    at /home/runner/sb1-qa8okcnq/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/home/runner/sb1-qa8okcnq/node_modules/gensync/index.js:223:11
+Click outside, press Esc key, or fix the code to dismiss.
+You can also disable this overlay by setting server.hmr.overlay to false in vite.config.ts.

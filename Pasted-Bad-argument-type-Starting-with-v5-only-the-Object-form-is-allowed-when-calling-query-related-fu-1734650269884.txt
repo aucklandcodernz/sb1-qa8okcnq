@@ -1,0 +1,49 @@
+Bad argument type. Starting with v5, only the "Object" form is allowed when calling query related functions. Please use the error stack to find the culprit call. More info here: https://tanstack.com/query/latest/docs/react/guides/migrating-to-v5#supports-a-single-signature-one-object
+at useBaseQuery (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-KT43TYN6.js?v=40b55b3c:2985:13)
+at useQuery (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-KT43TYN6.js?v=40b55b3c:3059:10)
+at PayrollDashboard (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/pages/payroll/PayrollDashboard.tsx:30:54)
+at renderWithHooks (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:11548:26)
+at mountIndeterminateComponent (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:14926:21)
+at beginWork (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:15914:22)
+at HTMLUnknownElement.callCallback2 (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:3674:22)
+at Object.invokeGuardedCallbackDev (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:3699:24)
+at invokeGuardedCallback (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:3733:39)
+at beginWork$1 (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:19765:15)
+Bad argument type. Starting with v5, only the "Object" form is allowed when calling query related functions. Please use the error stack to find the culprit call. More info here: https://tanstack.com/query/latest/docs/react/guides/migrating-to-v5#supports-a-single-signature-one-object
+at useBaseQuery (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-KT43TYN6.js?v=40b55b3c:2985:13)
+at useQuery (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-KT43TYN6.js?v=40b55b3c:3059:10)
+at PayrollDashboard (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/pages/payroll/PayrollDashboard.tsx:30:54)
+at renderWithHooks (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:11548:26)
+at mountIndeterminateComponent (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:14926:21)
+at beginWork (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:15914:22)
+at HTMLUnknownElement.callCallback2 (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:3674:22)
+at Object.invokeGuardedCallbackDev (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:3699:24)
+at invokeGuardedCallback (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:3733:39)
+at beginWork$1 (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=40b55b3c:19765:15)
+The above error occurred in the <PayrollDashboard> component:
+
+    at PayrollDashboard (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/pages/payroll/PayrollDashboard.tsx:26:34)
+    at RenderedRoute (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=40b55b3c:4069:5)
+    at Routes (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=40b55b3c:4539:5)
+    at div
+    at div
+    at div
+    at Payroll (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/pages/Payroll.tsx:34:34)
+    at RenderedRoute (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=40b55b3c:4069:5)
+    at Outlet (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=40b55b3c:4475:26)
+    at div
+    at main
+    at div
+    at div
+    at Layout (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/src/components/layout/Layout.tsx:26:18)
+    at RenderedRoute (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=40b55b3c:4069:5)
+    at Routes (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=40b55b3c:4539:5)
+    at Suspense
+    at App
+    at Router (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=40b55b3c:4482:15)
+    at BrowserRouter (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/react-router-dom.js?v=40b55b3c:5228:5)
+    at QueryClientProvider (https://2d98d373-86c5-4a4d-8822-22e9917d6422-00-1l7zfetx4n3y.riker.replit.dev/node_modules/.vite/deps/chunk-KT43TYN6.js?v=40b55b3c:2796:3)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+Bad argument type. Starting with v5, only the "Object" form is allowed when calling query related functions. Please use the error stack to find the culprit call. More info here: https://tanstack.com/query/latest/docs/react/guides/migrating-to-v5#supports-a-single-signature-one-object
